@@ -112,21 +112,21 @@ manifest:
     - name: psa_crypto_driver
       remote: nxp
       repo-path: psa_crypto_driver
-      revision: 2a0b75df8f1a7e0c2781d297ddf8a0e3b64d4b08
+      revision: db9f9ed6314e941ef22c1ff7099c7a4dc4ef0653
       path: modules/crypto/psa_crypto_driver
       groups:
         - crypto
     - name: mbedtls
       remote: nxp
       repo-path: nxp_mbedtls
-      revision: 3c15bfaeefde7d22bcf17c444a12fe82372c6293
+      revision: f90cf7011cd5734d54dd0d77527e94165a3ad83b
       path: modules/crypto/mbedtls
       groups:
         - crypto
     - name: trusted-firmware-m
       remote: nxp
       repo-path: nxp_tf-m
-      revision: 6276343a5a32d933cb401c234e69b181462dde9a
+      revision: ca17a7eb0030aaa6fe5d49a4f08e4cc7607bfe63
       path: modules/tee/tf-m/trusted-firmware-m
       groups:
         - tee
@@ -138,7 +138,7 @@ manifest:
       groups:
         - tee
     - name: tf-m-tests
-      revision: d552e4f18b92032bd335d5e3aa312f6acd82a83b
+      revision: 502ea90105ee18f20c78f710e2ba2ded0fc0756e
       path: modules/tee/tf-m/tf-m-tests
       remote: zephyrproject
       groups:
