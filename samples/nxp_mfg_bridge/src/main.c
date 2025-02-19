@@ -12,7 +12,7 @@
 LOG_MODULE_REGISTER(mfg_bridge, LOG_LEVEL_ERR);
 
 #include "fsl_common.h"
-#include "fsl_adapter_rfimu.h"
+#include "fsl_adapter_imu.h"
 #include "fsl_loader.h"
 #include "fsl_ocotp.h"
 #include "uart_rtos.h"
@@ -105,10 +105,10 @@ enum {
 struct uart_rtos_state uart_handle;
 struct k_timer g_wifi_cau_temperature_timer;
 
-static RPMSG_HANDLE_DEFINE(bt_rpmsg_handle);
-static RPMSG_HANDLE_DEFINE(zigbee_rpmsg_handle);
-static hal_rpmsg_handle_t rpmsgHandleList[] = {(hal_rpmsg_handle_t)bt_rpmsg_handle,
-                                               (hal_rpmsg_handle_t)zigbee_rpmsg_handle};
+static IMUMC_HANDLE_DEFINE(bt_imumc_handle);
+static IMUMC_HANDLE_DEFINE(zigbee_imumc_handle);
+static hal_imumc_handle_t imumcHandleList[] = {(hal_imumc_handle_t)bt_imumc_handle,
+					       (hal_imumc_handle_t)zigbee_imumc_handle};
 
 uint32_t remote_ept_list[] = {REMOTE_EPT_ADDR_BT, REMOTE_EPT_ADDR_ZIGBEE};
 uint32_t local_ept_list[] = {LOCAL_EPT_ADDR_BT, LOCAL_EPT_ADDR_ZIGBEE};
@@ -329,20 +329,20 @@ int check_command_complete(uint8_t *buf)
 	return -WM_FAIL;
 }
 
-hal_rpmsg_status_t  wifi_send_imu_raw_data(uint8_t *data, uint32_t length)
+hal_imumc_status_t  wifi_send_imu_raw_data(uint8_t *data, uint32_t length)
 {
 	if (data == NULL || length == 0) {
-		return kStatus_HAL_RpmsgError;
+		return kStatus_HAL_ImumcError;
 	}
 
-	if (kStatus_HAL_RpmsgSuccess != (HAL_ImuSendCommand(kIMU_LinkCpu1Cpu3, data, length))) {
-		return kStatus_HAL_RpmsgError;
+	if (kStatus_HAL_ImumcSuccess != (HAL_ImuSendCommand(kIMU_LinkCpu1Cpu3, data, length))) {
+		return kStatus_HAL_ImumcError;
 	}
 
-	return kStatus_HAL_RpmsgSuccess;
+	return kStatus_HAL_ImumcSuccess;
 }
 
-int rpmsg_raw_packet_send(uint8_t *buf, int m_len, uint8_t t_type)
+int imumc_raw_packet_send(uint8_t *buf, int m_len, uint8_t t_type)
 {
 	uint32_t payloadlen;
 
@@ -356,9 +356,10 @@ int rpmsg_raw_packet_send(uint8_t *buf, int m_len, uint8_t t_type)
 
 	(void)memcpy(&last_cmd_hdr, cmd_hd, sizeof(struct cmd_header));
 
-    if (kStatus_HAL_RpmsgSuccess !=
-        (HAL_RpmsgSend((hal_rpmsg_handle_t)rpmsgHandleList[t_type - 2], local_outbuf, payloadlen))) {
-		return kStatus_HAL_RpmsgError;
+	if (kStatus_HAL_ImumcSuccess !=
+	    (HAL_ImumcSend((hal_imumc_handle_t)imumcHandleList[t_type - 2],
+			   local_outbuf, payloadlen))) {
+		return kStatus_HAL_ImumcError;
 	}
 
 	(void)memset(local_outbuf, 0, BUF_LEN);
@@ -415,15 +416,15 @@ int process_input_cmd(uint8_t *buf, int m_len)
 
 		ret = RET_TYPE_WLAN;
 	} else if (cmd_hd->type == TYPE_BT) {
-		ret = rpmsg_raw_packet_send(buf, m_len, RET_TYPE_BT);
+		ret = imumc_raw_packet_send(buf, m_len, RET_TYPE_BT);
 	} else if (cmd_hd->type == TYPE_15_4) {
-		ret = rpmsg_raw_packet_send(buf, m_len, RET_TYPE_ZIGBEE);
+		ret = imumc_raw_packet_send(buf, m_len, RET_TYPE_ZIGBEE);
 	}
 
 	return ret;
 }
 
-void send_rpmsg_response_to_uart(uint8_t *resp, int msg_len)
+void send_imumc_response_to_uart(uint8_t *resp, int msg_len)
 {
 	uint32_t bridge_chksum = 0;
 	uint32_t msglen;
@@ -473,7 +474,7 @@ void send_rpmsg_response_to_uart(uint8_t *resp, int msg_len)
  * of command responses are handled here. The response is
  * read and then sent through the uart to the Mfg application
  */
-hal_rpmsg_status_t  read_wlan_resp(IMU_Msg_t *pImuMsg, uint32_t len)
+hal_imumc_status_t  read_wlan_resp(IMU_Msg_t *pImuMsg, uint32_t len)
 {
 	assert(pImuMsg != NULL);
 	assert(len != 0);
@@ -483,26 +484,26 @@ hal_rpmsg_status_t  read_wlan_resp(IMU_Msg_t *pImuMsg, uint32_t len)
 
 	send_response_to_uart(uart, (uint8_t *)(pImuMsg->PayloadPtr[0]), 1);
 
-	return kStatus_HAL_RpmsgSuccess;
+	return kStatus_HAL_ImumcSuccess;
 }
 
-hal_rpmsg_return_status_t read_rpmsg_resp(void *param, uint8_t *packet, uint32_t len)
+hal_imumc_return_status_t read_imumc_resp(void *param, uint8_t *packet, uint32_t len)
 {
 	assert(packet != NULL);
 	assert(len != 0);
 
-	send_rpmsg_response_to_uart(packet, len);
+	send_imumc_response_to_uart(packet, len);
 
 	return kStatus_HAL_RL_RELEASE;
 }
 
-static hal_rpmsg_status_t  imu_wifi_config(void)
+static hal_imumc_status_t  imu_wifi_config(void)
 {
-	hal_rpmsg_status_t  state = kStatus_HAL_RpmsgSuccess;
+	hal_imumc_status_t  state = kStatus_HAL_ImumcSuccess;
 
 	/* Assign IMU channel for CPU1-CPU3 communication */
 	state = HAL_ImuInit(kIMU_LinkCpu1Cpu3);
-	assert(kStatus_HAL_RpmsgSuccess == state);
+	assert(kStatus_HAL_ImumcSuccess == state);
 
 	HAL_ImuInstallCallback(kIMU_LinkCpu1Cpu3, read_wlan_resp, IMU_MSG_COMMAND_RESPONSE);
 
@@ -510,38 +511,39 @@ static hal_rpmsg_status_t  imu_wifi_config(void)
 }
 
 #if (defined(CONFIG_SUPPORT_BLE)) || (defined(CONFIG_SUPPORT_IEEE802154))
-static hal_rpmsg_status_t  rpmsg_config(uint32_t linkId)
+static hal_imumc_status_t  imumc_config(uint32_t linkId)
 {
-	hal_rpmsg_status_t  state = kStatus_HAL_RpmsgSuccess;
+	hal_imumc_status_t  state = kStatus_HAL_ImumcSuccess;
 
-	hal_rpmsg_config_t  config = {0};
-	/* Init RPMSG/IMU Channel */
+	hal_imumc_config_t  config = {0};
+	/* Init IMUMC/IMU Channel */
 	config.local_addr = local_ept_list[linkId];
 	config.remote_addr = remote_ept_list[linkId];
 	config.imuLink = kIMU_LinkCpu2Cpu3;
-    state              = HAL_RpmsgInit((hal_rpmsg_handle_t)rpmsgHandleList[linkId], &config);
-    assert(kStatus_HAL_RpmsgSuccess == state);
+	state = HAL_ImumcInit((hal_imumc_handle_t)imumcHandleList[linkId], &config);
+	assert(kStatus_HAL_ImumcSuccess == state);
 
-	/* RPMSG install rx callback */
-    state = HAL_RpmsgInstallRxCallback((hal_rpmsg_handle_t)rpmsgHandleList[linkId], read_rpmsg_resp, NULL);
-    assert(kStatus_HAL_RpmsgSuccess == state);
+	/* IMUMC install rx callback */
+	state = HAL_ImumcInstallRxCallback((hal_imumc_handle_t)imumcHandleList[linkId],
+					   read_imumc_resp, NULL);
+	assert(kStatus_HAL_ImumcSuccess == state);
 
 	return state;
 }
 
-static hal_rpmsg_status_t  rpmsg_init(void)
+static hal_imumc_status_t  imumc_init(void)
 {
 	uint32_t linkId;
-	hal_rpmsg_status_t  state = kStatus_HAL_RpmsgSuccess;
+	hal_imumc_status_t  state = kStatus_HAL_ImumcSuccess;
 
-	/* Init RPMSG/IMU Channel */
+	/* Init IMUMC/IMU Channel */
 #if defined(CONFIG_SUPPORT_BLE)
 	linkId = 0;
-	state = rpmsg_config(linkId);
+	state = imumc_config(linkId);
 #endif
 #if defined(CONFIG_SUPPORT_IEEE802154)
 	linkId = 1;
-	state = rpmsg_config(linkId);
+	state = imumc_config(linkId);
 #endif
 
 	return state;
@@ -665,7 +667,7 @@ static void task_main(void)
 	int32_t result = 0;
 	(void)result;
 
-	/* Enable IMU/RPMSG IRQ */
+	/* Enable IMU/IMUMC IRQ */
 	IRQ_CONNECT(72, 1, WL_MCI_WAKEUP0_DriverIRQHandler, 0, 0);
 	irq_enable(72);
 
@@ -699,7 +701,7 @@ static void task_main(void)
 
 #if defined(CONFIG_SUPPORT_BLE) || defined(CONFIG_SUPPORT_IEEE802154)
 	/* Initialize rpmsg */
-	rpmsg_init();
+	imumc_init();
 #endif
 
 	k_timer_init(&g_wifi_cau_temperature_timer, wifi_cau_temperature_timer_cb, NULL);

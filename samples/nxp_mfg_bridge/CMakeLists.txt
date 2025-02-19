@@ -7,9 +7,12 @@ find_package(Zephyr REQUIRED HINTS $ENV{ZEPHYR_BASE})
 project(nxp_mfg_bridge)
 
 zephyr_include_directories(
-  ${ZEPHYR_HAL_NXP_MODULE_DIR}/mcux/mcux-sdk/components/rpmsg
-  ${ZEPHYR_HAL_NXP_MODULE_DIR}/mcux/mcux-sdk/components/conn_fwloader/include
+  ${ZEPHYR_HAL_NXP_MODULE_DIR}/mcux/mcux-sdk-ng/components/imu_adapter
+  ${ZEPHYR_HAL_NXP_MODULE_DIR}/mcux/mcux-sdk-ng/components/conn_fwloader/include
   )
+
+set(CONFIG_MCUX_COMPONENT_component.osa_zephyr ON)
+zephyr_compile_definitions(OSA_USED=1U)
 
 FILE(GLOB app_sources src/*.c)
 target_sources(app PRIVATE ${app_sources})
