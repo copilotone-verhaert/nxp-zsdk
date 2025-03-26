@@ -43,7 +43,7 @@ manifest:
 
     - name: zephyr
       repo-path: nxp-zephyr
-      revision: e058175fc5f4150f2b03e47adaea5a393a827c36
+      revision: afdb68cdb452e3b7f509a9fc1ea236e31e5d7dd7
       import:
         #
         # ZSDK imports the contents of nxp-zephyr/west.yml at the above
@@ -97,14 +97,14 @@ manifest:
     # added modules
     #
     - name: hal_nxp
-      revision: d83333f197e39dd09f3e310658b1c6ea6dde2334
+      revision: da1aaebd97107c6604a13735dc41957c38492351
       path: modules/hal/nxp
       groups:
         - hal
     - name: els_pkc
       remote: nxp
       repo-path: els_pkc
-      revision: cf88d69e4f403b1184eaa4596790e77cf945f386
+      revision: dde5d2b2d42c6bae1c47ed992aefcf5df65fa64f
       path: modules/crypto/els_pkc
       groups:
         - crypto
@@ -149,7 +149,7 @@ manifest:
     - name: wifi_nxp
       remote: nxp
       repo-path: wifi_nxp
-      revision: 23712d5696919129e5de53ab5235864e607d9740
+      revision: 4053734f8a9b161b8bcc023314604a2697f4d6fe
       path: modules/hal/nxp/mcux/middleware/wifi_nxp
     - name: wifi_nb_fw
       remote: nxp
