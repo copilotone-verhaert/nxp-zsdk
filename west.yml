@@ -88,7 +88,7 @@ manifest:
     - name: bifrost
       west-commands: scripts/west_commands.yml
       repo-path: bifrost
-      revision: 90414e23e52b5c3c88287810e6831d7844439fb0
+      revision: 1648ba049ea1cfb03a10beecda76f119d9952297
       groups:
         - bifrost
 
