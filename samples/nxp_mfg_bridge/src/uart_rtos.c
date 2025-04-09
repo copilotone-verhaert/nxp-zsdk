@@ -12,7 +12,11 @@ LOG_MODULE_DECLARE(mfg_bridge);
 
 #include "uart_rtos.h"
 
+#if defined(RW610_SERIES) || defined(RW612_SERIES)
 const struct device *uart_rtos_dev = DEVICE_DT_GET(DT_NODELABEL(flexcomm3));
+#else
+const struct device *uart_rtos_dev = DEVICE_DT_GET(DT_NODELABEL(lpuart1));
+#endif
 
 struct uart_config uart_rtos_cfg = {
 	.baudrate = 115200,

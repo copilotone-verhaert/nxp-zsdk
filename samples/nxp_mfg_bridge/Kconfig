@@ -15,4 +15,8 @@ config SUPPORT_WIFI
 	default y
 	imply NXP_MONOLITHIC_WIFI
 
+config NXP_MFG_BRIDGE
+	bool "Support MFG Bridge for RT + wireless socs"
+	default n
+
 source "Kconfig.zephyr"

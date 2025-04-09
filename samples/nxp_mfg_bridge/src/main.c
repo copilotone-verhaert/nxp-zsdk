@@ -12,9 +12,23 @@
 LOG_MODULE_REGISTER(mfg_bridge, LOG_LEVEL_ERR);
 
 #include "fsl_common.h"
+#if defined(RW610_SERIES) || defined(RW612_SERIES)
 #include "fsl_adapter_imu.h"
 #include "fsl_loader.h"
 #include "fsl_ocotp.h"
+#else
+#ifdef CONFIG_BT_IND_DNLD
+#include "fw_loader_uart.h"
+#endif
+#include "fwdnld_intf_abs.h"
+#include "wlan.h"
+#include "wifi.h"
+#include "wm_net.h"
+#include <osa.h>
+#include "wifi-internal.h"
+#include "wifi-sdio.h"
+#include "fsl_lpuart.h"
+#endif
 #include "uart_rtos.h"
 
 #ifndef PRINTF
@@ -24,6 +38,7 @@ LOG_MODULE_REGISTER(mfg_bridge, LOG_LEVEL_ERR);
 /*******************************************************************************
  * Definitions
  ******************************************************************************/
+
 #define UART_BUF_SIZE           2048
 #define LABTOOL_PATTERN_HDR_LEN 4
 #define CHECKSUM_LEN            4
@@ -41,11 +56,14 @@ LOG_MODULE_REGISTER(mfg_bridge, LOG_LEVEL_ERR);
 #define TYPE_15_4       0x0004
 #define RET_TYPE_ZIGBEE 3
 
+#if defined(RW610_SERIES) || defined(RW612_SERIES)
 #define MLAN_TYPE_CMD   1
 #define INTF_HEADER_LEN 4
+#define SDIO_OUTBUF_LEN 2048
+#endif
+
 #define SDIOPKTTYPE_CMD 0x1
 #define BUF_LEN         1024
-#define SDIO_OUTBUF_LEN 2048
 
 #define WM_SUCCESS 0
 #define WM_FAIL    1
@@ -103,6 +121,7 @@ enum {
 #define pvPortMalloc k_malloc
 
 struct uart_rtos_state uart_handle;
+#if defined(RW610_SERIES) || defined(RW612_SERIES)
 struct k_timer g_wifi_cau_temperature_timer;
 
 static IMUMC_HANDLE_DEFINE(bt_imumc_handle);
@@ -112,6 +131,7 @@ static hal_imumc_handle_t imumcHandleList[] = {(hal_imumc_handle_t)bt_imumc_hand
 
 uint32_t remote_ept_list[] = {REMOTE_EPT_ADDR_BT, REMOTE_EPT_ADDR_ZIGBEE};
 uint32_t local_ept_list[] = {LOCAL_EPT_ADDR_BT, LOCAL_EPT_ADDR_ZIGBEE};
+#endif
 
 struct uart_cb { /* uart control block */
 	int uart_fd;
@@ -168,9 +188,18 @@ static struct cmd_header last_cmd_hdr;
 uint8_t *local_outbuf;
 static struct SDIOPkt *sdiopkt;
 
+uint8_t host_resp_buf[BUF_LEN];
+uint32_t resp_buf_len, reqd_resp_len;
+
 #if defined(CONFIG_NXP_MONOLITHIC_WIFI)
+#if defined(RW610_SERIES) || defined(RW612_SERIES)
 extern const uint32_t fw_cpu1[];
 #define WIFI_FW_ADDRESS  (uint32_t)&fw_cpu1[0]
+#else
+extern const uint32_t fw_cpu1[];
+extern const unsigned char *wlan_fw_bin;
+extern const unsigned int wlan_fw_bin_len;
+#endif
 #else
 #define WIFI_FW_ADDRESS  0U
 #endif
@@ -223,16 +252,21 @@ static uint32_t uart_get_crc32(struct uart_cb *uart, int len, unsigned char *buf
  * 2. computation of the crc of the payload
  * 3. sending it out to the uart
  */
-static int send_response_to_uart(struct uart_cb *uart, const uint8_t *resp, int type)
+static int send_response_to_uart(struct uart_cb *uart, const uint8_t *resp, int type
+#if !defined(RW610_SERIES) && !defined(RW612_SERIES)
+		, uint32_t reqd_resp_len
+#endif
+	)
 {
 	uint32_t bridge_chksum = 0;
 	uint32_t msglen;
 	int index;
 	uint32_t payloadlen;
 	struct uart_header *uart_hdr;
-	struct SDIOPkt *sdio = (struct SDIOPkt *)resp;
+	int iface_len = 0;
 
-	int iface_len;
+#if defined(RW610_SERIES) || defined(RW612_SERIES)
+	struct SDIOPkt *sdio = (struct SDIOPkt *)resp;
 
 	if (type == 2) {
 		/* This is because, the last byte of the sdio header
@@ -245,6 +279,9 @@ static int send_response_to_uart(struct uart_cb *uart, const uint8_t *resp, int 
 	}
 
 	payloadlen = sdio->size - iface_len;
+#else
+	payloadlen = reqd_resp_len;
+#endif
 	(void)memset(rx_buf, 0, BUF_LEN);
 	(void)memcpy(rx_buf + sizeof(struct uart_header) + sizeof(struct cmd_header),
 		     resp + iface_len, payloadlen);
@@ -329,6 +366,7 @@ int check_command_complete(uint8_t *buf)
 	return -WM_FAIL;
 }
 
+#if defined(RW610_SERIES) || defined(RW612_SERIES)
 hal_imumc_status_t  wifi_send_imu_raw_data(uint8_t *data, uint32_t length)
 {
 	if (data == NULL || length == 0) {
@@ -366,6 +404,7 @@ int imumc_raw_packet_send(uint8_t *buf, int m_len, uint8_t t_type)
 
 	return t_type;
 }
+#endif
 
 /*
  * process_input_cmd() sends command to the wlan
@@ -383,13 +422,17 @@ int process_input_cmd(uint8_t *buf, int m_len)
 		sdiopkt = (struct SDIOPkt *)local_outbuf;
 
 		uarthdr = (struct uart_header *)buf;
-
+#if defined(RW610_SERIES) || defined(RW612_SERIES)
 		/* sdiopkt = local_outbuf */
 		sdiopkt->pkttype = SDIOPKTTYPE_CMD;
 
 		sdiopkt->size = m_len - sizeof(struct cmd_header) + INTF_HEADER_LEN;
 		d = (uint8_t *)local_outbuf + INTF_HEADER_LEN;
 		s = (uint8_t *)buf + sizeof(struct uart_header) + sizeof(struct cmd_header);
+#else
+		d = (uint8_t *)local_outbuf;
+		s = (uint8_t *)buf + sizeof(struct uart_header) + sizeof(struct cmd_header);
+#endif
 
 		for (i = 0; i < uarthdr->length - sizeof(struct cmd_header); i++) {
 			if (s < buf + UART_BUF_SIZE) {
@@ -411,19 +454,25 @@ int process_input_cmd(uint8_t *buf, int m_len)
 				*d++ = *s++;
 			}
 		}
+#if defined(RW610_SERIES) || defined(RW612_SERIES)
 		wifi_send_imu_raw_data(local_outbuf,
 				       (m_len - sizeof(struct cmd_header) + INTF_HEADER_LEN));
-
+#endif
 		ret = RET_TYPE_WLAN;
 	} else if (cmd_hd->type == TYPE_BT) {
+#if defined(RW610_SERIES) || defined(RW612_SERIES)
 		ret = imumc_raw_packet_send(buf, m_len, RET_TYPE_BT);
+#endif
 	} else if (cmd_hd->type == TYPE_15_4) {
+#if defined(RW610_SERIES) || defined(RW612_SERIES)
 		ret = imumc_raw_packet_send(buf, m_len, RET_TYPE_ZIGBEE);
+#endif
 	}
 
 	return ret;
 }
 
+#if defined(RW610_SERIES) || defined(RW612_SERIES)
 void send_imumc_response_to_uart(uint8_t *resp, int msg_len)
 {
 	uint32_t bridge_chksum = 0;
@@ -656,6 +705,7 @@ static void wifi_cau_temperature_timer_cb(struct k_timer *timer)
 
 extern void WL_MCI_WAKEUP0_DriverIRQHandler(void);
 extern void BLE_MCI_WAKEUP0_DriverIRQHandler(void);
+#endif
 
 /*
  * task_main() runs in a loop. It polls the uart ring buffer
@@ -667,7 +717,31 @@ static void task_main(void)
 	int32_t result = 0;
 	(void)result;
 
-	/* Enable IMU/IMUMC IRQ */
+#if !defined(RW610_SERIES) && !defined(RW612_SERIES)
+	result = wifi_init_fcc(wlan_fw_bin, wlan_fw_bin_len);
+	if (result != 0) {
+		switch (result) {
+		case MLAN_CARD_CMD_TIMEOUT:
+		case MLAN_CARD_NOT_DETECTED:
+			result = -WIFI_ERROR_CARD_NOT_DETECTED;
+			break;
+		case MLAN_STATUS_FW_DNLD_FAILED:
+			result = -WIFI_ERROR_FW_DNLD_FAILED;
+			break;
+		case MLAN_STATUS_FW_NOT_DETECTED:
+			result = -WIFI_ERROR_FW_NOT_DETECTED;
+			break;
+		case MLAN_STATUS_FW_NOT_READY:
+			result = -WIFI_ERROR_FW_NOT_READY;
+			break;
+		}
+		PRINTF("sd_wifi_init failed, result:%d\r\n", result);
+	}
+
+	assert(result == WM_SUCCESS);
+#endif
+#if defined(RW610_SERIES) || defined(RW612_SERIES)
+	/* Enable IMU/RPMSG IRQ */
 	IRQ_CONNECT(72, 1, WL_MCI_WAKEUP0_DriverIRQHandler, 0, 0);
 	irq_enable(72);
 
@@ -706,7 +780,7 @@ static void task_main(void)
 
 	k_timer_init(&g_wifi_cau_temperature_timer, wifi_cau_temperature_timer_cb, NULL);
 	k_timer_start(&g_wifi_cau_temperature_timer, K_MSEC(5000), K_MSEC(5000));
-
+#endif
 	/* Initialize uart */
 	result = uart_rtos_init(&uart_handle);
 	if (result < 0) {
@@ -764,8 +838,23 @@ static void task_main(void)
 			 */
 			int ret = process_input_cmd(uart->uart_buf, msg_len + 8);
 			(void)memset(uart->uart_buf, 0, sizeof(uart->uart_buf));
-
+			memset(host_resp_buf, 0x00, BUF_LEN);
+#if defined(RW610_SERIES) || defined(RW612_SERIES)
 			UNUSED(ret);
+#else
+			if (ret == RET_TYPE_WLAN) {
+				OSA_TimeDelay(60);
+				int rv = wlan_send_hostcmd(local_outbuf, BUF_LEN, host_resp_buf,
+						BUF_LEN, &reqd_resp_len);
+				if (rv != WM_SUCCESS)
+					PRINTF("Receive response failed\r\n");
+				else {
+					send_response_to_uart(uart, host_resp_buf, RET_TYPE_WLAN,
+							reqd_resp_len);
+				}
+			}
+
+#endif
 		} else {
 			(void)memset(uart_handle.rx.buffer, 0, BUFFER_SIZE);
 			(void)memset(uart_handle.tx.buffer, 0, BUFFER_SIZE);
