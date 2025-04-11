@@ -15,8 +15,12 @@ LOG_MODULE_DECLARE(mfg_bridge);
 #if defined(RW610_SERIES) || defined(RW612_SERIES)
 const struct device *uart_rtos_dev = DEVICE_DT_GET(DT_NODELABEL(flexcomm3));
 #else
-const struct device *uart_rtos_dev = DEVICE_DT_GET(DT_NODELABEL(lpuart1));
+const struct device *uart_rtos_dev = DEVICE_DT_GET(DT_CHOSEN(zephyr_console));
 #endif
+
+#ifdef CONFIG_SUPPORT_BT_UART
+const struct device *uart_rtos_bt_dev = DEVICE_DT_GET(DT_NODELABEL(m2_hci_bt_uart));
+#endif /*CONFIG_SUPPORT_BT_UART*/
 
 struct uart_config uart_rtos_cfg = {
 	.baudrate = 115200,
@@ -25,6 +29,20 @@ struct uart_config uart_rtos_cfg = {
 	.data_bits = UART_CFG_DATA_BITS_8,
 	.flow_ctrl = UART_CFG_FLOW_CTRL_NONE,
 };
+
+#if defined(CONFIG_SUPPORT_BT_UART)
+struct uart_config bt_uart_rtos_cfg = {
+#if defined(CONFIG_BT_UART_BAUDRATE)
+	.baudrate = CONFIG_BT_UART_BAUDRATE,
+#else
+	.baudrate = 115200,
+#endif /*defined (CONFIG_BT_UART_BAUDRATE)*/
+	.parity = UART_CFG_PARITY_NONE,
+	.stop_bits = UART_CFG_STOP_BITS_1,
+	.data_bits = UART_CFG_DATA_BITS_8,
+	.flow_ctrl = UART_CFG_FLOW_CTRL_RTS_CTS,
+};
+#endif /*defined(CONFIG_SUPPORT_BT_UART)*/
 
 static void uart_rtos_cb(const struct device *dev, void *user_data);
 
@@ -195,7 +213,7 @@ static int uart_rtos_transfer_send(struct uart_rtos_state *handle, uint8_t data)
 	handle->tx.bufferHead = tx_index;
 
 	irq_unlock(irq_key);
-	uart_irq_tx_enable(uart_rtos_dev);
+	uart_irq_tx_enable(handle->dev);
 
 	return 0;
 }
@@ -219,3 +237,98 @@ int uart_rtos_send(struct uart_rtos_state *handle, void *buf, uint32_t length)
 
 	return 0;
 }
+
+#if defined(CONFIG_SUPPORT_BT_UART)
+static void bt_uart_rtos_cb(const struct device *dev, void *user_data)
+{
+	uint8_t rxdata;
+	uint8_t rx_index;
+	struct uart_rtos_state *handle = (struct uart_rtos_state *)user_data;
+
+	if (dev == NULL) {
+		return;
+	}
+
+	if (!uart_irq_update(dev)) {
+		return;
+	}
+
+	/* Receive */
+	if (uart_irq_rx_ready(dev)) {
+		if (uart_fifo_read(dev, &rxdata, 1)) {
+			rx_index = handle->rx.bufferHead + 1;
+			if (rx_index >= handle->rx.bufferSize) {
+				rx_index = 0;
+			}
+
+			if (rx_index == handle->rx.bufferTail) {
+				goto send;
+			}
+
+			handle->rx.buffer[handle->rx.bufferHead] = rxdata;
+			handle->rx.bufferHead = rx_index;
+			k_sem_give(&handle->rx.sem);
+		}
+	}
+
+send:
+	/* Send */
+	if (uart_irq_tx_ready(dev)) {
+		if (handle->tx.bufferHead == handle->tx.bufferTail) {
+			uart_irq_tx_disable(dev);
+		} else {
+			uart_fifo_fill(dev, &handle->tx.buffer[handle->tx.bufferTail++], 1);
+			if (handle->tx.bufferTail >= handle->tx.bufferSize) {
+				handle->tx.bufferTail = 0;
+			}
+			k_sem_give(&handle->tx.sem);
+		}
+	}
+}
+
+int bt_uart_rtos_init(struct uart_rtos_state *handle)
+{
+	int ret = 0;
+
+	if (handle == NULL) {
+		return -1;
+	}
+
+	/* check uart device */
+	if (!device_is_ready(uart_rtos_bt_dev)) {
+		LOG_ERR("BT device not found!");
+		return -1;
+	}
+
+	if (uart_configure(uart_rtos_bt_dev, &bt_uart_rtos_cfg) != 0) {
+		LOG_ERR("BT UART config error!");
+		return -1;
+	}
+
+	(void)memset(handle, 0, sizeof(struct uart_rtos_state));
+	handle->dev = uart_rtos_bt_dev;
+	handle->rx.bufferSize = BT_UART_BUFFER_SIZE;
+	handle->tx.bufferSize = BT_UART_BUFFER_SIZE;
+	k_sem_init(&handle->rx.sem, 0, K_SEM_MAX_LIMIT);
+	k_sem_init(&handle->tx.sem, BT_UART_BUFFER_SIZE - 1, K_SEM_MAX_LIMIT);
+
+	/* configure interrupt and callback to receive data */
+	ret = uart_irq_callback_user_data_set(uart_rtos_bt_dev, bt_uart_rtos_cb, handle);
+	if (ret < 0) {
+		if (ret == -ENOTSUP) {
+			LOG_ERR("Interrupt-driven UART API support not enabled");
+		} else if (ret == -ENOSYS) {
+			LOG_ERR("UART device does not support interrupt-driven API");
+		} else {
+			LOG_ERR("Error setting UART callback: %d", ret);
+		}
+		return -1;
+	}
+
+	uart_irq_rx_enable(uart_rtos_bt_dev);
+
+	return 0;
+}
+
+
+#endif /*CONFIG_SUPPORT_BT_UART*/

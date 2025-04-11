@@ -39,10 +39,12 @@ LOG_MODULE_REGISTER(mfg_bridge, LOG_LEVEL_ERR);
  * Definitions
  ******************************************************************************/
 
-#define UART_BUF_SIZE           2048
-#define LABTOOL_PATTERN_HDR_LEN 4
-#define CHECKSUM_LEN            4
-#define CRC32_POLY              0x04c11db7
+#define UART_BUF_SIZE            2048
+#define LABTOOL_PATTERN_HDR_LEN  4
+#define LABTOOL_HCI_RESP_HDR_LEN 3
+
+#define CHECKSUM_LEN             4
+#define CRC32_POLY               0x04c11db7
 
 /** Command type: WLAN */
 #define TYPE_WLAN     0x0002
@@ -121,6 +123,12 @@ enum {
 #define pvPortMalloc k_malloc
 
 struct uart_rtos_state uart_handle;
+
+#if defined(CONFIG_SUPPORT_BT_UART)
+struct uart_rtos_state bt_uart_handle;
+#endif /*CONFIG_SUPPORT_BT_UART*/
+
+
 #if defined(RW610_SERIES) || defined(RW612_SERIES)
 struct k_timer g_wifi_cau_temperature_timer;
 
@@ -140,6 +148,13 @@ struct uart_cb { /* uart control block */
 };
 
 static struct uart_cb uartcb;
+#if !defined(RW610_SERIES) && !defined(RW612_SERIES)
+static struct uart_cb uartcb_bt;
+#endif
+
+#if defined(CONFIG_SUPPORT_BT_UART)
+static struct uart_cb uartcb_bt;
+#endif /*CONFIG_SUPPORT_BT_UART*/
 
 /** UART start pattern*/
 struct uart_header {
@@ -196,13 +211,12 @@ uint32_t resp_buf_len, reqd_resp_len;
 extern const uint32_t fw_cpu1[];
 #define WIFI_FW_ADDRESS  (uint32_t)&fw_cpu1[0]
 #else
-extern const uint32_t fw_cpu1[];
 extern const unsigned char *wlan_fw_bin;
 extern const unsigned int wlan_fw_bin_len;
 #endif
 #else
 #define WIFI_FW_ADDRESS  0U
-#endif
+#endif /*defined(CONFIG_NXP_MONOLITHIC_WIFI)*/
 
 #if defined(CONFIG_NXP_MONOLITHIC_NBU)
 extern const uint32_t fw_cpu2[];
@@ -406,6 +420,29 @@ int imumc_raw_packet_send(uint8_t *buf, int m_len, uint8_t t_type)
 }
 #endif
 
+#if defined(CONFIG_SUPPORT_BT_UART)
+static int bt_raw_packet_send(uint8_t *buf, int m_len)
+{
+	uint32_t payloadlen;
+
+	struct cmd_header *cmd_hd = (struct cmd_header *)(buf + sizeof(struct uart_header));
+
+	payloadlen = m_len - sizeof(struct uart_header) - sizeof(struct cmd_header) - 4;
+
+	memset(local_outbuf, 0, BUF_LEN);
+	memcpy(local_outbuf, buf + sizeof(struct uart_header) + sizeof(struct cmd_header),
+			payloadlen);
+
+	memcpy(&last_cmd_hdr, cmd_hd, sizeof(struct cmd_header));
+
+	(void)uart_rtos_send(&bt_uart_handle, local_outbuf, payloadlen);
+
+	memset(local_outbuf, 0, BUF_LEN);
+
+	return RET_TYPE_BT;
+}
+#endif /*CONFIG_SUPPORT_BT_UART*/
+
 /*
  * process_input_cmd() sends command to the wlan
  * card
@@ -462,6 +499,10 @@ int process_input_cmd(uint8_t *buf, int m_len)
 	} else if (cmd_hd->type == TYPE_BT) {
 #if defined(RW610_SERIES) || defined(RW612_SERIES)
 		ret = imumc_raw_packet_send(buf, m_len, RET_TYPE_BT);
+#else
+#if defined(CONFIG_SUPPORT_BT_UART)
+		ret = bt_raw_packet_send(buf, m_len);
+#endif /*CONFIG_SUPPORT_BT_UART*/
 #endif
 	} else if (cmd_hd->type == TYPE_15_4) {
 #if defined(RW610_SERIES) || defined(RW612_SERIES)
@@ -705,6 +746,92 @@ static void wifi_cau_temperature_timer_cb(struct k_timer *timer)
 
 extern void WL_MCI_WAKEUP0_DriverIRQHandler(void);
 extern void BLE_MCI_WAKEUP0_DriverIRQHandler(void);
+#else
+static void send_bt_response_to_uart(struct uart_cb *uart_bt, int msg_len)
+{
+	uint32_t bridge_chksum = 0;
+	uint32_t msglen;
+	int index;
+	uint32_t payloadlen;
+	struct uart_header *uart_hdr;
+	struct uart_cb *uart = &uartcb;
+	struct cmd_header *cmd_hdr;
+
+	payloadlen = msg_len;
+
+	memset(rx_buf, 0, BUF_LEN);
+	memcpy(rx_buf + sizeof(struct uart_header) + sizeof(struct cmd_header), uart_bt->uart_buf,
+			payloadlen);
+
+	/* Added to send correct cmd header len */
+	cmd_hdr         = &last_cmd_hdr;
+	cmd_hdr->length = payloadlen + sizeof(struct cmd_header);
+
+	memcpy(rx_buf + sizeof(struct uart_header), (uint8_t *)&last_cmd_hdr,
+			sizeof(struct cmd_header));
+
+	uart_hdr          = (struct uart_header *)rx_buf;
+	uart_hdr->length  = payloadlen + sizeof(struct cmd_header);
+	uart_hdr->pattern = 0x5555;
+
+	/* calculate CRC. The uart_header is excluded */
+	msglen        = payloadlen + sizeof(struct cmd_header);
+	bridge_chksum = uart_get_crc32(uart, msglen, rx_buf + sizeof(struct uart_header));
+	index         = sizeof(struct uart_header) + msglen;
+
+	rx_buf[index]     = bridge_chksum & 0xff;
+	rx_buf[index + 1] = (bridge_chksum & 0xff00) >> 8;
+	rx_buf[index + 2] = (bridge_chksum & 0xff0000) >> 16;
+	rx_buf[index + 3] = (bridge_chksum & 0xff000000) >> 24;
+
+
+	/* write response to uart */
+	uart_rtos_send(&uart_handle, rx_buf,
+			   payloadlen + sizeof(struct cmd_header) + sizeof(struct uart_header) + 4);
+
+	memset(rx_buf, 0, BUF_LEN);
+}
+
+static void read_bt_resp(void)
+{
+	struct uart_cb *uart_bt = &uartcb_bt;
+	uint32_t msglen;
+	uint32_t payloadlen = 0;
+	uint32_t currentlen = 0;
+	size_t uart_rx_len  = 0;
+	int len;
+
+	memset(uart_bt->uart_buf, 0, sizeof(uart_bt->uart_buf));
+
+	do {
+		len         = 0;
+		uart_rx_len = 0;
+		currentlen  = payloadlen;
+
+		while (len != LABTOOL_HCI_RESP_HDR_LEN) {
+			uart_rtos_recv(&bt_uart_handle, uart_bt->uart_buf + len + payloadlen,
+					LABTOOL_HCI_RESP_HDR_LEN, &uart_rx_len);
+			len += uart_rx_len;
+		}
+
+		msglen = uart_bt->uart_buf[currentlen + 2];
+		payloadlen += LABTOOL_HCI_RESP_HDR_LEN;
+		uart_rx_len = 0;
+		len         = 0;
+
+		while (len != msglen) {
+			uart_rtos_recv(&bt_uart_handle, uart_bt->uart_buf + len + payloadlen,
+					msglen - len, &uart_rx_len);
+			len += uart_rx_len;
+		}
+
+		payloadlen += len;
+
+	} while (uart_bt->uart_buf[currentlen + 1] != 0x0E);
+
+	send_bt_response_to_uart(uart_bt, payloadlen);
+	memset(uart_bt->uart_buf, 0, sizeof(uart_bt->uart_buf));
+}
 #endif
 
 /*
@@ -780,13 +907,22 @@ static void task_main(void)
 
 	k_timer_init(&g_wifi_cau_temperature_timer, wifi_cau_temperature_timer_cb, NULL);
 	k_timer_start(&g_wifi_cau_temperature_timer, K_MSEC(5000), K_MSEC(5000));
-#endif
+#endif /*defined(RW610_SERIES) || defined(RW612_SERIES)*/
+
 	/* Initialize uart */
 	result = uart_rtos_init(&uart_handle);
 	if (result < 0) {
 		LOG_ERR("Failed to initialize uart");
 		return;
 	}
+#if defined(CONFIG_SUPPORT_BT_UART)
+	/* Initialize uart */
+	result = bt_uart_rtos_init(&bt_uart_handle);
+	if (result < 0) {
+		LOG_ERR("Failed to initialize bt-uart");
+		return;
+	}
+#endif /*CONFIG_SUPPORT_BT_UART*/
 
 	local_outbuf = pvPortMalloc(SDIO_OUTBUF_LEN);
 
@@ -813,6 +949,7 @@ static void task_main(void)
 		msg_len = 0;
 		uart_rx_len = 0;
 		(void)memset(uart->uart_buf, 0, sizeof(uart->uart_buf));
+
 		while (len != LABTOOL_PATTERN_HDR_LEN) {
 			uart_rtos_recv(&uart_handle, uart->uart_buf + len, LABTOOL_PATTERN_HDR_LEN,
 				       &uart_rx_len);
@@ -852,8 +989,11 @@ static void task_main(void)
 					send_response_to_uart(uart, host_resp_buf, RET_TYPE_WLAN,
 							reqd_resp_len);
 				}
+			} else if (ret == RET_TYPE_BT) {
+				read_bt_resp();
+			} else {
+				/*unused*/
 			}
-
 #endif
 		} else {
 			(void)memset(uart_handle.rx.buffer, 0, BUFFER_SIZE);
