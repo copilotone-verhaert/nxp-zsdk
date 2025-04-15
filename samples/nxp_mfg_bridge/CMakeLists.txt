@@ -12,7 +12,6 @@ zephyr_include_directories(
   )
 
 set(CONFIG_MCUX_COMPONENT_component.osa_zephyr ON)
-zephyr_compile_definitions(OSA_USED=1U)
 
 FILE(GLOB app_sources src/*.c)
 target_sources(app PRIVATE ${app_sources})
