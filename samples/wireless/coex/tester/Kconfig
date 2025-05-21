@@ -1,0 +1,30 @@
+# Config options for tester app
+
+# Copyright (c) 2025 NXP
+# Copyright (c) 2023 Codecoup
+# SPDX-License-Identifier: Apache-2.0
+
+menu "Bttester configuration"
+
+module = BTTESTER
+module-str = bttester
+source "subsys/logging/Kconfig.template.log_config"
+
+config BTTESTER_BTP_CMD_THREAD_STACK_SIZE
+	int "BTP CMD threads stack size."
+	default 2048
+	help
+	  Stack size in byte used by the BTP CMD thread.
+
+endmenu
+
+# Config options for prerequisites mbedtls PSA
+config COEX_MBEDTLS_PSA
+	bool "mbed TLS PSA built-in"
+	select PSA_WANT_ALG_ECDSA if OPENTHREAD_ECDSA
+	select PSA_WANT_ALG_JPAKE
+	select PSA_WANT_ALG_GCM
+	help
+	  Use the mbed TLS PSA configuration pre-defined security scheme for coex application.
+
+source "Kconfig.zephyr"
