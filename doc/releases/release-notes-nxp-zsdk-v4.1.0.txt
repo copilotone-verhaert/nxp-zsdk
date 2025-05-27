@@ -25,7 +25,7 @@ Zephyr Project sync SHA : 7823374e872145b5bd018bfe447839eb36042611
 
 nxp-zephyr Change Log
 =====================
-Following Changes have been applied on top of the Zephyr v4.0.0 release branch:
+Following Changes have been applied on top of the Zephyr v4.1.0 release branch:
 
 Base Enablement
 ===============
