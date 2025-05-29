@@ -6,7 +6,7 @@ cmake_minimum_required(VERSION 3.20.0)
 find_package(Zephyr REQUIRED HINTS $ENV{ZEPHYR_BASE})
 project(nxp_mfg_bridge)
 
-zephyr_include_directories(
+zephyr_include_directories_ifdef(CONFIG_NXP_RW610
   ${ZEPHYR_HAL_NXP_MODULE_DIR}/mcux/mcux-sdk-ng/components/imu_adapter
   ${ZEPHYR_HAL_NXP_MODULE_DIR}/mcux/mcux-sdk-ng/components/conn_fwloader/include
   )
