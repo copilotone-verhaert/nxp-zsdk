@@ -105,21 +105,21 @@ manifest:
     - name: els_pkc
       remote: nxp
       repo-path: els_pkc
-      revision: dde5d2b2d42c6bae1c47ed992aefcf5df65fa64f
+      revision: 71d4a89c03fb32e618ee02c0cd54b3fc92736c96
       path: modules/crypto/els_pkc
       groups:
         - crypto
     - name: psa_crypto_driver
       remote: nxp
       repo-path: psa_crypto_driver
-      revision: 0b3b4c8a3c41edf5c5a5cd8c8e0d298770b0f6bb
+      revision: 7f4a7e273eef6aaa9cc5b28e6bf4e63802c274c1
       path: modules/crypto/psa_crypto_driver
       groups:
         - crypto
     - name: mbedtls
       remote: nxp
       repo-path: nxp_mbedtls
-      revision: 21bad540a9ba5205fd4d9413b6ef00c6c9e1913a
+      revision: 381e988888f254fb89aaf7e0497fcec387e9d3be
       path: modules/crypto/mbedtls
       groups:
         - crypto
