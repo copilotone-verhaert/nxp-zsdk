@@ -43,7 +43,7 @@ manifest:
 
     - name: zephyr
       repo-path: nxp-zephyr
-      revision: 40205774a599780d6993e34641f07f5e93622f08
+      revision: 950df12c1992d5373789fed8d620ef3482e474fd
       import:
         #
         # ZSDK imports the contents of nxp-zephyr/west.yml at the above
@@ -119,14 +119,14 @@ manifest:
     - name: mbedtls
       remote: nxp
       repo-path: nxp_mbedtls
-      revision: 381e988888f254fb89aaf7e0497fcec387e9d3be
+      revision: ed583a28326796c053ef43b7495e76102173015c
       path: modules/crypto/mbedtls
       groups:
         - crypto
     - name: trusted-firmware-m
       remote: nxp
       repo-path: nxp_tf-m
-      revision: 104481f4588c7a58987cba3649c4e7ba71219ea0
+      revision: de5a54a8cf07a974456afab6ddaec0200f1354b8
       path: modules/tee/tf-m/trusted-firmware-m
       groups:
         - tee
@@ -160,7 +160,7 @@ manifest:
     - name: nxp_iot_agent
       remote: nxp
       repo-path: el2go-agent
-      revision: d96b10065787843f9d7d9e3380ad165b34eca62d
+      revision: c3db4f1ccefd1a35997ac16c9304ed9c1a797668
       path: modules/lib/nxp_iot_agent
 
     # Add any additional third-party repositories.
