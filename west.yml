@@ -43,7 +43,7 @@ manifest:
 
     - name: zephyr
       repo-path: nxp-zephyr
-      revision: daefa65605b0dc3baaf703f822ceb5c9310b7cac
+      revision: d4d015c82bee52414fdfd1a7d3fcaa4e4b54bee9
       import:
         #
         # ZSDK imports the contents of nxp-zephyr/west.yml at the above
@@ -112,7 +112,7 @@ manifest:
     - name: psa_crypto_driver
       remote: nxp
       repo-path: psa_crypto_driver
-      revision: 7f4a7e273eef6aaa9cc5b28e6bf4e63802c274c1
+      revision: c8439e0f0847bb7f5dc86ada3ac268141561f6a3
       path: modules/crypto/psa_crypto_driver
       groups:
         - crypto
