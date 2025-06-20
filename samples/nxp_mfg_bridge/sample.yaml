@@ -5,6 +5,7 @@ common:
 tests:
   sample.boards.rd_rw612_bga.nxp_mfg_bridge:
     build_only: true
+    extra_args: EXTRA_CONF_FILE="overlay_RW612.conf"
     platform_allow:
       - rd_rw612_bga
       - frdm_rw612
