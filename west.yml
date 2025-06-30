@@ -126,7 +126,7 @@ manifest:
     - name: trusted-firmware-m
       remote: nxp
       repo-path: nxp_tf-m
-      revision: d9aa09094ada2d33f4a97c34ec40f519d8000cb3
+      revision: 8b12928c09daf8587c1cdb76801a0fa270d2576f
       path: modules/tee/tf-m/trusted-firmware-m
       groups:
         - tee
@@ -138,7 +138,7 @@ manifest:
       groups:
         - tee
     - name: tf-m-tests
-      revision: c712761dd5391bf3f38033643d28a736cae89a19
+      revision: a286347e6a5dd37a9a5e960450ffc0260d63fb27
       path: modules/tee/tf-m/tf-m-tests
       remote: zephyrproject
       groups:
