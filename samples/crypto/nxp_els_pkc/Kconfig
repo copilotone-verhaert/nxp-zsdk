@@ -9,4 +9,9 @@ config MCUX_ELS_PKC_EXAMPLES
 
 	    The option includes the example src files from els_pkc component.
 
+	choice LINKER_ORPHAN_CONFIGURATION
+		bool
+		default LINKER_ORPHAN_SECTION_PLACE
+	endchoice
+
 source "Kconfig.zephyr"
