@@ -1,4 +1,4 @@
-To learn more about NXP’s downstream ecosystem, see [Introduction to ZSDK Downstream](https://github.com/nxp-zephyr/nxp-zsdk/tree/main/doc/Introduction-to-ZSDK-Downstream.md).
+To learn more about NXP’s downstream ecosystem, see [Introduction to ZSDK Downstream](Introduction-to-ZSDK-Downstream.md).
 
 Two options to get started are included here.  NXP provides the [MCUXPresso extension](https://www.nxp.com/design/software/development-software/mcuxpresso-software-and-tools-/mcuxpresso-for-visual-studio-code:MCUXPRESSO-VSC?tid=vanMCUXPRESSO-VSC) for Visual Studio Code (VS Code).  This option is the quickest option to: learn Zephyr when using NXP, import the required repos, build sample applications, download to NXP development boards, and debug.  Another option popular with Zephyr users is developing from Command Line Interface (CLI).
 
@@ -28,7 +28,7 @@ After MCUXpresso Installer completes the installation, MCUXpresso for VS Code ca
 To learn more about using MCUXpresso for VS Code to develop with Zephyr, see the detailed Zephyr [lab guides](https://mcuxpresso.nxp.com/mcux-vscode/latest/html/Training-Zephyr-Getting-Started.html).
 
 # Using CLI
-Many Zephyr users are already familiar with CLI development.  Developing with CLI is no different when using the Downstream repo.  With the CLI option, NXP’s [MCUXpresso Installer](https://mcuxpresso.nxp.com/mcux-vscode/latest/html/Dependency-Installation.html) can also be used to install all tools and dependencies needed for Zephyr development.  Or to install the tools manually, see the [Zephyr Project Getting Started Guide](https://docs.zephyrproject.org/latest/develop/getting_started/index.html).
+Many Zephyr users are already familiar with CLI development.  Developing with CLI is no different when using the Downstream repo.  With the CLI option, NXP’s [MCUXpresso Installer](https://mcuxpresso.nxp.com/mcux-vscode/latest/html/MCUXpresso-Installer.html) can also be used to install all tools and dependencies needed for Zephyr development.  Or to install the tools manually, see the [Zephyr Project Getting Started Guide](https://docs.zephyrproject.org/latest/develop/getting_started/index.html).
 
 After the development environment is setup, initialize the Downstream workspace and clone all the repos using the West commands below.  In these example commands:
 * `nxp_zephyr` is the name of the workspace folder that will be created and initialized.  Any name can be used for this.

@@ -2,7 +2,7 @@
 
 Zephyr applications are built for hardware platforms targeting specific boards.  NXP actively contributes to the Zephyr Project, enabling Zephyr compatibility for the boards listed below.  To facilitate early customer development, NXP often contributes new board support during the initial phase of this process. As new features, improvements, and bug fixes are developed and implemented, NXP will continue to contribute them to the Zephyr Project.  The status level "All Planned Features" (APF) means all drivers and features NXP plans to support on a platform are released.
 
-NXP leverages an extensive ZSDK Downstream ecosystem, see [Introduction to ZSDK Downstream](https://github.com/nxp-zephyr/nxp-zsdk/tree/main/doc/Introduction-to-ZSDK-Downstream.md). The Downstream board support may include additional features or modifications compared to Upstream contributions. Detailed information regarding the current board support is available at:
+NXP leverages an extensive ZSDK Downstream ecosystem, see [Introduction to ZSDK Downstream](../Introduction-to-ZSDK-Downstream.md). The Downstream board support may include additional features or modifications compared to Upstream contributions. Detailed information regarding the current board support is available at:
 * ZSDK Downstream [NXP boards](https://github.com/nxp-zephyr/nxp-zephyr/tree/main/boards/nxp) and [release notes](https://github.com/nxp-zephyr/nxp-zsdk/tree/main/doc/releases)
 * Upstream [NXP boards](https://docs.zephyrproject.org/latest/boards/nxp/index.html) and [release notes](https://docs.zephyrproject.org/latest/releases/index.html#release-notes)
 

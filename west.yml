@@ -94,10 +94,14 @@ manifest:
     - name: bifrost
       west-commands: scripts/west_commands.yml
       repo-path: bifrost
-      revision: 7d8ee3d19939fa295610bc016b4e14835f5cbc7d
+      revision: 2abb8b66a6c86d0d5a04e3d5eda2745078e4bf28
       groups:
         - bifrost
-
+    - name: mcux-docs-theme
+      revision: develop
+      path: bifrost/mcux-docs-theme
+      groups:
+        - bifrost
     #
     # NXP based overrides of Zephyr modules and additional
     # added modules
@@ -191,7 +195,6 @@ manifest:
       repo-path: fmstr-zephyr-samples
       revision: 412487bedebc43c1fd40cb76d7d41f989c2f8063
       path: zsdk/samples/freemaster
-
     # Add any additional third-party repositories.
 
   self:

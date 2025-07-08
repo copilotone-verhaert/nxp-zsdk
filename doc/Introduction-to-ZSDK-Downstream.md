@@ -46,4 +46,4 @@ nxp_zephyr/
 └── zsdk/                       # NXP downstream manifest repo
 ```
 # Getting Started
-To start using the ZSDK, see [ZSDK Getting Started](https://github.com/nxp-zephyr/nxp-zsdk/tree/main/doc/Getting-Started.md).
+To start using the ZSDK, see [ZSDK Getting Started](Getting-Started.md).
