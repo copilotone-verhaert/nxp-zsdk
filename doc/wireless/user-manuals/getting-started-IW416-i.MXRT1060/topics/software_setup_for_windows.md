@@ -76,7 +76,7 @@ pip install west
 Step 5 - Get the Zephyr source code.
 
 ``` {#codeblock_qhz_c4k_cfc}
-west init zephyrproject -m https://github.com/nxp-zephyr/nxp-zsdk.git --mr nxp-v4.1.0
+west init zephyrproject -m https://github.com/nxp-zephyr/nxp-zsdk.git --mr nxp-v4.2.0
 cd zephyrproject
 west update
 ```

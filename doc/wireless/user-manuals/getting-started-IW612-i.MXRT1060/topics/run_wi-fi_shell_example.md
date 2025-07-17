@@ -126,7 +126,3 @@ wifi ap enable -s <ssid> -c <channel number> -p <passphrase> -k 3 -w 2
 Sample output:
 
 ![](../images/sample-output-ap-configuration-wpa3-mode.png)
-
-
-
-

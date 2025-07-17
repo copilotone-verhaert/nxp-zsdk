@@ -13,7 +13,7 @@ The current minimum required version for the main dependencies are shown in the 
 |Tool|Minimum version|
 |----|---------------|
 |[CMake](https://cmake.org/)|3.20.5|
-|[Python](https://www.python.org/)|3.1|
+|[Python](https://www.python.org/)|3.10|
 |[Devicetree compiler](https://www.devicetree.org/)|1.4.6|
 
 Step 1 - Add the repository to your installation.
@@ -106,7 +106,7 @@ pip install west
 Step 5 - Get the Zephyr source code.
 
 ```
-west init zephyrproject -m https://github.com/nxp-zephyr/nxp-zsdk.git --mr nxp-v4.1.0
+west init zephyrproject -m https://github.com/nxp-zephyr/nxp-zsdk.git --mr nxp-v4.2.0
 cd ~/zephyrproject
 west update
 ```
@@ -114,7 +114,7 @@ west update
 Step 6 - Export a Zephyr CMake package. This allows CMake to automatically load the boilerplate code required to build Zephyr applications.
 
 ```
-west zephyr-export’
+west zephyr-export
 ```
 
 Step 7 – Install Python dependencies
