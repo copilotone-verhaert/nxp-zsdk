@@ -53,7 +53,7 @@ This section shows how to compile the Coexistence shell example.
 
 Step 1 - Modify firmware configuration.
 
-Replace Replace sduart\_nw61x.bin.se to sd\_nw61x.bin.se in %HOMEPATH%/zephyrproject/modules/hal/nxp/zephyr/src/wireless/CMakeLists.txt file
+Replace sduart\_nw61x.bin.se to sd\_nw61x.bin.se in %HOMEPATH%/zephyrproject/modules/hal/nxp/zephyr/src/wireless/CMakeLists.txt file
 
 Step 2 - Build the application.
 
