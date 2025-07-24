@@ -21,7 +21,7 @@ Release Highlights
 
 Aligned with Zephyr Project v4.2-branch
 
-Zephyr Project sync SHA : <<INSERT SHA>>
+Zephyr Project sync SHA : 413b789deb391d3a37d06b463288a5fe765ee57e
 
 nxp-zephyr Change Log
 =====================
@@ -40,6 +40,15 @@ Base Enablement
 
 BLE support
 ============
+Common:
+- Fixed hci_nxp driver discarding multi-part extended advertising reports
+RW612:
+- Enabled els_pkc crypto acceleration for BLE stack
+- Upstreamed BLE PM3 support
+- Adjusted BT_BUF_EVT_RX_COUNT and BT_BUF_ACL_TX_COUNT to match Controller's
+MCXW7x:
+- General stabilization
+- Adjusted BT_BUF_EVT_RX_COUNT and BT_BUF_ACL_TX_COUNT to match Controller's
 
 Wi-Fi support
 =============
