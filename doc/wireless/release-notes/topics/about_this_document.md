@@ -5,15 +5,15 @@ This document provides information about the supported features, release version
 The Zephyr release version 4.2.0 has been tested for the wireless SoCs listed below.
 ## Supported products
 -   IW416
--   IW611\[^1\]
--   IW612\[^1\]
+-   IW611<sup>1</sup>
+-   IW612<sup>1</sup>
 -   RW610
 -   RW612
 -   IW610
 
-\[1\] Support for IW611 and IW612 in Zephyr release is experimental, intended for evaluation/early development only, not for production.
+[1] Support for IW611 and IW612 in Zephyr release is experimental, intended for evaluation/early development only, not for production.
 ## NXP Zephyr release
--   NXP Zephyr project on GitHub [5](references.md#item_zephyr-github)
+-   NXP Zephyr project on GitHub [4](references.md)
 -   Tag: nxp-v4.2.0
 
 

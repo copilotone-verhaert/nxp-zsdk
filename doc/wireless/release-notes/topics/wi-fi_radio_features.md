@@ -63,7 +63,7 @@
 |WPA3-SAE \(simultaneous authentication of equals\) \| WPA supplicant|Y|Y|Y|Y|
 |WPA2+WPA3 PSK mixed mode \(WPA3 transition mode\) \| WPA supplicant|Y|Y|Y|Y|
 |Wi-Fi enhanced open – OWE \(opporturnistic wireless encryption\) \| WPA supplicant|Y|Y|Y|Y|
-|802.1x EAP authentication methods \| WPA supplicant \[^1\]|Y|Y|Y|Y|
+|802.1x EAP authentication methods \| WPA supplicant <sup>1</sup>|Y|Y|Y|Y|
 |WPA2-Enterprise mixed mode \| WPA supplicant|Y|Y|Y|Y|
 |WPA3-Enterprise \(Suite-B\) \|national security algorithm \(CSNA\) \| WPA supplicant|Y|Y|Y|Y|
 |802.11w – PMF \(protected management frames\) \| WPA supplicant|Y|Y|Y|Y|
@@ -87,7 +87,7 @@
 |SA query request/response|N|N|N|N|
 |PMF support using Embedded supplicant|Y|Y|Y|Y|
 |**DPP functionality**||||
-|Wi-Fi easy connect\[^3\]|N|N|Y|Y|
+|Wi-Fi easy connect<sup>3</sup>|N|N|Y|Y|
 |**General features**||||
 |Embedded supplicant|Y|Y|Y|Y|
 |Host sleep packet filtering|N|N|Y|Y|
@@ -96,7 +96,7 @@
 |EDMAC – EU adaptivity support \(ETSI certification\)|N|Y|Y|Y|
 |IPv6 NS offload|N|N|N|N|
 |FIPS|N|N|Y|Y|
-|TKIP\[^2\]|N|N|N|N|
+|TKIP<sup>2</sup>|N|N|N|N|
 |RF test mode|N|N|Y|Y|
 |802.11k|N|N|Y|Y|
 |802.11v|N|N|Y|Y|
@@ -109,20 +109,17 @@
 |ClockSync using TSF|N|N|N|N|
 |Auto reconnect|N|N|N|N|
 |CSI \(channel state information\)|N|N|Y|Y|
-|Independent reset \(in-band\)\[^3\]|N|N|Y|Y|
-|Independent reset \(out-band\)\[^3\]|N|N|N|N|
+|Independent reset \(in-band\)<sup>3</sup>|N|N|Y|Y|
+|Independent reset \(out-band\)<sup>3</sup>|N|N|N|N|
 |Wi-Fi agile multi band|N|N|Y|Y|
-|Network co-processor \(NCP\) mode\[^4\]|N|N|N|N|
 |802.11mc – WLS \(Wi-Fi Location Service\)|N|N|N|N|
 |802.11az|N|N|N|N|
 
-\[1\] supported enterprise security options: TLS, TTLS, PEAP v0, PEAP v1
+[1] supported enterprise security options: TLS, TTLS, PEAP v0, PEAP v1
 
-\[2\] As per Wi-Fi specification, connecting in TKIP security in non 802.11n mode is allowed.
+[2] As per Wi-Fi specification, connecting in TKIP security in non 802.11n mode is allowed.
 
-\[3\] support available in host-base supplicant
-
-\[4\] Refer to [3](references.md#item_um12133).
+[3] support available in host-base supplicant
 
 ## AP mode
 
@@ -173,7 +170,7 @@
 |WPA3-SAE \(simultaneous authentication of equals\) \| Hostapd|Y|Y|Y|Y|
 |WPA2+WPA3 PSK mixed mode \(WPA3 transition mode\) \| Hostapd|Y|Y|Y|Y|
 |Wi-Fi Enhanced Open – OWE \(opporturnistic wireless encryption\) \| Hostapd|N|N|N|N|
-|802.1x EAP authentication methods \| Hostapd \[^1\]|Y|Y|Y|Y|
+|802.1x EAP authentication methods \| Hostapd <sup>1</sup>|Y|Y|Y|Y|
 |WPA2-Enterprise mixed mode \| Hostapd|Y|Y|Y|Y|
 |WPA3-Enterprise \(Suite-B\) \|national security algorithm \(CSNA\) \| Hostapd|Y|Y|Y|Y|
 |802.11w – PMF \(protected management frames\) \| Hostapd|Y|Y|Y|Y|
@@ -197,9 +194,8 @@
 |External coexistence \(software interface\)|N|N|N|N|
 |STBC RX|N|N|N|N|
 |Independent reset \(in-band\)|N|N|Y|Y|
-|Network co-processor \(NCP\) mode|N|N|N|N|
 
-\[1\] supported enterprise security options: TLS, TTLS, PEAP v0, and PEAP v1.
+[1] supported enterprise security options: TLS, TTLS, PEAP v0, and PEAP v1.
 
 ## AP-STA mode
 

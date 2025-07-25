@@ -4,13 +4,13 @@
 
 |Features|IW416|IW611/IW612|RW610/RW612|IW610|
 |--------|-----|-----------|-----------|-----|
-|**BCA\_TDM separate antenna \[^1\] \(lower and higher isolation\)** <br> **1x1 Wi-Fi, \(Bluetooth+15.4 shared\)**||||
+|**BCA\_TDM separate antenna <sup>1</sup> \(lower and higher isolation\)** <br> **1x1 Wi-Fi, \(Bluetooth+15.4 shared\)**||||
 |STA + Bluetooth|N|N|N|N|
 |Mobile AP + Bluetooth|N|N|N|N|
 |Bluetooth LE + Wi-Fi|Y|N|Y|Y|
 |Bluetooth + Bluetooth LE + Wi-Fi|N|N|N|N|
 |OpenThread + Bluetooth|N|N|N|N|
-|OpenThread + Bluetooth LE \[^2\]|N|N|N|N|
+|OpenThread + Bluetooth LE <sup>2</sup>|N|N|N|N|
 |OpenThread + Bluetooth + Bluetooth LE|N|N|N|N|
 |OpenThread + Wi-Fi|N|N|N|N|
 |Bluetooth + OpenThread + Wi-Fi|N|N|N|N|
@@ -26,7 +26,7 @@
 |AP + Bluetooth LE coexistence|Y|N|Y|Y|
 |AP + Bluetooth + Bluetooth LE coexistence|N|N|N|N|
 
-\[1\] Experimental feature intended for evaluation/early development only and not production. Incomplete mandatory certification.
+[1] Experimental feature intended for evaluation/early development only and not production. Incomplete mandatory certification.
 
-\[2\] The narrow-band radio can be configured to support Bluetooth LE, 802.15.4, and to time-slice between Bluetooth LE and 802.15.4.
+[2] The narrow-band radio can be configured to support Bluetooth LE, 802.15.4, and to time-slice between Bluetooth LE and 802.15.4.
 

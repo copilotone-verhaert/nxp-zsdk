@@ -15,9 +15,9 @@
 |Low power sniff|N|N|N|
 |Deep sleep using out-of-band|N|N|N|
 |Wake on Bluetooth \(SoC to host\)|N|N|N|
-|Independent reset \(in-band\)\[^1\]|N|N|N|
-|Independent reset \(out-band\)\[^1\]|N|N|N|
-|Firmware download \(parallel\)\[^1\]|N|N|N|
+|Independent reset \(in-band\)<sup>1</sup>|N|N|N|
+|Independent reset \(out-band\)<sup>1</sup>|N|N|N|
+|Firmware download \(parallel\)<sup>1</sup>|N|N|N|
 |RF test mode|N|N|N|
 |**Bluetooth packet type supported**||||
 |ACL \(DM1, DH1, DM3, DH3, DM5, DH5, 2-DH1, 2-DH3, 2-DH5, 3-DH1, 3-DH3, 3- DH5\)|N|N|N|
@@ -33,7 +33,7 @@
 |PCM NBS central/peripheral|N|N|N|
 |PCM WBS central/peripheral|N|N|N|
 
-\[1\] Experimental feature intended for evaluation/early development only and not production. Incomplete mandatory certification.
+[1] Experimental feature intended for evaluation/early development only and not production. Incomplete mandatory certification.
 
 ## Bluetooth LE
 

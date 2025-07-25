@@ -39,12 +39,12 @@ The Wi-Fi and Bluetooth certification is obtained with the following combination
 -   STA | WPA3 SAE (R3)
 -   STA | QTT
 
-QDID: refer to 4.
+QDID: [3] (references.md).
 
 Note: This release supports STAUT only certifications.
 
 ### Bluetooth controller certification
-QDID: refer to 2.
+QDID: [2] (references.md).
 
 Note: QDID upgrade to Bluetooth Core Specification Version 5.4 is in progress.
 

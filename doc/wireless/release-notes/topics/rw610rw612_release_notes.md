@@ -62,7 +62,7 @@ Link: [https://qualification.bluetooth.com/ListingDetails/227830](https://qualif
 
 Certificate: IDCSA24599MAT44108-50
 
-Link on connectivity standard alliance \(CSA\): [10](references.md#item_csa-rw61x-matter-zephyr)
+Link to connectivity standard alliance \(CSA\): [9](references.md)
 
 ## Wi-Fi throughput
 ### Throughput test setup
