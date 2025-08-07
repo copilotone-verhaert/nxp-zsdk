@@ -3,17 +3,17 @@
 # IW416 release notes
 ## Package information
 
-SDK version: v4.2.0
+SDK version: v4.2.0.1
 ## Version information
 
 Wireless SoC: IW416
 
-Wi-Fi and Bluetooth/Bluetooth LE firmware version: 16.92.21.p151.6
+Wi-Fi and Bluetooth/Bluetooth LE firmware version: 16.92.21.p151.8
 
 -   16 - Major revision
 -   92 - Feature pack
 -   21 - Release version
--   p151.6- Patch number
+-   p151.8- Patch number
 
 ## Host platform
 
@@ -181,9 +181,14 @@ EU Adaptivity test - EN 301 893 v2.1.1 \(for 5 GHz\)
 |---------|-----------|
 |Wi-Fi|-   The channel list for JP region does not support CH149 nor CH165 but the STAUT switches to those channel along with the uAP.|
 
-## Known issues
+### Firmware version: From 16.92.21.p151.6 to 16.92.21.p151.8
 
 |Component|Description|
 |---------|-----------|
 |-|-|
 
+## Known issues
+
+|Component|Description|
+|---------|-----------|
+|Bluetooth/LE|Auto PTS test failure occurred because CPU2 sent ACL data to the host before the encryption process was complete.|

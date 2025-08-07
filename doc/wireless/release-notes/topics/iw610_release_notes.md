@@ -3,7 +3,7 @@
 # IW610 release notes
 
 ## Package information
-SDK version: v4.2.0
+SDK version: v4.2.0.1
 
 ## Version information
 
