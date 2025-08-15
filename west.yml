@@ -112,14 +112,14 @@ manifest:
     - name: psa_crypto_driver
       remote: nxp
       repo-path: psa_crypto_driver
-      revision: c8439e0f0847bb7f5dc86ada3ac268141561f6a3
+      revision: 1a93893f986db38cf2c8910f6138b634f0437a48
       path: modules/crypto/psa_crypto_driver
       groups:
         - crypto
     - name: mbedtls
       remote: nxp
       repo-path: nxp_mbedtls
-      revision: 6c450376a3892093052f000b7d401aa77cc79f65
+      revision: 73423cfa8d939941b08321af042762c718fc78bf
       path: modules/crypto/mbedtls
       groups:
         - crypto
@@ -150,12 +150,12 @@ manifest:
     - name: wifi_nxp
       remote: nxp
       repo-path: wifi_nxp
-      revision: 95c8ae162ecad3f75ae46a3938b23aa10d813355
+      revision: 0e501ec3a5127cfdfc6f41cccfa293f50fa248bc
       path: modules/hal/nxp/mcux/middleware/wifi_nxp
     - name: wifi_nb_fw
       remote: nxp
       repo-path: wifi_nb_fw
-      revision: fff366c8925b669dbbd8f5bb0d7d3c8f0438785c
+      revision: 5bf336de851dfeed0a86fbc931d5fb65e40eeb26
       path: modules/hal/nxp/zephyr/blobs/
     - name: nxp_iot_agent
       remote: nxp
