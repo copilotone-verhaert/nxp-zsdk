@@ -98,7 +98,7 @@ manifest:
     # added modules
     #
     - name: hal_nxp
-      revision: bd5ed719c4eb1cbbc828532eb8f42f17b755654c
+      revision: 7ffa6ef0163b05be0216b9b32d51cde020a28267
       path: modules/hal/nxp
       groups:
         - hal
@@ -155,7 +155,7 @@ manifest:
     - name: wifi_nb_fw
       remote: nxp
       repo-path: wifi_nb_fw
-      revision: 1986e5f30635400cac47ddc95589d667453cd62a
+      revision: 1f82120a113e647dc42dec46c3d31c0051982731
       path: modules/hal/nxp/zephyr/blobs/
     - name: nxp_iot_agent
       remote: nxp
