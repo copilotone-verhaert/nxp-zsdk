@@ -68,6 +68,7 @@ manifest:
           - hal_st
           - hal_xtensa
           - liblc3
+          - libsbc
           - libmetal
           - littlefs
           - loramac-node
