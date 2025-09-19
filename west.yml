@@ -127,7 +127,7 @@ manifest:
     - name: trusted-firmware-m
       remote: nxp
       repo-path: nxp_tf-m
-      revision: 9a6c6f95877ad0b2cf8b8a7031399d29dfabd686
+      revision: 17a27cc0e4e709e561ab8e95260f8bec68211398
       path: modules/tee/tf-m/trusted-firmware-m
       groups:
         - tee
