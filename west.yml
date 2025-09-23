@@ -27,6 +27,8 @@ manifest:
       url-base: https://github.com/NXP
     - name: nxp-zsdk
       url-base: https://github.com/nxp-zephyr
+    - name: nxp-mcuxpresso
+      url-base: https://github.com/nxp-mcuxpresso
     - name: zephyrproject
       url-base: https://github.com/zephyrproject-rtos
 
@@ -164,6 +166,16 @@ manifest:
       repo-path: el2go-agent
       revision: c11f9953e692000029d387c5c00e1a3310135a2f
       path: modules/lib/nxp_iot_agent
+    - name: freemaster
+      remote: nxp-mcuxpresso
+      repo-path: mcux-freemaster
+      revision: 52dd288482aab2a13b8c21926d0fe27ea32eb44d
+      path: modules/debug/freemaster
+    - name: freemaster-samples
+      remote: nxp-zsdk
+      repo-path: fmstr-zephyr-samples
+      revision: 412487bedebc43c1fd40cb76d7d41f989c2f8063
+      path: zsdk/samples/freemaster
 
     # Add any additional third-party repositories.
 
