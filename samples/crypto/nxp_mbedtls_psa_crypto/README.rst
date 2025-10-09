@@ -15,7 +15,7 @@ This is the nxp-psa-crypto-driver example, where PSA Crypto apis are being exerc
 
 The source code for this sample application can be found at:
 :zephyr_file:`samples/crypto/nxp_mbedtls_psa_crypto`.
-This sample is available for platforms that support els_pkc and psa-crypto-driver.
+This sample is available for platforms that support psa-crypto-driver.
 
 Requirements
 ************
@@ -29,7 +29,7 @@ Building, Flashing and Running
 
 .. zephyr-app-commands::
    :zephyr-app: samples/boards/rd_rw612_bga/nxp_mbedtls_psa_crypto
-   :board: rd_rw612_bga, frdm_rw612
+   :board: rd_rw612_bga, frdm_rw612, mimxrt1180_evk
    :goals: build flash
    :compact:
 
@@ -41,15 +41,41 @@ Flashing
 
     # You can find "zephyr.bin" and "zephyr.elf" under the "build/zephyr/" path.
     $ cd build/zephyr
-    $ loadbin C:xxx\build\zephyr.bin, 0x08000000
+    $ loadbin C:xxx\build\zephyr.bin, <addr>
 
 Sample Output
 =============
 
 .. code-block:: console
 
-    Mbedtls - PSA - Crypto - examples
-    =================================
-    cipher encrypt/decrypt AES CBC no padding: success!
-    cipher encrypt/decrypt AES CBC PKCS7 multipart: success!
-    cipher encrypt/decrypt AES CTR multipart: success!
+ * PSA crypto example *
+
+
+
+cipher encrypt/decrypt AES CBC no padding:
+
+        success!
+
+cipher encrypt/decrypt AES CBC PKCS7 multipart:
+
+        success!
+
+cipher encrypt/decrypt AES CTR multipart:
+
+        success!
+
+cipher encrypt/decrypt AES CBC no padding one go:
+
+        success!
+
+cipher encrypt/decrypt AES CBC PKCS7 padding one go:
+
+        success!
+
+Hash a message SHA-256:
+
+        success!
+
+
+
+ * Example End *
