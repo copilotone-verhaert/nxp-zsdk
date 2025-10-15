@@ -43,7 +43,7 @@ manifest:
 
     - name: zephyr
       repo-path: nxp-zephyr
-      revision: d58c22d23cdf05f973dc72bcaea34831231e33bc
+      revision: 34822cfdcaf15b756a563aac41f7a509e10ffc3a
       import:
         #
         # ZSDK imports the contents of nxp-zephyr/west.yml at the above
@@ -68,6 +68,7 @@ manifest:
           - hal_st
           - hal_xtensa
           - liblc3
+          - libmctp
           - libsbc
           - libmetal
           - littlefs
