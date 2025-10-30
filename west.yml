@@ -154,7 +154,7 @@ manifest:
     - name: wifi_nxp
       remote: nxp
       repo-path: wifi_nxp
-      revision: ef4ef3d30164ec2c95a52442b0a2dcdaea597ea1
+      revision: 461cd95a1b408852912cdbd6585297ba047756a4
       path: modules/hal/nxp/mcux/middleware/wifi_nxp
     - name: wifi_nb_fw
       remote: nxp
