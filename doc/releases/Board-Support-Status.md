@@ -12,7 +12,10 @@ NXP is committed to providing comprehensive and high-quality board support for Z
 
 | NXP Board                         |  Status                                                                              |
 |-----------------------------------|--------------------------------------------------------------------------------------|
+| frdm_imx91                        | In Development                                                                       |
+| frdm_imx93                        | In Development                                                                       |
 | frdm_k22f                         | All Planned Features                                                                 |
+| frdm_k32l2b3                      | All Planned Features                                                                 |
 | frdm_k64f                         | All Planned Features                                                                 |
 | frdm_k82f                         | All Planned Features                                                                 |
 | frdm_ke15z                        | All Planned Features                                                                 |
@@ -22,12 +25,17 @@ NXP is committed to providing comprehensive and high-quality board support for Z
 | frdm_kw41z                        | All Planned Features                                                                 |
 | frdm_mcxa153                      | In Development                                                                       |
 | frdm_mcxa156                      | In Development                                                                       |
-| frdm_mcxa166                      | In Development                                                                       |
-| frdm_mcxa276                      | In Development                                                                       |
+| frdm_mcxa266                      | In Development                                                                       |
+| frdm_mcxa344                      | In Development                                                                       |
+| frdm_mcxa346                      | In Development                                                                       |
+| frdm_mcxa366                      | In Development                                                                       |
 | frdm_mcxc242                      | All Planned Features                                                                 |
 | frdm_mcxc444                      | All Planned Features                                                                 |
+| frdm_mcxe247                      | All Planned Features                                                                 |
+| frdm_mcxe31b                      | All Planned Features                                                                 |
 | frdm_mcxn236                      | In Development                                                                       |
 | frdm_mcxn947                      | In Development                                                                       |
+| frdm_mcxw23                       | In Development                                                                       |
 | frdm_mcxw71                       | In Development                                                                       |
 | frdm_mcxw72                       | In Development                                                                       |
 | frdm_rw612                        | In Development                                                                       |
@@ -40,8 +48,11 @@ NXP is committed to providing comprehensive and high-quality board support for Z
 | imx8qxp_mek                       | All Planned Features                                                                 |
 | imx8ulp_evk                       | All Planned Features                                                                 |
 | imx91_evk                         | In Development                                                                       |
+| imx91_qsb                         | In Development                                                                       |
 | imx93_evk                         | In Development                                                                       |
+| imx943_evk                        | In Development                                                                       |
 | imx95_evk                         | In Development                                                                       |
+| imx95_evk_15x15                   | In Development                                                                       |
 | lpcxpresso11u68                   | All Planned Features                                                                 |
 | lpcxpresso51u68                   | All Planned Features                                                                 |
 | lpcxpresso54114                   | All Planned Features                                                                 |
@@ -51,7 +62,10 @@ NXP is committed to providing comprehensive and high-quality board support for Z
 | lpcxpresso55s36                   | All Planned Features                                                                 |
 | lpcxpresso55s69                   | All Planned Features                                                                 |
 | ls1046ardb                        | All Planned Features                                                                 |
+| mcx_n5xx_evk                      | In Development                                                                       |
 | mcx_n9xx_evk                      | In Development                                                                       |
+| mcxw23_evk                        | In Development                                                                       |
+| mcxw72_evk                        | In Development                                                                       |
 | mimxrt1010_evk                    | All Planned Features                                                                 |
 | mimxrt1015_evk                    | All Planned Features                                                                 |
 | mimxrt1020_evk                    | All Planned Features                                                                 |
@@ -71,5 +85,5 @@ NXP is committed to providing comprehensive and high-quality board support for Z
 | twr_kv58f220m                     | All Planned Features                                                                 |
 | usb_kw24d512                      | All Planned Features                                                                 |
 | shield nxp_m2_wifi_bt using IW416 | In Development                                                                       |
-| shield nxp_m2_wifi_bt using IW610 | [Introduction pull request](https://github.com/zephyrproject-rtos/zephyr/pull/89875) |
+| shield nxp_m2_wifi_bt using IW610 | In Development                                                                       |
 | shield nxp_m2_wifi_bt using IW612 | In Development                                                                       |
