@@ -2,7 +2,7 @@ To learn more about NXP’s downstream ecosystem, see [Introduction to ZSDK Down
 
 Two options to get started are included here.  NXP provides the [MCUXPresso extension](https://www.nxp.com/design/software/development-software/mcuxpresso-software-and-tools-/mcuxpresso-for-visual-studio-code:MCUXPRESSO-VSC?tid=vanMCUXPRESSO-VSC) for Visual Studio Code (VS Code).  This option is the quickest option to: learn Zephyr when using NXP, import the required repos, build sample applications, download to NXP development boards, and debug.  Another option popular with Zephyr users is developing from Command Line Interface (CLI).
 
-Generally, NXP recommends starting development with the latest Downstream release.  The release notes and latest release are found in the [Downstream releases](https://github.com/nxp-zephyr/nxp-zsdk/tree/main/doc/releases).  The steps below show how to import the release tag `nxp-v4.0.0`.
+Generally, NXP recommends starting development with the latest Downstream release.  The release notes and latest release are found in the [Downstream releases](https://github.com/nxp-zephyr/nxp-zsdk/tree/main/doc/releases).  The steps below show how to import the release tag `nxp-v4.3.0`.
 
 # Using VS Code
 The MCUXpresso extension for VS Code can launch the MCUXpresso Installer, which installs all the tools and dependencies needed to develop with Zephyr.  This is the quickest option to get started with Zephyr.  To use this extension and the Installer, see the [extension wiki](https://github.com/nxp-mcuxpresso/vscode-for-mcux/wiki).  The wiki also includes detailed [lab guides](https://github.com/nxp-mcuxpresso/vscode-for-mcux/wiki/Training-Zephyr-Getting-Started) for developing with Zephyr.
@@ -14,7 +14,7 @@ After MCUXpresso Installer completes the installation, MCUXpresso for VS Code ca
 
 	![VS Code Import Downstream repo](./pictures/VS_Code_Import_Repo.png)
 
-1. Select the Revision of the repo to import.  This field defaults to the latest release tag, which is generally recommended, shown here as `nxp-v4.0.0`.  Use the pull-down menu to see other revision options.
+1. Select the Revision of the repo to import.  This field defaults to the latest release tag, which is generally recommended, shown here as `nxp-v4.3.0`.  Use the pull-down menu to see other revision options.
 1. Click the **Import button** to start the import.  This can take a long time to clone all the repos into the new workspace.
 
 	![VS Code Import Downstream repo](./pictures/VS_Code_Import_Repo2.png)
@@ -34,7 +34,7 @@ After the development environment is setup, initialize the Downstream workspace 
 
 Start from the directory where the new workspace folder will be created, then use these commands:
 ```
-$ west init -m https://github.com/nxp-zephyr/nxp-zsdk.git nxp_zephyr --mr nxp-v4.0.0
+$ west init -m https://github.com/nxp-zephyr/nxp-zsdk.git nxp_zephyr --mr nxp-v4.3.0
 $ cd nxp_zephyr
 $ west update
 ```

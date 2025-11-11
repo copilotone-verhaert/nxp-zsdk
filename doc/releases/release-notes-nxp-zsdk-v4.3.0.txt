@@ -1,0 +1,87 @@
+NXP Zephyr SDK v4.3.0.0 Release Notes
+=============================
+
+The nxp-zsdk provides a NXP Zephyr Downstream for NXP SOCs.
+
+How to get the code
+===================
+
+The git tag for this release is "nxp-v4.3.0".  See the ZSDK Getting Started at
+https://github.com/nxp-zephyr/nxp-zsdk/tree/main/doc/Getting-Started.md.  The
+West init command is as follows:
+
+ $ west init -m https://github.com/nxp-zephyr/nxp-zsdk.git --mr nxp-v4.3.0
+
+Then, run:
+ $ west update
+ $ west zephyr-export
+
+Release Highlights
+==================
+
+Aligned with Zephyr Project v4.3-branch
+
+Zephyr Project sync SHA : <<TBA>>
+
+nxp-zephyr Change Log
+=====================
+Following Changes have been applied on top of the Zephyr v4.3.0 release branch:
+
+Base Enablement
+===============
+
+- RW61x: Added standby (Power Mode 3 - PM3) support
+- Enabled standby (PM3) for RW612 and set IMU as wakeup source
+- rw6xx: Added support for XTAL32K clock
+- Added support to wakeup from a pin input
+- Added support to wakeup from an external pin
+- Set IMU as wakeup source for frdm_rw612
+
+
+BLE support
+============
+Common:
+- Fixed hci_nxp driver discarding multi-part extended advertising reports
+RW612:
+- Enabled els_pkc crypto acceleration for BLE stack
+- Upstreamed BLE PM3 support
+- Adjusted BT_BUF_EVT_RX_COUNT and BT_BUF_ACL_TX_COUNT to match Controller's
+MCXW7x:
+- General stabilization
+- Adjusted BT_BUF_EVT_RX_COUNT and BT_BUF_ACL_TX_COUNT to match Controller's
+
+Wi-Fi support
+=============
+
+For RW612/IW610/IW416/IW612:
+- Added support for firmware dump saving to flash
+- Enabled TLS 1.3 for EAP-TLS in Wi-Fi supplicant example
+- Introduced AMI (Ambient Motion Index) feature
+For IW610/IW416/IW612:
+- Added support for host sleep with Wi-Fi wake-up
+For RW612:
+- Added Wi-Fi apsta_mode example
+For IW416/IW612:
+- Added Independet reset feature support
+- Added DPP feature support
+
+OpenThread Support
+==================
+
+- No update
+
+TF-M / mbedTLS / Crypto
+=======================
+
+- els_pkc crypto module updated to v2.0.0
+- psa_crypto_driver performance improvements
+- mbedTLS v3.6.3 with support for HW acceleration via PSA APIs for RW61x
+- TF-M v2.2.0 enablement for RW61x
+- BL2 by default enabled for TF-M examples
+
+FreeMASTER support
+====================
+
+- Added NXP FreeMASTER to the manifest
+
+

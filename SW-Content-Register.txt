@@ -1,7 +1,7 @@
 --------------------------------------------
 
 Name:             NXP Zephyr Software Development Kit (ZSDK)
-Version:          4.2.0
+Version:          4.3.0
 Outgoing License: Apache-2.0
 License File:     LICENSE
 Format:           source code
