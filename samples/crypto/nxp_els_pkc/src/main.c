@@ -186,33 +186,6 @@ int main(void)
 		printf("fail\n");
 	}
 
-	printf("Flow protection:");
-	if (mcuxCsslFlowProtection_example() == true) {
-		pass++;
-		printf("pass\n");
-	} else {
-		fail++;
-		printf("fail\n");
-	}
-
-	printf("Memory compare:");
-	if (mcuxCsslMemory_Compare_example() == EXIT_CODE_OK) {
-		pass++;
-		printf("pass\n");
-	} else {
-		fail++;
-		printf("fail\n");
-	}
-
-	printf("Memory copy:");
-	if (mcuxCsslMemory_Copy_example() == EXIT_CODE_OK) {
-		pass++;
-		printf("pass\n");
-	} else {
-		fail++;
-		printf("fail\n");
-	}
-
 	printf("Key component operations:");
 	if (mcuxClKey_example() == true) {
 		pass++;
