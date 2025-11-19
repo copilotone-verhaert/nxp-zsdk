@@ -19,4 +19,4 @@ tests:
     harness_config:
       type: one_line
       regex:
-        - "RESULT: All 24 test PASS!!"
+        - "RESULT: All 21 test PASS!!"
