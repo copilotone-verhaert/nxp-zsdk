@@ -3,16 +3,16 @@
 # IW610 release notes
 
 ## Package information
-SDK version: v4.2.0
+SDK version: v4.3.0
 
 ## Version information
 
-Wi-Fi and Bluetooth/Bluetooth LE firmware version firmware version: 18.99.5.p71
+Wi-Fi and Bluetooth/Bluetooth LE firmware version firmware version: 18.99.5.p85
 
 -   18 - Major revision
 -   99 - Feature pack
 -   5 - Release version
--   p71 - Patch number
+-   p85 - Patch number
 
 ## Host platform
 
@@ -68,54 +68,54 @@ STA mode throughput - BGN Mode - 2.4 GHz Band - 20 MHz
 |Protocol|TCP \(Mbit/s\)|  | UDP \(Mbit/s\)|  |
 |--------|--------------|--|---------------|--|
 |Direction|TX|RX|TX|RX|
-|Open Security|40|47|59|64|
-|WPA2-AES|40|46|62|63|
-|WPA3-SAE|40|46|60|63|
+|Open Security|40|45|62|59|
+|WPA2-AES|39|40|60|54|
+|WPA3-SAE|39|45|60|62|
 
 STA mode throughput - AN Mode - 5 GHz Band - 20 MHz
 
 |Protocol|TCP \(Mbit/s\)|  | UDP \(Mbit/s\)|  |
 |--------|--------------|--|---------------|--|
 |Direction|TX|RX|TX|RX|
-|Open Security|41|48|57|63|
-|WPA2-AES|40|44|59|62|
-|WPA3-SAE|41|46|59|61|
+|Open Security|41|45|64|63|
+|WPA2-AES|40|42|62|58|
+|WPA3-SAE|40|46|61|62|
 
-STA mode throughput - VHT Mode - 2.4 GHz Band - 20 MHz (HT)
+STA mode throughput - VHT Mode - 2.4 GHz Band - 20 MHz
 
 |Protocol|TCP \(Mbit/s\)|  | UDP \(Mbit/s\)|  |
 |--------|--------------|--|---------------|--|
 |Direction|TX|RX|TX|RX|
-|Open Security|43|50|74|74|
-|WPA2-AES|43|50|71|73|
-|WPA3-SAE|42|51|72|73|
+|Open Security|43|48|73|73|
+|WPA2-AES|42|47|73|73|
+|WPA3-SAE|42|47|73|73|
 
 STA mode throughput - VHT Mode - 5 GHz Band - 20 MHz
 
 |Protocol|TCP \(Mbit/s\)|  | UDP \(Mbit/s\)|  |
 |--------|--------------|--|---------------|--|
 |Direction|TX|RX|TX|RX|
-|Open Security|45|51|76|78|
-|WPA2-AES|45|52|74|77|
-|WPA3-SAE|45|51|74|77|
+|Open Security|43|51|74|74|
+|WPA2-AES|44|51|75|74|
+|WPA3-SAE|44|53|75|74|
 
 STA mode throughput - HE Mode - 2.4 GHz Band - 20 MHz
 
 |Protocol|TCP \(Mbit/s\)|  | UDP \(Mbit/s\)|  |
 |--------|--------------|--|---------------|--|
 |Direction|TX|RX|TX|RX|
-|Open Security|47|55|96|100|
-|WPA2-AES|48|54|94|98|
-|WPA3-SAE|48|54|94|99|
+|Open Security|46|56|94|97|
+|WPA2-AES|46|55|94|97|
+|WPA3-SAE|45|55|95|98|
 
 STA mode throughput - HE Mode - 5 GHz Band - 20 MHz
 
 |Protocol|TCP \(Mbit/s\)|  | UDP \(Mbit/s\)|  |
 |--------|--------------|--|---------------|--|
 |Direction|TX|RX|TX|RX|
-|Open Security|50|57|101|103|
-|WPA2-AES|50|56|99|102|
-|WPA3-SAE|50|55|99|102|
+|Open Security|48|58|97|100|
+|WPA2-AES|46|52|97|94|
+|WPA3-SAE|47|54|98|97|
 
 ### Mobile AP throughput
 
@@ -126,54 +126,62 @@ Mobile AP Mode Throughput - BGN Mode - 2.4 GHz Band - 20 MHz
 |Protocol|TCP \(Mbit/s\)|  | UDP \(Mbit/s\)|  |
 |--------|--------------|--|---------------|--|
 |Direction|TX|RX|TX|RX|
-|Open Security|45|48|62|62|
-|WPA2-AES|44|48|60|62|
-|WPA3-SAE|44|47|59|62|
+|Open Security|40|43|57|58|
+|WPA2-AES|39|42|58|58|
+|WPA3-SAE|40|42|58|57|
 
 Mobile AP Mode Throughput - AN Mode - 5 GHz Band - 20 MHz
 
 |Protocol|TCP \(Mbit/s\)|  | UDP \(Mbit/s\)|  |
 |--------|--------------|--|---------------|--|
 |Direction|TX|RX|TX|RX|
-|Open Security|47|51|62|63|
-|WPA2-AES|46|51|61|62|
-|WPA3-SAE|46|51|61|63|
+|Open Security|40|43|60|60|
+|WPA2-AES|40|42|61|60|
+|WPA3-SAE|40|42|61|60|
 
 Mobile AP Mode Throughput - VHT Mode - 2.4 GHz Band - 20 MHz
 
 |Protocol|TCP \(Mbit/s\)|  | UDP \(Mbit/s\)|  |
 |--------|--------------|--|---------------|--|
 |Direction|TX|RX|TX|RX|
-|Open Security|47|51|68|72|
-|WPA2-AES|47|52|68|71|
-|WPA3-SAE|47|51|69|71|
+|Open Security|44|48|75|71|
+|WPA2-AES|42|48|68|70|
+|WPA3-SAE|43|48|68|71|
 
 Mobile AP Mode Throughput - VHT Mode - 5 GHz Band - 20 MHz
 
 |Protocol|TCP \(Mbit/s\)|  | UDP \(Mbit/s\)|  |
 |--------|--------------|--|---------------|--|
 |Direction|TX|RX|TX|RX|
-|Open Security|52|55|75|74|
-|WPA2-AES|51|54|72|73|
-|WPA3-SAE|51|53|72|73|
+|Open Security|46|48|70|71|
+|WPA2-AES|46|48|70|71|
+|WPA3-SAE|46|48|70|71|
 
 Mobile AP Mode Throughput - HE Mode - 2.4 GHz Band - 20 MHz
 
 |Protocol|TCP \(Mbit/s\)|  | UDP \(Mbit/s\)|  |
 |--------|--------------|--|---------------|--|
 |Direction|TX|RX|TX|RX|
-|Open Security|54|57|95|99|
-|WPA2-AES|54|56|96|98|
-|WPA3-SAE|53|56|93|97|
+|Open Security|44|42|90|90|
+|WPA2-AES|44|41|92|90|
+|WPA3-SAE|44|41|92|90|
 
 Mobile AP Mode Throughput - HE Mode - 5 GHz Band - 20 MHz
 
 |Protocol|TCP \(Mbit/s\)|  | UDP \(Mbit/s\)|  |
 |--------|--------------|--|---------------|--|
 |Direction|TX|RX|TX|RX|
-|Open Security|55|53|100|96|
-|WPA2-AES|56|52|98|96|
-|WPA3-SAE|56|52|98|96|
+|Open Security|47|45|97|97|
+|WPA2-AES|46|44|98|97|
+|WPA3-SAE|46|44|98|96|
+
+## Bug fixes and/or feature enhancements
+
+### Firmware version: From 18.99.5.p71 to 18.99.5.p85
+
+|Component|Description|
+|---------|-----------|
+|Coex|<ul><li>In the coex_Central_HT sample application, the system intermittently halts at various threads during execution</ul></li> <ul><li> Resolved an issue where the system could randomly halt in different threads during "coex_central_ht" default SDK example execution.</ul></li> <ul><li>Resolved an issue related to the system halt occurring during BLE bonding in "coex_bt_shell" SDK example. </ul></li> <ul><li>Fixed command response timeout for CMD 0x107</ul></li>|
 
 ## Known issues
 

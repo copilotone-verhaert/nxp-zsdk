@@ -3,16 +3,16 @@
 # RW610/RW612 release notes
 
 ## Package information
-SDK version: v4.2.0
+SDK version: v4.3.0
 
 ## Version information
 
-Wi-Fi and Bluetooth/Bluetooth LE firmware version firmware version: 18.99.6.p42
+Wi-Fi and Bluetooth/Bluetooth LE firmware version firmware version: 18.99.6.p49
 
 -   18 - Major revision
 -   99 - Feature pack
 -   6 - Release version
--   p42 - Patch number
+-   p49 - Patch number
 
 ## Host platform
 
@@ -42,7 +42,7 @@ The Wi-Fi and Bluetooth certification is obtained with the following combination
 **Note:** This release supports STAUT only certifications.
 ### Bluetooth LE controller certification
 
-DN\#: Q338616
+DN\#: Q365944
 
 Link: [https://qualification.bluetooth.com/ListingDetails/265687](https://qualification.bluetooth.com/ListingDetails/265687)
 
@@ -110,20 +110,20 @@ STA mode throughput - BGN Mode - 2.4 GHz Band - 20 MHz
 |Protocol|TCP \(Mbit/s\)|  | UDP \(Mbit/s\)|  |
 |--------|--------------|--|---------------|--|
 |Direction|TX|RX|TX|RX|
-|Open Security|35|40|59|60|
-|WPA2-AES|34|40|57|59|
-|WPA3-SAE|35|40|58|59|
+|Open Security|33|42|68|66|
+|WPA2-AES|33|42|64|65|
+|WPA3-SAE|32|44|66|65|
 
 STA mode throughput - AN Mode - 5 GHz Band - 20 MHz
 
 |Protocol|TCP \(Mbit/s\)|  | UDP \(Mbit/s\)|  |
 |--------|--------------|--|---------------|--|
 |Direction|TX|RX|TX|RX|
-|Open Security|37|43|63|64|
-|WPA2-AES|37|43|61|64|
-|WPA3-SAE|39|43|61|64|
+|Open Security|34|48|76|76|
+|WPA2-AES|35|48|74|75|
+|WPA3-SAE|35|48|74|75|
 
-STA mode throughput - VHT Mode - 2.4 GHz Band - 20 MHz (HT)
+STA mode throughput - VHT Mode - 2.4 GHz Band - 20 MHz
 
 |Protocol|TCP \(Mbit/s\)|  | UDP \(Mbit/s\)|  |
 |--------|--------------|--|---------------|--|
@@ -137,27 +137,27 @@ STA mode throughput - VHT Mode - 5 GHz Band - 20 MHz
 |Protocol|TCP \(Mbit/s\)|  | UDP \(Mbit/s\)|  |
 |--------|--------------|--|---------------|--|
 |Direction|TX|RX|TX|RX|
-|Open Security|38|46|76|76|
-|WPA2-AES|39|46|74|75|
-|WPA3-SAE|38|46|74|74|
+|Open Security|36|48|76|76|
+|WPA2-AES|34|48|74|75|
+|WPA3-SAE|33|42|74|71|
 
 STA mode throughput - HE Mode - 2.4 GHz Band - 20 MHz
 
 |Protocol|TCP \(Mbit/s\)|  | UDP \(Mbit/s\)|  |
 |--------|--------------|--|---------------|--|
 |Direction|TX|RX|TX|RX|
-|Open Security|37|44|86|84|
-|WPA2-AES|36|44|86|80|
-|WPA3-SAE|36|44|86|80|
+|Open Security|36|46|90|92|
+|WPA2-AES|34|44|89|85|
+|WPA3-SAE|34|44|89|85|
 
 STA mode throughput - HE Mode - 5 GHz Band - 20 MHz
 
 |Protocol|TCP \(Mbit/s\)|  | UDP \(Mbit/s\)|  |
 |--------|--------------|--|---------------|--|
 |Direction|TX|RX|TX|RX|
-|Open Security|39|48|91|86|
-|WPA2-AES|39|48|91|84|
-|WPA3-SAE|39|48|91|84|
+|Open Security|38|51|98|102|
+|WPA2-AES|39|50|97|100|
+|WPA3-SAE|38|50|97|100|
 
 ### Mobile AP throughput
 
@@ -168,7 +168,7 @@ Mobile AP Mode Throughput - BGN Mode - 2.4 GHz Band - 20 MHz
 |Protocol|TCP \(Mbit/s\)|  | UDP \(Mbit/s\)|  |
 |--------|--------------|--|---------------|--|
 |Direction|TX|RX|TX|RX|
-|Open Security|35|40|57|60|
+|Open Security|35|40|59|60|
 |WPA2-AES|35|40|59|60|
 |WPA3-SAE|34|40|58|59|
 
@@ -178,7 +178,7 @@ Mobile AP Mode Throughput - AN Mode - 5 GHz Band - 20 MHz
 |--------|--------------|--|---------------|--|
 |Direction|TX|RX|TX|RX|
 |Open Security|37|44|63|64|
-|WPA2-AES|37|43|61|63|
+|WPA2-AES|37|43|61|64|
 |WPA3-SAE|39|43|61|64|
 
 Mobile AP Mode Throughput - VHT Mode - 2.4 GHz Band - 20 MHz
@@ -204,18 +204,18 @@ Mobile AP Mode Throughput - HE Mode - 2.4 GHz Band - 20 MHz
 |Protocol|TCP \(Mbit/s\)|  | UDP \(Mbit/s\)|  |
 |--------|--------------|--|---------------|--|
 |Direction|TX|RX|TX|RX|
-|Open Security|39|44|86|84|
-|WPA2-AES|39|44|86|80|
-|WPA3-SAE|38|44|86|80|
+|Open Security|40|44|91|91|
+|WPA2-AES|40|44|90|80|
+|WPA3-SAE|40|44|91|80|
 
 Mobile AP Mode Throughput - HE Mode - 5 GHz Band - 20 MHz
 
 |Protocol|TCP \(Mbit/s\)|  | UDP \(Mbit/s\)|  |
 |--------|--------------|--|---------------|--|
 |Direction|TX|RX|TX|RX|
-|Open Security|47|52|91|84|
-|WPA2-AES|46|52|91|83|
-|WPA3-SAE|46|52|91|83|
+|Open Security|47|52|91|90|
+|WPA2-AES|46|52|91|90|
+|WPA3-SAE|46|52|91|90|
 
 ## Bug fixes and/or feature enhancements
 
@@ -225,10 +225,16 @@ Mobile AP Mode Throughput - HE Mode - 5 GHz Band - 20 MHz
 |---------|-----------|
 |-|-|
 
+### Firmware version: From 18.99.6.p6.42 to 18.99.6.p49
+
+|Component|Description|
+|---------|-----------|
+|-|-|
+
 ## Known issues
 
 |Component|Description|
 |---------|-----------|
-|—|—|
+|Coex|System assert while trying to reboot RW612|
 
 

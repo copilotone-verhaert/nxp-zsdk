@@ -1,8 +1,8 @@
 [Index page](../wireless-release-notes.md)
 # 802.15.4 radio features
 
-|Features|IW611/IW612|RW612|IW610|
-|--------|-----------|-----------|-----|
+|<div style="width:200px;">Features</div>|<div style="width:70px;">IW611/<br>IW612</div>|<div style="width:70px;">RW610/<br>RW612</div>|<div style="width:70px;">IW610</div>|
+|:--------|:-----------:|:-----------:|:-----:|
 |**General features**||||
 |Spinel over SPI|N|N|N|
 |OpenThread RCP Mode implementing Thread1.3|N|N|N|

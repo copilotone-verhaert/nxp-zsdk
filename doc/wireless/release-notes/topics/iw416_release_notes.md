@@ -3,17 +3,17 @@
 # IW416 release notes
 ## Package information
 
-SDK version: v4.2.0
+SDK version: v4.3.0
 ## Version information
 
 Wireless SoC: IW416
 
-Wi-Fi and Bluetooth/Bluetooth LE firmware version: 16.92.21.p151.6
+Wi-Fi and Bluetooth/Bluetooth LE firmware version: 16.92.21.p153.4
 
 -   16 - Major revision
 -   92 - Feature pack
 -   21 - Release version
--   p151.6- Patch number
+-   p153.4- Patch number
 
 ## Host platform
 
@@ -96,9 +96,9 @@ STA mode throughput - BGN Mode - 2.4 GHz Band - 20 MHz
 |Protocol|TCP \(Mbit/s\)|  | UDP \(Mbit/s\)|  |
 |---------|-------------|--|---------------|--|
 |Direction|TX|RX|TX|RX|
-|Open Security|32|37|45|64|
-|WPA2-AES|33|29|58|43|
-|WPA3-SAE|32|32|57|62|
+|Open Security|38|42|61|56|
+|WPA2-AES|36|42|61|56|
+|WPA3-SAE|36|43|61|61|
 
 
 STA mode throughput - BGN Mode - 2.4 GHz Band - 40 MHz
@@ -106,27 +106,27 @@ STA mode throughput - BGN Mode - 2.4 GHz Band - 40 MHz
 |Protocol|TCP \(Mbit/s\)|  | UDP \(Mbit/s\)|  |
 |---------|-------------|--|---------------|--|
 |Direction|TX|RX|TX|RX|
-|Open Security|42|46|78|90|
-|WPA2-AES|43|44|75|92|
-|WPA3-SAE|43|43|76|91|
+|Open Security|42|60|75|89|
+|WPA2-AES|39|58|75|88|
+|WPA3-SAE|40|59|75|88|
 
-STA mode throughput - AN Mode - 5 GHz Band - 20 MHz ( HT)
-
-|Protocol|TCP \(Mbit/s\)|  | UDP \(Mbit/s\)|  |
-|---------|-------------|--|---------------|--|
-|Direction|TX|RX|TX|RX|
-|Open Security|34|36|59|58|
-|WPA2-AES|33|38|59|60|
-|WPA3-SAE|33|36|59|60|
-
-STA mode throughput - AN Mode - 5 GHz Band - 40 MHz (HT)
+STA mode throughput - AN Mode - 5 GHz Band - 20 MHz
 
 |Protocol|TCP \(Mbit/s\)|  | UDP \(Mbit/s\)|  |
 |---------|-------------|--|---------------|--|
 |Direction|TX|RX|TX|RX|
-|Open Security|47|47|83|91|
-|WPA2-AES|46|45|79|91|
-|WPA3-SAE|45|45|78|92|
+|Open Security|40|46|61|65|
+|WPA2-AES|41|46|61|64|
+|WPA3-SAE|41|46|61|64|
+
+STA mode throughput - AN Mode - 5 GHz Band - 40 MHz
+
+|Protocol|TCP \(Mbit/s\)|  | UDP \(Mbit/s\)|  |
+|---------|-------------|--|---------------|--|
+|Direction|TX|RX|TX|RX|
+|Open Security|42|60|74|90|
+|WPA2-AES|44|59|75|90|
+|WPA3-SAE|43|59|75|90|
 
 ### Mobile AP throughput
 
@@ -137,36 +137,36 @@ Mobile AP Mode Throughput - BGN Mode - 2.4 GHz Band - 20 MHz
 |Protocol|TCP \(Mbit/s\)|  | UDP \(Mbit/s\)|  |
 |---------|-------------|--|---------------|--|
 |Direction|TX|RX|TX|RX|
-|Open Security|33|38|59|63|
-|WPA2-AES|32|38|59|62|
-|WPA3-SAE|31|38|57|62|
+|Open Security|44|43|58|56|
+|WPA2-AES|44|44|58|56|
+|WPA3-SAE|36|38|61|61|
 
 Mobile AP Mode Throughput - BGN Mode - 2.4 GHz Band - 40 MHz
 
 |Protocol|TCP \(Mbit/s\)|  | UDP \(Mbit/s\)|  |
 |---------|-------------|--|---------------|--|
 |Direction|TX|RX|TX|RX|
-|Open Security|35|40|76|93|
-|WPA2-AES|34|40|78|95|
-|WPA3-SAE|31|38|76|94|
+|Open Security|44|56|58|89|
+|WPA2-AES|43|53|58|88|
+|WPA3-SAE|40|59|75|88|
 
 Mobile AP Mode Throughput - AN Mode - 5 GHz Band - 20 MHz
 
 |Protocol|TCP \(Mbit/s\)|  | UDP \(Mbit/s\)|  |
 |---------|-------------|--|---------------|--|
 |Direction|TX|RX|TX|RX|
-|Open Security|31|36|53|61|
-|WPA2-AES|30|36|52|57|
-|WPA3-SAE|33|38|59|64|
+|Open Security|47|48|61|64|
+|WPA2-AES|46|47|61|62|
+|WPA3-SAE|46|47|61|63|
 
 Mobile AP Mode Throughput - AN Mode - 5 GHz Band - 40 MHz
 
 |Protocol|TCP \(Mbit/s\)|  | UDP \(Mbit/s\)|  |
 |---------|-------------|--|---------------|--|
 |Direction|TX|RX|TX|RX|
-|Open Security|38|44|77|96|
-|WPA2-AES|32|39|78|93|
-|WPA3-SAE|37|43|74|95|
+|Open Security|52|55|75|91|
+|WPA2-AES|52|55|74|84|
+|WPA3-SAE|43|59|75|90|
 
 ## EU conformance tests
 EU Adaptivity test - EN 300 328 v2.1.1 \(for 2.4 GHz\)
@@ -180,6 +180,12 @@ EU Adaptivity test - EN 301 893 v2.1.1 \(for 5 GHz\)
 |Component|Description|
 |---------|-----------|
 |Wi-Fi|-   The channel list for JP region does not support CH149 nor CH165 but the STAUT switches to those channel along with the uAP.|
+
+### Firmware version: From 16.91.21.p151.6 to 16.92.21.p153.4
+
+|Component|Description|
+|---------|-----------|
+|Wi-Fi|-A significant number of link-layer packets are being dropped during data transmission   |
 
 ## Known issues
 

@@ -3,7 +3,7 @@
 # Feature difference between Zephyr upstream and NXP downstream
 
 |Sub features|Upstream|Downstream|
-|------------|--------|----------|
+|:------------|:--------:|:----------:|
 |**Example**|
 |MFG UART Bridge|N|Y|
 |Wireless Coexistence|N|Y|
@@ -11,4 +11,3 @@
 |Host low power mode PM3|N|Y|
 |**Security**|
 |Hardware accelerator for mbedtls|N|Y|
-

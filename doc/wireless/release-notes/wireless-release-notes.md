@@ -9,6 +9,6 @@
 -   [IW416 release notes](topics/iw416_release_notes.md)
 -   [IW611/IW612 release notes](topics/iw611iw612_release_notes.md)
 -   [RW610/RW612 release notes](topics/rw610rw612_release_notes.md)
+-   [IW610 release notes](topics/iw610_release_notes.md)
 -   [Abbreviations](topics/abbreviations.md)
 -   [References](topics/references.md)
-

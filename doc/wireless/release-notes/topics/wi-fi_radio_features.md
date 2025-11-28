@@ -4,8 +4,8 @@
 
 ## Client mode
 
-|Features|IW416|IW611/IW612|RW610/RW612|IW610|
-|--------|-----|------------|----------|-----|
+|<div style="width:200px;">Features</div>|<div style="width:70px;">IW416</div>|<div style="width:70px;">IW611/<br>IW612</div>|<div style="width:70px;">RW610/<br>RW612</div>|<div style="width:70px;">IW610</div>|
+|:--------|:-----:|:------------:|:----------:|-----:|
 |**802.11n – High throughput**||||
 |2.4 GHz band operation supported channel bandwidth: 20 MHz|Y|Y|Y|Y|
 |2.4 GHz band supported channel bandwidth: 40 MHz|Y|Y|N|N|
@@ -39,8 +39,8 @@
 |5 GHz band supported channel bandwidths: 80 MHz|N|Y|N|N|
 |OFDMA \(UL/DL, 106 RU\)|N|N|Y|Y|
 |OFDMA \(UL/DL, 484 RU\)|N|Y|N|N|
+|Target wake time \(TWT\)|N|Y|Y|Y|
 |1024 QAM|N|Y|N|N|
-|Target wake time \(TWT\)|N|N|Y|Y|
 |802.11ax data rate – Up to 114.7 Mbps \(MCS0 to MCS9\)|N|Y|Y|Y|
 |802.11ax data rate – Up to 600 Mbps \(MCS0 to MCS11\)|N|Y|N|Y|
 |DCM|N|N|Y|Y|
@@ -52,7 +52,7 @@
 |802.11 a data rates – Up to 54 Mbit/s|Y|Y|Y|Y|
 |TX rate adaptation \(BG\)|Y|Y|Y|Y|
 |Fragmentation/defragmentation|N|N|Y|Y|
-|ERP protection, slot time, preamble|Y|N|Y|Y|
+|ERP protection, slot time, preamble|Y|Y|Y|Y|
 |**802.11d**||||
 |802.11d – Regulatory domain/operating class/country info|Y|Y|Y|Y|
 |**802.11e QoS**||||
@@ -63,7 +63,7 @@
 |WPA3-SAE \(simultaneous authentication of equals\) \| WPA supplicant|Y|Y|Y|Y|
 |WPA2+WPA3 PSK mixed mode \(WPA3 transition mode\) \| WPA supplicant|Y|Y|Y|Y|
 |Wi-Fi enhanced open – OWE \(opporturnistic wireless encryption\) \| WPA supplicant|Y|Y|Y|Y|
-|802.1x EAP authentication methods \| WPA supplicant <sup>1</sup>|Y|Y|Y|Y|
+|802.1x EAP authentication methods \| WPA supplicant [<sup>[1]</sup>](#refer-client-1)|Y|Y|Y|Y|
 |WPA2-Enterprise mixed mode \| WPA supplicant|Y|Y|Y|Y|
 |WPA3-Enterprise \(Suite-B\) \|national security algorithm \(CSNA\) \| WPA supplicant|Y|Y|Y|Y|
 |802.11w – PMF \(protected management frames\) \| WPA supplicant|Y|Y|Y|Y|
@@ -77,7 +77,7 @@
 |**Power save mode**||||
 |Deep sleep|Y|Y|Y|Y|
 |IEEE power save|Y|Y|Y|Y|
-|Host sleep/WoWLAN \(Inband\)|N|N|Y|Y|
+|Host sleep/WoWLAN \(Inband\)|Y|Y|Y|Y|
 |Host sleep/WoWLAN \(Outband\)|N|N|N|N|
 |U-APSD|N|N|Y|Y|
 |**802.11w – PMF \(protected management frames\)**||||
@@ -87,7 +87,7 @@
 |SA query request/response|N|N|N|N|
 |PMF support using Embedded supplicant|Y|Y|Y|Y|
 |**DPP functionality**||||
-|Wi-Fi easy connect<sup>3</sup>|N|N|Y|Y|
+|Wi-Fi easy connect[<sup>[3]</sup>](#refer-client-3)|Y|Y|Y|Y|
 |**General features**||||
 |Embedded supplicant|Y|Y|Y|Y|
 |Host sleep packet filtering|N|N|Y|Y|
@@ -96,35 +96,40 @@
 |EDMAC – EU adaptivity support \(ETSI certification\)|N|Y|Y|Y|
 |IPv6 NS offload|N|N|N|N|
 |FIPS|N|N|Y|Y|
-|TKIP<sup>2</sup>|N|N|N|N|
+|TKIP[<sup>[2]</sup>](#refer-client-2)|N|N|N|N|
 |RF test mode|N|N|Y|Y|
 |802.11k|N|N|Y|Y|
 |802.11v|N|N|Y|Y|
 |802.11r|N|N|Y|Y|
 |DFS radar detection in slave mode \(follow AP\)|Y|Y|Y|Y|
 |Embedded roaming based on RSSI threshold beacon loss|Y|Y|Y|Y|
-|ARP offload|N|N|Y|Y|
+|Auto ARP|Y|Y|Y|Y|
+|Auto Ping|Y|Y|Y|Y|
 |Cloud keep alive|N|N|N|N|
 |UNII-4 channel support|N|Y|Y|Y|
 |ClockSync using TSF|N|N|N|N|
 |Auto reconnect|N|N|N|N|
-|CSI \(channel state information\)|N|N|Y|Y|
-|Independent reset \(in-band\)<sup>3</sup>|N|N|Y|Y|
-|Independent reset \(out-band\)<sup>3</sup>|N|N|N|N|
+|CSI \(channel state information\)|N|Y|Y|Y|
+|Independent reset \(in-band\)[<sup>[3]</sup>](#refer-client-3)Y|Y|Y|Y|
+|Independent reset \(out-band\)[<sup>[3]</sup>](#refer-client-3)|N|N|N|N|
 |Wi-Fi agile multi band|N|N|Y|Y|
 |802.11mc – WLS \(Wi-Fi Location Service\)|N|N|N|N|
 |802.11az|N|N|N|N|
+|WPS/WSC2.0 Functionality[<sup>[3]</sup>](#refer-client-3)|Y|N|Y|Y|
+|Memory Efficient Filtering \(MEF\)|Y|Y|Y|Y|
+|Ambient Motion Index \(AMI\)|Y|Y|Y|Y|
 
-[1] supported enterprise security options: TLS, TTLS, PEAP v0, PEAP v1
-
-[2] As per Wi-Fi specification, connecting in TKIP security in non 802.11n mode is allowed.
-
-[3] support available in host-base supplicant
+<div id="refer-client-1"></div>
+[1] Supported enterprise security options: TLS, TTLS, PEAP v0, PEAP v1
+<div id="refer-client-2"></div>
+[2] As per Wi-Fi specification, connecting in TKIP security in non 802.11n mode is allowed
+<div id="refer-client-3"></div>
+[3] Support is available in host-based supplicant
 
 ## AP mode
 
-|Features|IW416|IW611/IW612|RW610/RW612|iw610|
-|--------|-----|-----------|-----------|-----|
+|<div style="width:200px;">Features</div>|<div style="width:70px;">IW416</div>|<div style="width:70px;">IW611/<br>IW612</div>|<div style="width:70px;">RW610/<br>RW612</div>|<div style="width:70px;">IW610</div>|
+|:--------|:-----:|:-----------:|:-----------:|-----:|
 |**802.11n – High throughput**||||
 |2.4 GHz band operation supported channel bandwidth: 20 MHz|Y|Y|Y|Y|
 |2.4 GHz band supported channel bandwidth: 40 MHz|Y|Y|N|N|
@@ -160,6 +165,12 @@
 |5 GHz band operation \(20MHz channel bandwidth\)|N|Y|Y|Y|
 |5 GHz band operation \(40MHz channel bandwidth\)|N|Y|N|N|
 |5 GHz band operation \(80 MHz channel bandwidth\)|N|Y|N|N|
+|**802.11 a/b/g features**||||
+|802.11 b/g data rates – Up to 54 Mbit/s|Y|Y|Y|Y|
+|802.11 a data rates – Up to 54 Mbit/s|Y|Y|Y|Y|
+|TX rate adaptation \(BG\)|Y|Y|Y|Y|
+|Fragmentation/defragmentation|N|N|Y|Y|
+|ERP protection, slot time, preamble|Y|Y|Y|Y|
 |**802.11d**||||
 |802.11d – Regulatory domain/operating class/country info|Y|Y|Y|Y|
 |**802.11e – QoS**||||
@@ -170,7 +181,7 @@
 |WPA3-SAE \(simultaneous authentication of equals\) \| Hostapd|Y|Y|Y|Y|
 |WPA2+WPA3 PSK mixed mode \(WPA3 transition mode\) \| Hostapd|Y|Y|Y|Y|
 |Wi-Fi Enhanced Open – OWE \(opporturnistic wireless encryption\) \| Hostapd|N|N|N|N|
-|802.1x EAP authentication methods \| Hostapd <sup>1</sup>|Y|Y|Y|Y|
+|802.1x EAP authentication methods \| Hostapd [<sup>[1]</sup>](#refer-ap-1)|Y|Y|Y|Y|
 |WPA2-Enterprise mixed mode \| Hostapd|Y|Y|Y|Y|
 |WPA3-Enterprise \(Suite-B\) \|national security algorithm \(CSNA\) \| Hostapd|Y|Y|Y|Y|
 |802.11w – PMF \(protected management frames\) \| Hostapd|Y|Y|Y|Y|
@@ -186,6 +197,12 @@
 |Unicast management frames - encryption/decryption – using CCMP|N|N|Y|Y|
 |Broadcast management frames - encryption/decryption – using BIP|N|N|Y|Y|
 |SA query request/response|N|N|N|N|
+|**Power save mode**||||
+|Deep sleep|Y|Y|Y|Y|
+|IEEE power save|Y|Y|Y|Y|
+|Host sleep/WoWLAN \(Inband\)|Y|Y|Y|Y|
+|Host sleep/WoWLAN \(Outband\)|N|N|N|N|
+|U-APSD|N|N|Y|Y|
 |**General features**||||
 |Embedded authenticator|Y|Y|Y|Y|
 |Embedded MLME|Y|Y|Y|Y|
@@ -194,14 +211,19 @@
 |External coexistence \(software interface\)|N|N|N|N|
 |STBC RX|N|N|N|N|
 |Independent reset \(in-band\)|N|N|Y|Y|
+|WPS/WSC2.0 Functionality[<sup>[2]</sup>](#refer-ap-2)|Y|N|Y|Y|
+|Hidden SSID \(Broadcast SSID Disabled\)|Y|Y|Y|Y|
+|MAC Address Filter \(Allowed/Denied List\)|Y|Y|Y|Y|
 
-[1] supported enterprise security options: TLS, TTLS, PEAP v0, and PEAP v1.
-
+<div id="refer-ap-1"></div>
+[1] Supported enterprise security options: TLS, TTLS, PEAP v0, and PEAP v1
+<div id="refer-ap-2"></div>
+[2] support available in host-base supplicant
 ## AP-STA mode
 
 
-|Featues|IW416|IW611/IW612|RW610/RW612|IW610|
-|-------|-----|-----------|-----------|-----|
+|<div style="width:200px;">Features</div>|<div style="width:70px;">IW416</div>|<div style="width:70px;">IW611/<br>IW612</div>|<div style="width:70px;">RW610/<br>RW612</div>|<div style="width:70px;">IW610</div>|
+|:-------|:-----:|:-----------:|:-----------:|:-----:|
 |**Simultaneous AP-STA operation \(same channel\)**||||
 |AP-STA functionality|Y|Y|Y|Y|
 |**Software antenna diversity \(SAD\)**||||
