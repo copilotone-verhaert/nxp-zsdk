@@ -21,7 +21,7 @@ Release Highlights
 
 Aligned with Zephyr Project v4.3-branch
 
-Zephyr Project sync SHA : <<TBA>>
+Zephyr Project sync to upstream tag: v4.3.0
 
 nxp-zephyr Change Log
 =====================
