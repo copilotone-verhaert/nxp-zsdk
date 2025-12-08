@@ -2558,6 +2558,48 @@ wlan_register_monitor_user_callback (net_monitor_data_recv_test);
 
 > **Note:** Parameters from command nxp_wifi set-monitor-filter and nxp_wifi set-monitor-param will work after run nxp_wifi net-monitor-cfg
 
+* Following commands can be used to send data and management frame
+
+1. Set as monitor mode
+2. Set TX rate, refer to [TX rate configuration](# tx-rate-configuration)
+3. Set TX frame header and payload
+   a. nxp_wifi set-mgmtframetx-header
+
+   ```bash
+   uart:~$ nxp_wifi set-mgmtframetx-header
+   Usage             : set-mgmtframetx-header <PktType> <PktSubType> <FromDS> <ToDS> <SeqNum> <FragNum> <Addr1> <Addr2> <Addr3> <Addr4>
+
+   PktType           : Should be zero for MGMT frames
+   PktSubType        : Mgmt frame subtypes. For example: Assoc Request 0x0
+   FromDS            : From DS
+   ToDS              : To DS
+   SeqNum            : Sequence number
+   FragNum           : Fragment number
+   Addr1             : Destination address
+   Addr2             : Source address
+   Addr3             : BSSID
+   Addr4             : Addr4
+
+   Usage example ：
+   wlan-set-mgmtframetx-header 0 5 0 0 0 0 00:50:43:27:B0:41 00:50:43:21:0F:84 00:50:43:21:0F:84 FF:FF:FF:FF:FF:FF
+   Command wlan-set-mgmtframetx-header
+   ```
+
+   b.nxp_wifi set-mgmtframetx-payload
+
+   ```bash
+   uart:~$ nxp_wifi set-mgmtframetx-payload
+   Usage             : set-mgmtframetx-payload <Data0 Data1 ... Datan>
+
+   Usage example :
+   wlan-set-mgmtframetx-payload 0x01 0x01 0x00 0x0c 0x00 0x58 0x02 0x40
+   Command wlan-set-mgmtframetx-payload
+   ```
+
+> **Note:** For mgmt frame, pls keep the data is correct, the tx data get by sniffer is different as what set if the data is malform
+
+    c.nxp_wifi set-mgmtframetx-cfg
+
 ## Set 11AX OMI Value
 
 This command is used to set 802.11 AX OMI value.

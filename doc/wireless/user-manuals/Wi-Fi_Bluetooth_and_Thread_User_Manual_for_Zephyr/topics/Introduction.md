@@ -11,3 +11,5 @@ This document provides description for the proprietary wireless examples and com
 - IW416
 - IW610
 - IW612
+- RW610
+- RW612
