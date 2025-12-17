@@ -117,7 +117,7 @@
 |802.11az|N|N|N|N|
 |WPS/WSC2.0 Functionality[<sup>[3]</sup>](#refer-client-3)|Y|N|Y|Y|
 |Memory Efficient Filtering \(MEF\)|Y|Y|Y|Y|
-|Ambient Motion Index \(AMI\)|Y|Y|Y|Y|
+|Ambient Motion Index \(AMI\)|N|N|Y|Y[<sup>[4]</sup>](#refer-client-4)|
 
 <div id="refer-client-1"></div>
 [1] Supported enterprise security options: TLS, TTLS, PEAP v0, PEAP v1
@@ -125,6 +125,8 @@
 [2] As per Wi-Fi specification, connecting in TKIP security in non 802.11n mode is allowed
 <div id="refer-client-3"></div>
 [3] Support is available in host-based supplicant
+<div id="refer-client-4"></div>
+[4] Experimental feature intended for evaluation/early development only and not production.
 
 ## AP mode
 
