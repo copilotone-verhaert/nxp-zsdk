@@ -12,7 +12,7 @@ ZSDK key characteristics:
 * **Custom Modifications**: Zephyr Project upstream provides the foundation while **nxp-zsdk** allows NXP to customize the software to meet our customer needs. NXP middleware solutions or 3rd party value components can be added.
 * **Faster Time-to-Market**: NXP can integrate upstream improvements while simultaneously rolling out custom enhancements. This provides easier and more integrated early access for our devices.
 * **Controlled Innovation**: By providing this Downstream ecosystem, NXP maintains better control over the roadmap. NXP can better establish milestones for releases and contributions and meet customer expectations.
-* **Additional Long-Term Stability**: NXP has the flexibility to add new SOC and board support after an LTS release, which is not possible in the upstream.  The Downstream LTS lifecycle tracks upstream (2yrs + 6 months overlap with following LTS release).
+* **Additional Long-Term Stability**: NXP has the flexibility to add new SOC and board support after an LTS release, which is not possible in the upstream.  The Downstream LTS lifecycle tracks upstream (maintained for approximately 5 years after it was released).
 
 # NXP ZSDK Downstream Development
 When allowed, development shall be done in the Upstream first, and cherry-picked or merged into the Downstream.   The Downstream repo will be periodically synchronized to the Upstream repo, to keep them closely aligned.  Downstream versions closely track with the Zephyr upstream releases.
