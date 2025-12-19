@@ -5,7 +5,7 @@ Two options to get started are included here.  NXP provides the [MCUXPresso exte
 Generally, NXP recommends starting development with the latest Downstream release.  The release notes and latest release are found in the [Downstream releases](https://github.com/nxp-zephyr/nxp-zsdk/tree/main/doc/releases).  The steps below show how to import the release tag `nxp-v4.3.0`.
 
 # Using VS Code
-The MCUXpresso extension for VS Code can launch the MCUXpresso Installer, which installs all the tools and dependencies needed to develop with Zephyr.  This is the quickest option to get started with Zephyr.  To use this extension and the Installer, see the [extension wiki](https://github.com/nxp-mcuxpresso/vscode-for-mcux/wiki).  The wiki also includes detailed [lab guides](https://github.com/nxp-mcuxpresso/vscode-for-mcux/wiki/Training-Zephyr-Getting-Started) for developing with Zephyr.
+The MCUXpresso extension for VS Code can launch the MCUXpresso Installer, which installs all the tools and dependencies needed to develop with Zephyr.  This is the quickest option to get started with Zephyr.  To use this extension and the Installer, see the [MCUXpresso for VS Code documentation](https://mcuxpresso.nxp.com/mcux-vscode/latest/html/index.html) and detailed [lab guides](https://mcuxpresso.nxp.com/mcux-vscode/latest/html/Training-Zephyr-Getting-Started.html) for developing with Zephyr.
 
 After MCUXpresso Installer completes the installation, MCUXpresso for VS Code can be used to import the Downstream repo.
 1. Use the MCUXpresso Quickstart Panel to **Import Repository**.
@@ -23,10 +23,10 @@ After MCUXpresso Installer completes the installation, MCUXpresso for VS Code ca
 
 	![VS Code Import Downstream example](./pictures/VS_Code_Import_Example.png)
 
-To learn more about using MCUXpresso for VS Code to develop with Zephyr, see the detailed Zephyr [lab guides](https://github.com/nxp-mcuxpresso/vscode-for-mcux/wiki/Training-Zephyr-Getting-Started).
+To learn more about using MCUXpresso for VS Code to develop with Zephyr, see the detailed Zephyr [lab guides](https://mcuxpresso.nxp.com/mcux-vscode/latest/html/Training-Zephyr-Getting-Started.html).
 
 # Using CLI
-Many Zephyr users are already familiar with CLI development.  Developing with CLI is no different when using the Downstream repo.  With the CLI option, NXP’s [MCUXpresso Installer](https://github.com/nxp-mcuxpresso/vscode-for-mcux/wiki/Dependency-Installation) can also be used to install all tools and dependencies needed for Zephyr development.  Or to install the tools manually, see the [Zephyr Project Getting Started Guide](https://docs.zephyrproject.org/latest/develop/getting_started/index.html).
+Many Zephyr users are already familiar with CLI development.  Developing with CLI is no different when using the Downstream repo.  With the CLI option, NXP’s [MCUXpresso Installer](https://mcuxpresso.nxp.com/mcux-vscode/latest/html/Dependency-Installation.html) can also be used to install all tools and dependencies needed for Zephyr development.  Or to install the tools manually, see the [Zephyr Project Getting Started Guide](https://docs.zephyrproject.org/latest/develop/getting_started/index.html).
 
 After the development environment is setup, initialize the Downstream workspace and clone all the repos using the West commands below.  In these example commands:
 * `nxp_zephyr` is the name of the workspace folder that will be created and initialized.  Any name can be used for this.
@@ -42,7 +42,7 @@ $ west update
 The final command may take a long time to clone all the repos.  After the update completes, use Zephyr’s West commands to build applications and flash to boards.  To learn more about developing with CLI, see the [Zephyr Project Getting Started Guide](https://docs.zephyrproject.org/latest/develop/getting_started/index.html).
 
 # Further Help
-* [MCUXpresso for VS Code](https://www.nxp.com/design/design-center/software/embedded-software/mcuxpresso-for-visual-studio-code:MCUXPRESSO-VSC?tid=vanMCUXPRESSO-VSC), [wiki](https://github.com/nxp-mcuxpresso/vscode-for-mcux/wiki) documentation and [Zephyr lab guides](https://github.com/nxp-mcuxpresso/vscode-for-mcux/wiki/Training-Zephyr-Getting-Started).
+* [MCUXpresso for VS Code](https://www.nxp.com/design/design-center/software/embedded-software/mcuxpresso-for-visual-studio-code:MCUXPRESSO-VSC?tid=vanMCUXPRESSO-VSC), [documentation](https://mcuxpresso.nxp.com/mcux-vscode) documentation and [Zephyr lab guides](https://mcuxpresso.nxp.com/mcux-vscode/latest/html/Training-Zephyr-Getting-Started.html).
 * Upstream Zephyr [Getting Started](https://docs.zephyrproject.org/latest/develop/getting_started/index.html) and [documentation](https://docs.zephyrproject.org/latest/)
 * NXP [Zephyr Knowledge Hub](https://community.nxp.com/t5/Zephyr-Project-Knowledge-Base/Zephyr-Knowledge-Hub/ta-p/2008548)
 * [NXP and Zephyr™ OS Webinar Series](https://www.nxp.com/pages/nxp-and-zephyr-os-webinar-series:TS-NXP-AND-ZEPHYR-OS-WEBINAR-SERIES) to get an overview of Zephyr and key topics
