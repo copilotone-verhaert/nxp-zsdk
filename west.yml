@@ -149,12 +149,12 @@ manifest:
         - tee
     - name: hostap
       repo-path: hostap
-      revision: fe8abc0acdc9d5a633790e6a10d36e296f0f51a3
+      revision: fe7aa08ce991c3647397f991368a352514300299
       path: modules/lib/hostap
     - name: wifi_nxp
       remote: nxp
       repo-path: wifi_nxp
-      revision: 4538d12addaaa2fd257b6794730e9f87abb53f06
+      revision: 1de614046983db638c947700fec3d017a82c4b68
       path: modules/hal/nxp/mcux/middleware/wifi_nxp
     - name: wifi_nb_fw
       remote: nxp
