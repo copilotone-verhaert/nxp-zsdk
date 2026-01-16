@@ -2716,3 +2716,124 @@ wlan-set-csi-filter dump
 uart:~$ nxp_wifi csi-cfg
 csi status report: enable and start csi on channel 11
 ```
+
+## AMI commands
+
+The CSI records can be processed to calculate the ambient motion index (AMI). AMI is a measure of change in CSI used to detect motion near the Wi-Fi STA and/or AP. AMI is expressed in dB. The following commands are used to configure AMI.
+
+* Configure AMI parameter
+
+```bash
+uart:~$ nxp_wifi set-ami-cfg
+Usage : wlan-set-ami-cfg mac <mac_address> type [packet_type] bw [band_width]
+                              ref [update_ref] num [CSI_number]
+Mandatory parameters: < xxxx >
+      For example: mac <mac_address>
+Optional parameters: [ xxxx ]
+      For example: bw [bandwidth]
+mac       : Source address of CSI data being processed.
+type      : Packet type:
+              0: legacy - 11a/g
+              1: HT     - 11n
+              2: VHT    - 11ac
+              3: HE     - 11ax
+              Default value: 0
+bw        : Bandwidth:
+              0: 20MHz
+              1: 40MHz
+              2: 80MHz
+              Default value: 0
+ref      : Reference update:
+              0: static - first, no updates.
+              1: infinite impulse response (IIR) filter (initializes the reference with the first CSI record and updates the reference with the IIR filter using IIR filter coefficient alpha)
+              2: Kalman filter (uses the first CSI record as reference and updates the record with the Kalman filter)
+num      : The number of CSI data to be processed.
+              0: Process CSI data until it is stopped.
+              [1 - 255]: Number of CSI data to be processed.
+              Default value: 0
+```
+
+* Start/Stop AMI calculation
+
+```bash
+uart:~$ nxp_wifi start-stop-ami
+wlan-start-stop-ami <start/stop>
+          1  - start to caculate Ambient Motion Index.
+          0  - stop to caculate Ambient Motion Index.
+```
+
+* Commands to test AMI calculation
+
+1. Connect to AP
+
+   ```bash
+   uart:~$ wifi connect -s test_2g -k 1 -p 12345678
+   ```
+2. Configure CSI parameter
+
+   ```bash
+   uart:~$ nxp_wifi set-csi-param-header sta 1 66051 66051 170 0 6 0 1
+   ```
+
+	Where
+
+	- 600051 = Header ID
+	- 60051 = Tail ID
+	- 170 = Chip ID
+	- 0 = Band 2G
+	- 6 = Channel 6
+	- 0 = Disable CSI monitor mode
+	- 1 = Enable CSI data received in configured channel with mac addr filter
+
+3. Set CSI filter
+
+   ```bash
+   uart:~$ nxp_wifi set-csi-filter add 50:EB:F6:71:76:D8 2 8 0
+   ```
+
+	Where
+
+	- 50:EB:F6:71:76:D8 = Mac address that the firmware is communicating with
+	- 02 = Type filter for Data Frame
+	- 08 = Subtype filter for QoS Data
+	- 0 = No other filters are applied
+
+4. Apply CSI configuration
+
+   ```bash
+   uart:~$ nxp_wifi csi-cfg
+   ```
+5. Configure AMI
+
+   ```bash
+   uart:~$ nxp_wifi set-ami-cfg mac 50:EB:F6:71:76:D8 type 3 ref 2 bw 0 num 15
+   ```
+
+   Where
+
+   - mac 50:EB:F6:71:76:D8 = Mac address that the firmware is communicating with
+   - type 3 = Select packet type 11ax to process
+   - ref 2 = Use Kalman filter for reference update
+   - bw 0 = Select 20 MHz bandwidth packet to process
+   - num 15 = CSI records number is 15
+6. Start AMI calculation
+
+   ```bash
+   uart:~$ nxp_wifi start-stop-ami 1
+   ```
+
+Example of output:
+
+![AMI](../images/ami.png)
+
+For NUM 9/10/11/12, the AMI output index is higher than -6 dB, indicating a relatively larger AMI value. Motion was detected.
+In contrast, for NUM 1/2/3/4/5/6/7/8, the AMI output index is lower than –20 dB, corresponding to a smaller AMI value, and no motion was detected.
+
+> **Note:** AMI is disabled by default in the Wi‑Fi shell example.
+> To enable the AMI feature, the following configuration options must be added:
+
+```bash
+CONFIG_NXP_WIFI_CSI=y
+CONFIG_NXP_WIFI_CSI_AMI=y
+CONFIG_NXP_LIBCSI_CM33=y
+```
