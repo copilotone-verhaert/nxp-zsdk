@@ -2,7 +2,9 @@ To learn more about NXP’s downstream ecosystem, see [Introduction to ZSDK Down
 
 Two options to get started are included here.  NXP provides the [MCUXPresso extension](https://www.nxp.com/design/software/development-software/mcuxpresso-software-and-tools-/mcuxpresso-for-visual-studio-code:MCUXPRESSO-VSC?tid=vanMCUXPRESSO-VSC) for Visual Studio Code (VS Code).  This option is the quickest option to: learn Zephyr when using NXP, import the required repos, build sample applications, download to NXP development boards, and debug.  Another option popular with Zephyr users is developing from Command Line Interface (CLI).
 
-Generally, NXP recommends starting development with the latest Downstream release.  The release notes and latest release are found in the [Downstream releases](https://github.com/nxp-zephyr/nxp-zsdk/tree/main/doc/releases).  The steps below show how to import the release tag `nxp-v4.3.0`.
+Generally, NXP recommends starting development from the latest Downstream release tag. Release notes and available releases can be found on the [Downstream releases](https://github.com/nxp-zephyr/nxp-zsdk/tree/main/doc/releases). The steps below show how to import the `nxp-v4.3.0` release tag.
+
+NXP may also maintain a corresponding release branch (for example, `nxp-v4.3-branch`). This branch may receive updates after the release tag is created, but most users should start from the release tag.
 
 # Using VS Code
 The MCUXpresso extension for VS Code can launch the MCUXpresso Installer, which installs all the tools and dependencies needed to develop with Zephyr.  This is the quickest option to get started with Zephyr.  To use this extension and the Installer, see the [MCUXpresso for VS Code documentation](https://mcuxpresso.nxp.com/mcux-vscode/latest/html/index.html) and detailed [lab guides](https://mcuxpresso.nxp.com/mcux-vscode/latest/html/Training-Zephyr-Getting-Started.html) for developing with Zephyr.
@@ -30,7 +32,7 @@ Many Zephyr users are already familiar with CLI development.  Developing with CL
 
 After the development environment is setup, initialize the Downstream workspace and clone all the repos using the West commands below.  In these example commands:
 * `nxp_zephyr` is the name of the workspace folder that will be created and initialized.  Any name can be used for this.
-* `nxp-v4.0.0` is the revision to checkout.  Generally NXP recommends starting with the latest release tag.
+* `nxp-v4.3.0` is the revision to checkout.  Generally NXP recommends starting with the latest release tag.
 
 Start from the directory where the new workspace folder will be created, then use these commands:
 ```
