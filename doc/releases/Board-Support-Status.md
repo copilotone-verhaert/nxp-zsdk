@@ -8,89 +8,112 @@ NXP leverages an extensive ZSDK Downstream ecosystem, see [Introduction to ZSDK 
 
 As Zephyr hardware support is board-centric, NXP's release process and support status are also based on individual boards. For those designing custom boards with different System-on-Chip (SoC) part numbers, please refer to NXP's [Zephyr Knowledge Hub](https://community.nxp.com/t5/Zephyr-Project-Knowledge-Base/Zephyr-custom-boards-and-applications/ta-p/2008567).
 
+NXP provides Zephyr support for a wide range of hardware, but the level of maintenance and validation varies by board. Some boards are actively maintained by NXP, prioritized for ongoing development, and continuously tested in NXP's hardware farm. Other boards were contributed by the community, may receive only occasional updates, and are not part of regular test coverage.
+
+To set clear expectations, the Zephyr Project defines [Hardware Support Tiers](https://docs.zephyrproject.org/latest/project/release_process.html#hardware-support-tiers).  These tiers indicate the support commitment, test coverage, and bug‑handling priority for each platform.  The tables below list the current support tier for every board and shield.
+
 NXP is committed to providing comprehensive and high-quality board support for Zephyr.  The following table provides the current status for each supported board:
 
-| NXP Board                         |  Status                                                                              |
-|-----------------------------------|--------------------------------------------------------------------------------------|
-| frdm_imx91                        | In Development                                                                       |
-| frdm_imx93                        | In Development                                                                       |
-| frdm_k22f                         | All Planned Features                                                                 |
-| frdm_k32l2b3                      | All Planned Features                                                                 |
-| frdm_k64f                         | All Planned Features                                                                 |
-| frdm_k82f                         | All Planned Features                                                                 |
-| frdm_ke15z                        | All Planned Features                                                                 |
-| frdm_ke16z                        | All Planned Features                                                                 |
-| frdm_ke17z                        | All Planned Features                                                                 |
-| frdm_ke17z512                     | All Planned Features                                                                 |
-| frdm_kl25z                        | All Planned Features                                                                 |
-| frdm_kw41z                        | All Planned Features                                                                 |
-| frdm_mcxa153                      | In Development                                                                       |
-| frdm_mcxa156                      | In Development                                                                       |
-| frdm_mcxa266                      | In Development                                                                       |
-| frdm_mcxa344                      | In Development                                                                       |
-| frdm_mcxa346                      | In Development                                                                       |
-| frdm_mcxa366                      | In Development                                                                       |
-| frdm_mcxc242                      | In Development                                                                       |
-| frdm_mcxc444                      | All Planned Features                                                                 |
-| frdm_mcxe247                      | In Development                                                                       |
-| frdm_mcxe31b                      | In Development                                                                       |
-| frdm_mcxn236                      | In Development                                                                       |
-| frdm_mcxn947                      | In Development                                                                       |
-| frdm_mcxw23                       | In Development                                                                       |
-| frdm_mcxw71                       | All Planned Features                                                                 |
-| frdm_mcxw72                       | In Development                                                                       |
-| frdm_rw612                        | All Planned Features                                                                 |
-| imx8mm_evk                        | All Planned Features                                                                 |
-| imx8mn_evk                        | All Planned Features                                                                 |
-| imx8mp_evk                        | All Planned Features                                                                 |
-| imx8mq_evk                        | All Planned Features                                                                 |
-| imx8qm_mek                        | All Planned Features                                                                 |
-| imx8qxp_mek                       | All Planned Features                                                                 |
-| imx8ulp_evk                       | All Planned Features                                                                 |
-| imx91_evk                         | In Development                                                                       |
-| imx91_qsb                         | In Development                                                                       |
-| imx93_evk                         | In Development                                                                       |
-| imx943_evk                        | In Development                                                                       |
-| imx95_evk                         | In Development                                                                       |
-| imx95_evk_15x15                   | In Development                                                                       |
-| lpcxpresso11u68                   | All Planned Features                                                                 |
-| lpcxpresso51u68                   | All Planned Features                                                                 |
-| lpcxpresso54114                   | All Planned Features                                                                 |
-| lpcxpresso55s06                   | All Planned Features                                                                 |
-| lpcxpresso55s16                   | All Planned Features                                                                 |
-| lpcxpresso55s28                   | All Planned Features                                                                 |
-| lpcxpresso55s36                   | All Planned Features                                                                 |
-| lpcxpresso55s69                   | All Planned Features                                                                 |
-| ls1046ardb                        | All Planned Features                                                                 |
-| mcx_n5xx_evk                      | In Development                                                                       |
-| mcx_n9xx_evk                      | In Development                                                                       |
-| mcxw23_evk                        | In Development                                                                       |
-| mcxw72_evk                        | In Development                                                                       |
-| mimxrt1010_evk                    | All Planned Features                                                                 |
-| mimxrt1015_evk                    | All Planned Features                                                                 |
-| mimxrt1020_evk                    | All Planned Features                                                                 |
-| mimxrt1024_evk                    | All Planned Features                                                                 |
-| mimxrt1040_evk                    | All Planned Features                                                                 |
-| mimxrt1050_evk                    | All Planned Features                                                                 |
-| mimxrt1060_evk                    | All Planned Features                                                                 |
-| mimxrt1062_fmurt6                 | All Planned Features                                                                 |
-| mimxrt1064_evk                    | All Planned Features                                                                 |
-| mimxrt1160_evk                    | All Planned Features                                                                 |
-| mimxrt1170_evk                    | All Planned Features                                                                 |
-| mimxrt1180_evk                    | In Development                                                                       |
-| mimxrt595_evk                     | All Planned Features                                                                 |
-| mimxrt685_evk                     | All Planned Features                                                                 |
-| mimxrt700_evk                     | In Development                                                                       |
-| mr_canhubk3                       | All Planned Features                                                                 |
-| rd_rw612_bga                      | All Planned Features                                                                 |
-| rddrone_fmuk66                    | All Planned Features                                                                 |
-| s32k148_evb                       | All Planned Features                                                                 |
-| s32z2xxdc2                        | All Planned Features                                                                 |
-| twr_ke18f                         | All Planned Features                                                                 |
-| twr_kv58f220m                     | All Planned Features                                                                 |
-| ucans32k1sic                      | All Planned Features                                                                 |
-| usb_kw24d512                      | All Planned Features                                                                 |
-| vmu_rt1170                        | All Planned Features                                                                 |
-| shield nxp_m2_wifi_bt using IW416 | All Planned Features                                                                 |
-| shield nxp_m2_wifi_bt using IW610 | All Planned Features                                                                 |
-| shield nxp_m2_wifi_bt using IW612 | All Planned Features                                                                 |
+| NXP Board                         |  Status                                                                              | Board Tier |
+|-----------------------------------|--------------------------------------------------------------------------------------|-------------
+| frdm_imx91                        | In Development                                                                       |   Tier 1   |
+| frdm_imx93                        | In Development                                                                       |   Tier 1   |
+| frdm_k22f                         | All Planned Features                                                                 |   Tier 2   |
+| frdm_k32l2b3                      | All Planned Features                                                                 |   Tier 2   |
+| frdm_k64f                         | All Planned Features                                                                 |   Tier 1   |
+| frdm_k82f                         | All Planned Features                                                                 |   Tier 2   |
+| frdm_ke15z                        | All Planned Features                                                                 |   Tier 1   |
+| frdm_ke16z                        | All Planned Features                                                                 |   Tier 2   |
+| frdm_ke17z                        | All Planned Features                                                                 |   Tier 1   |
+| frdm_ke17z512                     | All Planned Features                                                                 |   Tier 1   |
+| frdm_kl25z                        | All Planned Features                                                                 |   Tier 1   |
+| frdm_kw41z                        | All Planned Features                                                                 |   Tier 3   |
+| frdm_mcxa153                      | In Development                                                                       |   Tier 1   |
+| frdm_mcxa156                      | In Development                                                                       |   Tier 1   |
+| frdm_mcxa266                      | In Development                                                                       |   Tier 1   |
+| frdm_mcxa344                      | In Development                                                                       |   Tier 1   |
+| frdm_mcxa346                      | In Development                                                                       |   Tier 1   |
+| frdm_mcxa366                      | In Development                                                                       |   Tier 1   |
+| frdm_mcxc242                      | In Development                                                                       |   Tier 1   |
+| frdm_mcxc444                      | All Planned Features                                                                 |   Tier 1   |
+| frdm_mcxe247                      | In Development                                                                       |   Tier 1   |
+| frdm_mcxe31b                      | In Development                                                                       |   Tier 1   |
+| frdm_mcxn236                      | In Development                                                                       |   Tier 1   |
+| frdm_mcxn947                      | In Development                                                                       |   Tier 1   |
+| frdm_mcxw23                       | In Development                                                                       |   Tier 1   |
+| frdm_mcxw71                       | All Planned Features                                                                 |   Tier 2   |
+| frdm_mcxw72                       | In Development                                                                       |   Tier 1   |
+| frdm_rw612                        | All Planned Features                                                                 |   Tier 1   |
+| imx8mm_evk                        | All Planned Features                                                                 |   Tier 2   |
+| imx8mn_evk                        | All Planned Features                                                                 |   Tier 2   |
+| imx8mp_evk                        | All Planned Features                                                                 |   Tier 2   |
+| imx8mq_evk                        | All Planned Features                                                                 |   Tier 3   |
+| imx8qm_mek                        | All Planned Features                                                                 |   Tier 3   |
+| imx8qxp_mek                       | All Planned Features                                                                 |   Tier 3   |
+| imx8ulp_evk                       | All Planned Features                                                                 |   Tier 3   |
+| imx91_evk                         | In Development                                                                       |   Tier 2   |
+| imx91_qsb                         | In Development                                                                       |   Tier 2   |
+| imx93_evk                         | In Development                                                                       |   Tier 2   |
+| imx943_evk                        | In Development                                                                       |   Tier 2   |
+| imx95_evk                         | In Development                                                                       |   Tier 1   |
+| imx95_evk_15x15                   | In Development                                                                       |   Tier 2   |
+| lpcxpresso11u68                   | All Planned Features                                                                 |   Tier 3   |
+| lpcxpresso51u68                   | All Planned Features                                                                 |   Tier 2   |
+| lpcxpresso54114                   | All Planned Features                                                                 |   Tier 2   |
+| lpcxpresso55s06                   | All Planned Features                                                                 |   Tier 2   |
+| lpcxpresso55s16                   | All Planned Features                                                                 |   Tier 2   |
+| lpcxpresso55s28                   | All Planned Features                                                                 |   Tier 2   |
+| lpcxpresso55s36                   | All Planned Features                                                                 |   Tier 2   |
+| lpcxpresso55s69                   | All Planned Features                                                                 |   Tier 1   |
+| ls1046ardb                        | All Planned Features                                                                 |   Tier 2   |
+| mcx_n5xx_evk                      | In Development                                                                       |   Tier 2   |
+| mcx_n9xx_evk                      | In Development                                                                       |   Tier 2   |
+| mcxw23_evk                        | In Development                                                                       |   Tier 3   |
+| mcxw72_evk                        | In Development                                                                       |   Tier 3   |
+| mimxrt1010_evk                    | All Planned Features                                                                 |   Tier 1   |
+| mimxrt1015_evk                    | All Planned Features                                                                 |   Tier 2   |
+| mimxrt1020_evk                    | All Planned Features                                                                 |   Tier 1   |
+| mimxrt1024_evk                    | All Planned Features                                                                 |   Tier 1   |
+| mimxrt1040_evk                    | All Planned Features                                                                 |   Tier 1   |
+| mimxrt1050_evk                    | All Planned Features                                                                 |   Tier 1   |
+| mimxrt1060_evk                    | All Planned Features                                                                 |   Tier 1   |
+| mimxrt1062_fmurt6                 | All Planned Features                                                                 |   Tier 2   |
+| mimxrt1064_evk                    | All Planned Features                                                                 |   Tier 1   |
+| mimxrt1160_evk                    | All Planned Features                                                                 |   Tier 1   |
+| mimxrt1170_evk                    | All Planned Features                                                                 |   Tier 1   |
+| mimxrt1180_evk                    | In Development                                                                       |   Tier 1   |
+| mimxrt595_evk                     | All Planned Features                                                                 |   Tier 1   |
+| mimxrt685_evk                     | All Planned Features                                                                 |   Tier 1   |
+| mimxrt700_evk                     | In Development                                                                       |   Tier 1   |
+| mr_canhubk3                       | All Planned Features                                                                 |   Tier 2   |
+| rd_rw612_bga                      | All Planned Features                                                                 |   Tier 2   |
+| rddrone_fmuk66                    | All Planned Features                                                                 |   Tier 3   |
+| s32k148_evb                       | All Planned Features                                                                 |   Tier 3   |
+| s32z2xxdc2                        | All Planned Features                                                                 |   Tier 3   |
+| twr_ke18f                         | All Planned Features                                                                 |   Tier 2   |
+| twr_kv58f220m                     | All Planned Features                                                                 |   Tier 3   |
+| ucans32k1sic                      | All Planned Features                                                                 |   Tier 3   |
+| usb_kw24d512                      | All Planned Features                                                                 |   Tier 3   |
+| vmu_rt1170                        | All Planned Features                                                                 |   Tier 1   |
+
+Here is the current status and support tier for each NXP [shield](https://docs.zephyrproject.org/latest/hardware/porting/shields.html):
+
+| NXP Shield                        |  Status                                                                              | Board Tier |
+|-----------------------------------|--------------------------------------------------------------------------------------|-------------
+| frdm_cr20a                        | All Planned Features                                                                 |   Tier 3   |
+| frdm_stbc_agm01                   | All Planned Features                                                                 |   Tier 3   |
+| g1120b0mipi                       | All Planned Features                                                                 |   Tier 2   |
+| lcd_par_s035                      | All Planned Features                                                                 |   Tier 1   |
+| nxp_adtja1101                     | All Planned Features                                                                 |   Tier 2   |
+| nxp_btb44_ov5640                  | All Planned Features                                                                 |   Tier 1   |
+| nxp_m2_wifi_bt using IW416        | All Planned Features                                                                 |   Tier 1   |
+| nxp_m2_wifi_bt using IW610        | All Planned Features                                                                 |   Tier 1   |
+| nxp_m2_wifi_bt using IW612        | All Planned Features                                                                 |   Tier 1   |
+| nxp_s32k5xx_mb                    | All Planned Features                                                                 |   Tier 3   |
+| p3t1755dp_ard_i2c                 | All Planned Features                                                                 |   Tier 1   |
+| p3t1755dp_ard_i3c                 | All Planned Features                                                                 |   Tier 1   |
+| rk043fn02h_ct                     | All Planned Features                                                                 |   Tier 3   |
+| rk043fn66hs_ctg                   | All Planned Features                                                                 |   Tier 2   |
+| rk055hdmipi4m                     | All Planned Features                                                                 |   Tier 3   |
+| rk055hdmipi4ma0                   | All Planned Features                                                                 |   Tier 2   |
+| zc143ac72mipi                     | All Planned Features                                                                 |   Tier 1   |
