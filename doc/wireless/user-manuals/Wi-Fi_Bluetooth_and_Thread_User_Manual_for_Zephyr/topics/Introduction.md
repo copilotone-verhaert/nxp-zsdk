@@ -2,7 +2,7 @@
 
 # Introduction
 
-This document provides description for the proprietary wireless examples and commands NXP offers covering Wi-Fi, Bluetooth, Thread and Coexistence in NXP Zephyr downstream release on the base of Zephyr upstream release.
+This document provides descriptions for the proprietary wireless examples and commands NXP offers covering Wi-Fi, Bluetooth, Thread and Coexistence in NXP Zephyr downstream release on the base of Zephyr upstream release.
 
 ## Supported hosts and boards
 - i.MX RT1060 EVKC

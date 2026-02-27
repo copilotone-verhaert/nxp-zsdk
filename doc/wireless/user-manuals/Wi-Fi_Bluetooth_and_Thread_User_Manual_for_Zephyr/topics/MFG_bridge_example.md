@@ -8,7 +8,7 @@ The MFG bridge example servers as a bridge between Windows NXP Labtool applicati
 - Pass the command to Wi-Fi/Bluetooth LE/802.15.4 firmware to process
 - Return the command response back to Labtool
 
-The exchanged commands and responses are transparent to MFG bridge application. MFG bridge application must work with wireless chip manufacturing firmware. Labtool release is available to download from Software category in wireless chip product webpage. It includes labtool Windows application and the manufacturing firmware for Wi-Fi, Bluetooth LE and 802.15.4 separately.
+The exchanged commands and responses are transparent to the MFG bridge application. MFG bridge application must work with wireless chip manufacturing firmware. The labtool release is available to download from the Software category in the wireless chip product webpage. It includes Labtool Windows application and the manufacturing firmware for Wi-Fi, Bluetooth LE and 802.15.4 separately.
 
 ## Build MFG bridge example
 
@@ -24,9 +24,9 @@ west build -b mimxrt1060_evk@C samples/nxp_mfg_bridge -d [build_folder] --pristi
 |     IW612     | nxp/overlay_IW612.conf | nxp_m2_2el_wifi_bt |
 |     IW610     | nxp/overlay_iw610.conf | nxp_m2_2ll_wifi_bt |
 
-Before building the example, it is required to replace the default production firmware with MFG firmware from Labtool release package.
+Before building the example, it is required to replace the default production firmware with MFG firmware from the Labtool release package.
 
-| Wireless chip |      Firmware Folder      |                  Shield name                  |
+| Wireless chip |      Firmware folder      |                  Shield name                  |
 | :-----------: | :------------------------: | :-------------------------------------------: |
 |     IW416     | hal/nxp/zephyr/blobs/IW416 | sdIW416_wlan.bin<br />sduartIW416_wlan_bt.bin |
 |     IW612     | hal/nxp/zephyr/blobs/nw61x |   sd_nw61x.bin.se<br />sduart_nw61x.bin.se   |
@@ -36,9 +36,9 @@ Before building the example, it is required to replace the default production fi
 
 This example runs automatically in bridge mode and does not require any user interaction.
 
-> **Note:** The UART Port is used as communication port between NXP Labtool and MFG firmware. So there are no console logs for nxp_mfg_bridge application.
+> **Note:** The UART port is used as a communication port between NXP Labtool and MFG firmware. Therefore, no console logs exist for the nxp_mfg_bridge application.
 
-Labtool is a user interactive command-line application running on Windows. Different options are defined to control wireless chip internal Wi-Fi/Bluetooth LE/802.15.4 radios to transmit and receive. Option 88 is used to read back manufacturing firmware version.
+Labtool is a user interactive command-line application running on Windows. Different options are defined to control wireless chip internal Wi-Fi/Bluetooth LE/802.15.4 radios to transmit and receive. Option 88 is used to read back the manufacturing firmware version.
 
 ```bash
 Name:           Dut labtool

@@ -2,13 +2,13 @@
 
 # Wi-Fi examples and commands
 
-This chapter describes Wi-Fi shell example and its commands usage in separate sections. Wi-Fi shell is an default example included in Zephyr SDK regular release. It integrates Zephyr common Wi-Fi commands and NXP proprietary command which starts with prefix **nxp_wifi**.
+This chapter describes the Wi-Fi shell example and its commands usage in separate sections. The Wi-Fi shell is a default example included in the Zephyr SDK regular release. It integrates Zephyr common Wi-Fi commands and NXP proprietary command, which starts with the prefix **nxp_wifi**.
 
 ## Build Wi-Fi shell example
 
-Wi-Fi shell example provides options to build with embedded supplicant and host based supplicant. The following are instructions to build them separately.
+The Wi-Fi shell example provides options to build with embedded supplicant and host-based supplicant. The following are instructions to build them separately.
 
-- Build Wi-Fi shell example with embedded supplicant
+- Build a Wi-Fi shell example with embedded supplicant
 
 ```bash
 west build -b mimxrt1060_evk@C samples/net/wifi/shell -d [build_folder] --pristine -DEXTRA_CONF_FILE="[conf files]" --shield [shield name]
@@ -20,9 +20,9 @@ west build -b mimxrt1060_evk@C samples/net/wifi/shell -d [build_folder] --pristi
 |     IW612     | nxp/overlay_hosted_mcu.conf | nxp_m2_2el_wifi_bt |
 |     IW610     |   nxp/overlay_iw610.conf   | nxp_m2_2ll_wifi_bt |
 
-> **Note:** wpa/wpa2/wpa3 supplicant is implemented in IW416/IW612/IW610 firmware which is released in binary.
+> **Note:** The wpa/wpa2/wpa3 supplicant is implemented in IW416/IW612/IW610 firmware, which is released in binary.
 
-- Build Wi-Fi shell example with host based supplicant
+- Build a Wi-Fi shell example with host-based supplicant
 
 ```bash
 west build -b mimxrt1060_evk@C samples/net/wifi/shell -d [build_folder] --pristine -DEXTRA_CONF_FILE="[conf files]" --shield [shield name]
@@ -34,13 +34,13 @@ west build -b mimxrt1060_evk@C samples/net/wifi/shell -d [build_folder] --pristi
 |     IW612     |   nxp/overlay_iw610.conf<br />nxp/overlay_hostap_hosted_mcu.conf   | nxp_m2_2el_wifi_bt |
 |     IW610     |   nxp/overlay_iw610.conf<br />nxp/overlay_hostap_hosted_mcu.conf   | nxp_m2_2ll_wifi_bt |
 
-> **Note:** wpa/wpa2/wpa3 supplicant run on i.MXRT1060 MCU and is released in source code.
+> **Note:** The wpa/wpa2/wpa3 supplicant runs on i.MXRT1060 MCU and is released in source code.
 
-## Set/Get MAC Address
+## Set/Get MAC address
 
-The following commands are used to set and get Wi-Fi MAC address.
+The following commands are used to set and get the Wi-Fi MAC address.
 
-- Set MAC address
+- Set MAC address:
 
 ```bash
 uart:~$ nxp_wifi set-mac 00:50:43:02:33:99
@@ -55,11 +55,11 @@ STA MAC Address: 00:50:43:02:33:99
 uAP MAC Address: 00:50:43:02:34:99
 ```
 
-## Scan Command
+## Scan command
 
-The following commands are used to scan access points with different configuration
+The following commands are used to scan access points with different configuration.
 
-- Wild scan
+- Wild scan:
 
 ```bash
 uart:~$ nxp_wifi scan
@@ -85,7 +85,7 @@ C8:9E:43:5A:6D:A9  "lhx_ap_roam" Infra
 	WPS: YES, Session: Not active
 ```
 
-- Scan with specific SSID
+- Scan with a specific SSID:
 
 ```bash
 uart:~$ nxp_wifi scan-opt ssid NXPOPEN
@@ -123,7 +123,7 @@ F8:C2:88:74:92:52  "NXPOPEN" Infra
 	WPS: NO
 ```
 
-- Scan with specific SSID and channel
+- Scan with specific SSID and channel:
 
 ```bash
 uart:~$ nxp_wifi scan-opt ssid NXPOPEN channel 1
@@ -151,7 +151,7 @@ F8:C2:88:74:92:52  "NXPOPEN" Infra
 	WPS: NO
 ```
 
-- Scan with specific SSID and RSSI threshold
+- Scan with specific SSID and RSSI threshold:
 
 ```bash
 uart:~$ nxp_wifi scan-opt ssid NXPOPEN rssi_threshold -50
@@ -179,7 +179,7 @@ Scan for ssid "NXPOPEN" scheduled...
 	WPS: NO
 ```
 
-- Scan with specific BSSID
+- Scan with specific BSSID:
 
 ```bash
 uart:~$ nxp_wifi scan-opt bssid 1C:6A:7A:87:FF:B1
@@ -197,9 +197,9 @@ Scan for bssid 1C:6A:7A:87:FF:B1 scheduled...
 	WPS: NO
 ```
 
-## Get Wi-Fi Version
+## Get Wi-Fi version
 
-The following command is used to get Wi-Fi driver and firmware version.
+The following command is used to get Wi-Fi driver and firmware version:
 
 ```bash
 uart:~$ wifi version
@@ -207,24 +207,24 @@ Wi-Fi Driver Version: v1.3.r51.z_up.p1
 Wi-Fi Firmware Version: IW416-V0, RF878X, FP91, 16.92.21.p142.5, WPA2_CVE_FIX 1, PVE_FIX 1
 ```
 
-## Set/Get Region Domain
+## Set/Get region domain
 
-The following command is used to get region domain.
+The following command is used to get region domain:
 
 ```bash
 uart:~$ wifi reg_domainWi-Fi Regulatory domain is: WW
 Wi-Fi Power Save
 ```
 
-## Wi-Fi Power Save
+## Wi-Fi power save
 
-The following commands are used to configure different Wi-Fi power mode.
+The following commands are used to configure different Wi-Fi power mode:
 
 ### IEEE power save
 
-IEEE PS mode is only activated after Wi-Fi station connects to AP after enablement.
+IEEE PS mode is only activated after a Wi-Fi station connects to AP after enablement.
 
-- IEEEPS Usage:
+- IEEEPS usage:
 
 ```bash
 uart:~$ nxp_wifi ieee-ps
@@ -232,7 +232,7 @@ Usage: ieee-ps <0/1>
 Error: Specify 0 to Disable or 1 to Enable
 ```
 
-- Enable IEEE PS
+- Enable IEEE PS:
 
 ```bash
 uart:~$ nxp_wifi ieee-ps 1
@@ -241,7 +241,7 @@ uart:~$ nxp_wifi ieee-ps 1
 Turned on IEEE Power Save mode
 ```
 
-- Disable IEEE PS
+- Disable IEEE PS:
 
 ```bash
 uart:~$ nxp_wifi ieee-ps 0
@@ -253,9 +253,9 @@ Command wlan-ieee-ps
 
 ### DeepSleep
 
-DeepSleep mode is only activated when Wi-Fi is in disconnected state after enablement.
+DeepSleep mode is only activated when Wi-Fi is in a disconnected state after enablement.
 
-- DeepSleep Usage:
+- DeepSleep usage:
 
 ```bash
 uart:~$ nxp_wifi deep-sleep-ps
@@ -263,7 +263,7 @@ Usage: deep-sleep-ps <0/1>
 Error: Specify 0 to Disable or 1 to Enable
 ```
 
-- Enable DeepSleep
+- Enable DeepSleep:
 
 ```bash
 uart:~$ nxp_wifi deep-sleep-ps 1
@@ -272,7 +272,7 @@ uart:~$ nxp_wifi deep-sleep-ps 1
 Turned on Deep Sleep Power Save mode
 ```
 
-- Disable DeepSleep
+- Disable DeepSleep:
 
 ```bash
 uart:~$ nxp_wifi deep-sleep-ps 0
@@ -284,7 +284,7 @@ Command wlan-deep-sleep-ps
 
 ### WMM power save
 
-For WMM PS mode, the Wi-Fi station should be connected with AP
+For WMM PS mode, the Wi-Fi station must be connected with AP.
 
 - WMM power save usage:
 
@@ -295,7 +295,7 @@ Usage: uapsd-enable <enable>
 1 to Enable UAPSD
 ```
 
-- Enable UAPSD
+- Enable UAPSD:
 
 ```bash
 uart:~$ nxp_wifi uapsd-enable 0
@@ -304,7 +304,7 @@ Command wlan-uapsd-enable
 [00:23:02.653,000] <dbg> nxp_wifi: nxp_wifi_wlan_event_callback: WLAN: PS EXIT
 ```
 
-- Disable UAPSD
+- Disable UAPSD:
 
 ```bash
 uart:~$ nxp_wifi uapsd-enable 1
@@ -313,25 +313,25 @@ Command wlan-uapsd-enable
 [00:23:21.143,000] <dbg> nxp_wifi: nxp_wifi_wlan_event_callback: WLAN: PS_ENTER
 ```
 
-- Configure WMM power save sleeping period
+- Configure WMM power save sleeping period:
 
 ```bash
 Usage: wlan-apsd-sleep-period <period(ms)>
 uart:~$ nxp_wifi uapsd-sleep-period 30
 ```
 
-The uapsd_sleep_period default is 20ms when UAPSD is enable
+The uapsd_sleep_period default is 20 ms when UAPSD is enabled.
 
-- Get WMM power save sleeping period
+- Get WMM power save sleeping period:
 
 ```bash
 uart:~$ nxp_wifi uapsd-sleep-period
 period = 30
 ```
 
-### WMM QoS Info
+### WMM QoS info
 
-- Enable/disable WMM QoS
+- Enable/disable WMM QoS:
 
 ```bash
 uart:~$ nxp_wifi uapsd-enable
@@ -340,13 +340,13 @@ Usage: uapsd-enable <enable>
 1 to Enable UAPSD
 ```
 
-- Set QoS info
+- Set QoS info:
 
 ```bash
 uart:~$ nxp_wifi uapsd-qosinfo 10
 ```
 
-- Get QoS info
+- Get QoS info:
 
 ```bash
 uart:~$ nxp_wifi uapsd-qosinfo
@@ -364,9 +364,9 @@ Deep sleep: 1
 
 ## TX A-MPDU protection mode
 
-This command is used to set either RTS/CTS or CTS2SELF protection mechanism in MAC for aggregated Tx QoS data frames. RTS/CTS is enabled by default.
+This command is used to set either RTS/CTS or CTS2SELF protection mechanism in MAC for aggregated TX QoS data frames. RTS/CTS is enabled by default.
 
-- Command Usage
+- Command usage:
 
 ```bash
 uart:~$ nxp_wifi tx-ampdu-prot-mode
@@ -378,13 +378,13 @@ wlan-tx-ampdu-prot-mode `<mode>`
 		3 - Set Dynamic RTS/CTS mode
 ```
 
-- Get currently set protection mode for TX AMPDU.
+- Get currently set protection mode for TX AMPDU:
 
 ```bash
 uart:~$ nxp_wifi tx-ampdu-prot-mode
 ```
 
-- Set protection mode for TX AMPDU to CTS2SELF.
+- Set protection mode for TX AMPDU to CTS2SELF:
 
 ```bash
 nxp_wifi tx-ampdu-prot-mode 1
@@ -392,7 +392,7 @@ nxp_wifi tx-ampdu-prot-mode 1
 
 ## Get signal info
 
-This command gets the last and average value of RSSI, SNR and NF of Beacon and Data.
+This command gets the last and average value of RSSI, SNR, and NF of beacon and data.
 
 > **Note:** This command is available only when STA is connected.
 
@@ -411,7 +411,7 @@ NF              -92             -93             -93             -93
 
 These commands are used to set/get STA/UAP turbo mode.
 
-- Get STA/UAP curent turbo mode :
+- Get STA/UAP current turbo mode:
 
 ```bash
 uart:~$ nxp_wifi get-turbo-mode
@@ -431,7 +431,7 @@ Usage: wlan-set-turbo-mode <STA/UAP> <mode>
 
 The following command is used to set/get 2G/5G channel list configuration.
 
-- Set channel list
+- Set channel list:
 
 ```bash
 uart:~$ nxp_wifi set-chanlist
@@ -642,7 +642,7 @@ ChanNum: 165    ChanFreq: 5825  Active
 Command wlan-set-chanlist-and-txpwrlimit
 ```
 
-- Get channel list
+- Get channel list:
 
 ```bash
 uart:~$ nxp_wifi get-chanlist
@@ -691,7 +691,7 @@ Command wlan-get-chanlist
 
 ## Set/get energy detection (ED) MAC feature
 
-This command is used to set/get ED MAC mode. If enable the Energy Detect adaptivity mode, and configure the energy detect threshold, then FW will not send packets until the neighbor energy is lower than threshold.
+This command is used to set/get ED MAC mode. If the Energy Detect adaptivity mode is enabled and the energy detect threshold is configured, then the FW delays packet transmission until the energy of the neighbor is lower than the threshold.
 
 - Set ED MAC mode:
 
@@ -718,7 +718,7 @@ wlan-set-ed-mac-mode <interface> <ed_ctrl_2g> <ed_offset_2g> <ed_ctrl_5g> <ed_of
          e.g., if ed_base default is -62dBm, ed_offset_5g is 0x8, then ed_threshold is -70dBm
 ```
 
-- Get ed mac mode:
+- Get ED MAC mode:
 
 ```bash
 uart:~$ nxp_wifi get-ed-mac-mode
@@ -738,14 +738,14 @@ uart:~$ nxp_wifi set-ed-mac-mode 0 1 0x8 1 0x8
 ED MAC MODE settings configuration successful
 ```
 
-For uAP, disable EU adaptivity for both 2.4GHz band and 5GHz band.
+For uAP, disable EU adaptivity for both 2.4 GHz band and 5 GHz band.
 
 ```bash
 uart:~$ nxp_wifi set-ed-mac-mode 1 0 0 0 0
 ED MAC MODE settings configuration successful
 ```
 
-Get the EU adaptivity of STA,
+Get the EU adaptivity of STA:
 
 ```bash
 uart:~$ nxp_wifi get-ed-mac-mode 0
@@ -759,7 +759,7 @@ Energy Detect threshold offset : 0X8
 
 The following commands are used to set and get TX rate.
 
-- Command Usage
+- Command Usage:
 
 ```bash
 uart:~$ nxp_wifi set-txratecfg
@@ -838,10 +838,10 @@ If <format> is 3 (HE),
 
 > **Note:**
 >
-> * Parameter <rate_setting> is optional if not set parameter < autoTx_set >. If <rate_setting> is not given, it will be set as 0xffff.
-> * If bss type is STA, the data rate can be set only after association. If bss type is uAP, the data rate can be set only after starting uAP.
-> * If you want to test the case where uAP and STA exist at the same time, you must start the uAP firstly, and then connect STA to other AP. But the channel of uAP must be the same as the channel of STA.
-> * Parameter <autoTx_set> is optional. User must set parameter <rate_setting> if parameter <autoTx_set> is given when defined CONFIG_11AC. Like:
+> * Parameter <rate_setting> is optional if not set parameter < autoTx_set >. When <rate_setting> is omitted, it defaults to 0xffff.
+> * If the bss type is STA, the data rate can be set only after association. If bss type is uAP, the data rate can be set only after starting uAP.
+> * If you want to test the case where uAP and STA exist at the same time, first start the uAP, and then connect STA to other AP. Ensure that the channel of uAP must be the same as the channel of STA.
+> * The parameter <autoTx_set> is optional. The user must set parameter <rate_setting> when parameter <autoTx_set> is given while defining CONFIG_11AC. For example:
 >
 >   #wlan-set-txratecfg sta 0 5 1 0x0000 1
 >
@@ -851,21 +851,21 @@ If <format> is 3 (HE),
 >
 >   #wlan-set-txratecfg sta 0 5 1
 
-* Get current tx rate configuration
+* Get the current TX rate configuration:
 
 ```bash
 uart:~$ nxp_wifi get-txratecfg
 ```
 
-- Get current transmit data rate including TX rate and RX rate.
+- Get current transmit data rate including TX rate and RX rate:
 
 ```bash
 uart:~$ nxp_wifi get-data-rate
 ```
 
-- Examples
+- Examples:
 
-Set STA 11AX fixed TX rate to HE, MCS9, and LTF+GI size 1
+Set STA 11AX fixed TX rate to HE, MCS9, and LTF+GI size 1:
 
 ```bash
 uart:~$ nxp_wifi set-txratecfg sta 3 9 1 0x0020
@@ -884,7 +884,7 @@ Tx Rate Configuration:
     maxPE:         0
 ```
 
-Set STA auto NULL data fixed TX rate to 9M, not set other data.
+Set STA auto NULL data fixed TX rate to 9M, not set other data:
 
 ```bash
 uart:~$ nxp_wifi set-txratecfg sta 3 9 1 0x0020
@@ -903,7 +903,7 @@ Tx Rate Configuration:
 	maxPE:         0
 ```
 
-Set STA not fix auto NULL data TX rate
+Set STA not fix auto NULL data TX rate:
 
 ```bash
 uart:~$ nxp_wifi set-txratecfg sta 0 5 1 0x0000 1
@@ -923,7 +923,7 @@ HE Rate setting:   0x0
 
 ## STA DTIM manual setting
 
-This command is to set multiple_dtim. It takes effect after entering power save mode.
+This command is to set multiple_dtim. It takes effect after entering Power-save mode.
 
 Command Usage:
 
@@ -937,15 +937,15 @@ wlan-set-multiple-dtim <value>
 <value> Value of multiple dtim, range[1,20]
 ```
 
-> **Note:** range of multiple_dtim is [1,20]
+> **Note:** range of multiple_dtim is [1, 20]
 
 ## EU crypto command
 
-The following command is used to encrypt and decrypt preset sample data
+The following command is used to encrypt and decrypt preset sample data.
 
 ### RC4 algorithm
 
-Command usage
+Command usage:
 
 ```bash
 uart:~$ nxp_wifi eu-crypto-rc4
@@ -955,7 +955,7 @@ wlan-eu-crypto-rc4 `<EncDec>`
 EncDec: 0-Decrypt, 1-Encrypt
 ```
 
-Encrypt sample data with RC4 algorithm
+Encrypt sample data with the RC4 algorithm:
 
 ```bash
 uart:~$ nxp_wifi eu-crypto-rc4 1
@@ -970,7 +970,7 @@ d9 90 42 ad 51 ab 11 3f 24 46 69 e6 f1 ac 49 f5
 Command wlan-eu-crypto-rc4
 ```
 
-Decrypt sample data with RC4 algorithm
+Decrypt sample data with the RC4 algorithm:
 
 ```bash
 uart:~$ nxp_wifi eu-crypto-rc4 0
@@ -987,7 +987,7 @@ Command wlan-eu-crypto-rc4
 
 ### AES-WRAP algorithm
 
-Command usage
+Command usage:
 
 ```bash
 uart:~$ nxp_wifi eu-crypto-aes-wrap
@@ -997,7 +997,7 @@ wlan-eu-crypto-aes-wrap `<EncDec>`
 EncDec: 0-Decrypt, 1-Encrypt
 ```
 
-Encrypt sample data with AES-WRAP algorithm
+Encrypt sample data with AES-WRAP algorithm:
 
 ```bash
 uart:~$ nxp_wifi eu-crypto-aes-wrap 1
@@ -1013,7 +1013,7 @@ fa da 96 53 30 97 4b 61 77 c6 d4 3c d2 0e 1f 6d
 Command wlan-eu-crypto-aes-wrap
 ```
 
-Decrypt sample data with AES-WRAP algorithm
+Decrypt sample data with AES-WRAP algorithm:
 
 ```bash
 uart:~$ nxp_wifi eu-crypto-aes-wrap 0
@@ -1031,7 +1031,7 @@ Command wlan-eu-crypto-aes-wrap
 
 ### AES-ECB algorithm
 
-Command Usage
+Command Usage:
 
 ```bash
 uart:~$ nxp_wifi eu-crypto-aes-ecb
@@ -1041,7 +1041,7 @@ wlan-eu-crypto-aes-ecb `<EncDec>`
 EncDec: 0-Decrypt, 1-Encrypt
 ```
 
-Encrypt sample data with AES-ECB algorithm
+Encrypt sample data with the AES-ECB algorithm:
 
 ```bash
 uart:~$ nxp_wifi eu-crypto-aes-ecb 1
@@ -1055,7 +1055,7 @@ c6 93 9d aa d1 d0 68 28 fe 88 52 75 a9 43 f9 c0
 ******** End Dump *******
 ```
 
-Decrypt sample data with AES-ECB algorithm
+Decrypt sample data with AES-ECB algorithm:
 
 ```bash
 uart:~$ nxp_wifi eu-crypto-aes-ecb 0
@@ -1072,7 +1072,7 @@ Command wlan-eu-crypto-aes-ecb
 
 ### AES-CCMP-128 algorithm
 
-Command Usage
+Command Usage:
 
 ```bash
 uart:~$ nxp_wifi eu-crypto-ccmp-128
@@ -1082,7 +1082,7 @@ wlan-eu-crypto-ccmp-128 <EncDec>
 EncDec: 0-Decrypt, 1-Encrypt
 ```
 
-Encrypt sample data with AES-CCMP-128 algorithm
+Encrypt sample data with the AES-CCMP-128 algorithm:
 
 ```bash
 uart:~$ nxp_wifi eu-crypto-ccmp-128 1
@@ -1099,7 +1099,7 @@ f3 d0 a2 fe 9a 3d bf 23 42 a6 43 e4 32 46 e8 0c
 Command wlan-eu-crypto-ccmp-128
 ```
 
-Decrypt sample data with AES-CCMP-128 algorithm
+Decrypt sample data with the AES-CCMP-128 algorithm:
 
 ```bash
 uart:~$ nxp_wifi eu-crypto-ccmp-128 0
@@ -1118,7 +1118,7 @@ Command wlan-eu-crypto-ccmp-128
 
 ### AES-GCMP-128 algorithm
 
-Command Usage
+Command Usage:
 
 ```bash
 uart:~$ nxp_wifi eu-crypto-ccmp-256
@@ -1128,7 +1128,7 @@ wlan-eu-crypto-ccmp-256 <EncDec>
 EncDec: 0-Decrypt, 1-Encrypt
 ```
 
-Encrypt sample data with AES-CCMP-256 algorithm
+Encrypt sample data with the AES-CCMP-256 algorithm:
 
 ```bash
 uart:~$ nxp_wifi eu-crypto-ccmp-256 1
@@ -1146,7 +1146,7 @@ d5 0f e9 7b
 Command wlan-eu-crypto-ccmp-256
 ```
 
-Use AES-CCMP-256 to decrypt sample data
+Use AES-CCMP-256 to decrypt sample data:
 
 ```bash
 uart:~$ nxp_wifi eu-crypto-ccmp-256 0
@@ -1166,7 +1166,7 @@ Command wlan-eu-crypto-ccmp-256
 
 ### AES-GCMP-128 algorithm
 
-Command Usage
+Command Usage:
 
 ```bash
 uart:~$ nxp_wifi eu-crypto-gcmp-128
@@ -1176,7 +1176,7 @@ wlan-eu-crypto-gcmp-128 `<EncDec>`
 EncDec: 0-Decrypt, 1-Encrypt
 ```
 
-Encrypt sample data with AES-GCMP-128 algorithm
+Encrypt sample data with the AES-GCMP-128 algorithm:
 
 ```bash
 uart:~$ nxp_wifi eu-crypto-gcmp-128 1
@@ -1196,7 +1196,7 @@ f4 5d 7a 12 db 7a fb 23 de f6 19 c2 a3 74 b6 df
 Command wlan-eu-crypto-gcmp-128
 ```
 
-Decrypt sample data with AES-GCMP-128 algorithm
+Decrypt sample data with AES-GCMP-128 algorithm:
 
 ```bash
 uart:~$ nxp_wifi eu-crypto-gcmp-128 0
@@ -1217,7 +1217,7 @@ Decrypted Data:
 
 ### AES-GCMP-256 algorithm
 
-Command Usage
+Command Usage:
 
 ```bash
 uart:~$ nxp_wifi eu-crypto-gcmp-256
@@ -1227,7 +1227,7 @@ wlan-eu-crypto-gcmp-256 `<EncDec>`
 EncDec: 0-Decrypt, 1-Encrypt
 ```
 
-Encrypt sample data with AES-GCMP-256 algorithm
+Encrypt sample data with an AES-GCMP-256 algorithm:
 
 ```bash
 uart:~$ nxp_wifi eu-crypto-gcmp-256 1
@@ -1246,7 +1246,7 @@ b2 12 66 55 5e 70 ad 79 11 43 16 85 90 95 47 3d
 ******** End Dump *******
 ```
 
-Decrypt sample data with AES-GCMP-256 algorithm
+Decrypt sample data with the AES-GCMP-256 algorithm:
 
 ```bash
 uart:~$ nxp_wifi eu-crypto-gcmp-256 0
@@ -1270,14 +1270,14 @@ Command wlan-eu-crypto-gcmp-256
 
 This command is used to get Wi-Fi packets statistics.
 
-Command usage
+Command usage:
 
 ```bash
 uart:~$ nxp_wifi get-log
 Usage: get-log <sta/uap> <ext>
 ```
 
-Get Wi-Fi Soft AP log
+Get Wi-Fi soft AP log:
 
 ```bash
 uart:~$ nxp_wifi get-log uap
@@ -1337,7 +1337,7 @@ dot11ReceivedOctetsInAMPDUCount      0
 dot11AMPDUDelimiterCRCErrorCount     0
 ```
 
-Get Wi-Fi STA log
+Get Wi-Fi STA log:
 
 ```bash
 uart:~$ nxp_wifi get-log sta
@@ -1397,25 +1397,25 @@ dot11ReceivedOctetsInAMPDUCount      0
 dot11AMPDUDelimiterCRCErrorCount     0
 ```
 
-Get Wi-Fi soft AP extended log
+Get Wi-Fi soft AP extended log:
 
 ```bash
 uart:~$ nxp_wifi get-log uap ext
 ```
 
-Get Wi-Fi STA extended log
+Get Wi-Fi STA extended log:
 
 ```bash
 uart:~$ nxp_wifi get-log sta ext
 ```
 
-## Wi-Fi RF Test Mode
+## Wi-Fi RF test mode
 
 RF test mode is used to set RF parameters for transmit and receive testing for regulatory compliance and is available for use on the production software.
 
 ### Prerequisite commands
 
-Some prerequisite commands are required to run before running Wi-Fi RF Tx and Rx Test.
+Some prerequisite commands are required to run before running Wi-Fi RF TX and RX Test.
 
 - Enable Wi-Fi RF mode
 
@@ -1428,7 +1428,7 @@ RF Test Mode Set configuration successful
 
 - Wi-Fi RF band set/get
 
-The following command is used to set and get Wi-Fi band.
+The following command is used to set and get a Wi-Fi band.
 
 Command usage:
 
@@ -1446,7 +1446,7 @@ uart:~$ nxp_wifi set-rf-band 1
 RF Band configuration successful
 ```
 
-Get RF band:
+Get an RF band:
 
 ```bash
 uart:~$ nxp_wifi get-rf-band
@@ -1455,9 +1455,9 @@ Configured RF Band is: 5G
 
 - Wi-Fi RF channel set/get
 
-The following command is used to set and get Wi-Fi channel.
+The following command is used to set and get a Wi-Fi channel.
 
-Command Usage:
+Command usage:
 
 ```bash
 uart:~$ nxp_wifi set-rf-channel
@@ -1483,7 +1483,7 @@ Configured channel is: 36
 
 The following command is used to set and get Wi-Fi radio mode.
 
-Command Usage:
+Command usage:
 
 ```bash
 uart:~$ nxp_wifi set-rf-radio-mode
@@ -1508,7 +1508,7 @@ uart:~$ nxp_wifi get-rf-radio-mode
 Configured radio mode is: 3
 ```
 
-### Display and Clear Received Wi-Fi Packet Count
+### Display and clear received Wi-Fi packet count
 
 The following command clears the received packet count and displays the received multi-cast and error packet counts.
 
@@ -1520,7 +1520,7 @@ Total Rx Multicast/Broadcast Packet Count: 80
 Total Rx Packets with FCS error          : 181
 ```
 
-### Wi-Fi RF Antenna Configuration
+### Wi-Fi RF antenna configuration
 
 Command usage:
 
@@ -1538,7 +1538,7 @@ uart:~$ nxp_wifi set-rf-rx-antenna 1
 Rx Antenna configuration successful
 ```
 
-Command wlan-set-rf-test-mode
+Command wlan-set-rf-test-mode:
 
 ```bash
 uart:~$ nxp_wifi get-rf-rx-antenna
@@ -1549,7 +1549,7 @@ Configured Rx Antenna is: Main
 
 The following command is used to set Wi-Fi TX power.
 
-Command Usage:
+Command usage:
 
 ```bash
 uart:~$ nxp_wifi set-rf-tx-power
@@ -1560,7 +1560,7 @@ Modulation  (0: CCK, 1:OFDM, 2:MCS)
 Path ID     (0: PathA, 1:PathB, 2:PathA+B)
 ```
 
-Set RF TX power
+Set RF TX power:
 
 ```bash
 uart:~$ nxp_wifi set-rf-tx-power 0 0 0
@@ -1574,7 +1574,7 @@ Path ID       : PathA
 
 The following command is used to set Wi-Fi transmitter to Continuous Wave (CW) mode.
 
-Command Usage:
+Command usage:
 
 ```bash
 Command Usage uart:~$ nxp_wifi set-rf-tx-cont-mode
@@ -1628,13 +1628,13 @@ Active SubChannel     : low
 Tx Data Rate          : 0
 ```
 
-> **Note:** If you test with RF test mode, pls don’t use wlan-reset 2, it is not supported.
+> **Note:** If the test is performed with RF test mode, do not use wlan-reset 2; it is not supported.
 
 ### Transmit standard 802.11 packets
 
-The following command is used to transmit packets continuously with an adjustable time interval in range from 0 to 255 microseconds between packets.
+The following command is used to transmit packets continuously with an adjustable time interval in the range from 0 microseconds to 255 microseconds between packets.
 
-Command Usage:
+Command usage:
 
 ```bash
 uart:~$ nxp_wifi set-rf-tx-frame
@@ -1658,7 +1658,7 @@ To Disable:
 wlan-set-rf-tx-frame 0
 ```
 
-Enable Tx Frame:
+Enable TX frame:
 
 ```bash
 uart:~$ nxp_wifi set-rf-tx-frame 1 7 2730 256 0 0 0 0 0 0 0 0 0 ad:ad:23:12:45:57
@@ -1679,7 +1679,7 @@ STBC                      : disable
 BSSID                     : AD:AD:23:12:45:57
 ```
 
-Disable Tx Frame
+Disable TX frame:
 
 ```bash
 uart:~$ nxp_wifi set-rf-tx-frame 0
@@ -1702,7 +1702,7 @@ BSSID                     : 00:00:00:00:00:00
 
 ### Set/Get trigger frame parameters
 
-The following command is used to set and get trigger frame parameters.
+The following command is used to set and get the trigger frame parameters.
 
 Command usage:
 
@@ -1745,7 +1745,7 @@ AC_PL                       (Reserved)
 Pref_AC                     (Indicates the lowest AC that is recommended for aggregation of MPDUs in the A-MPDU contained in the HE TB PPDU sent as a response to the Trigger frame)
 ```
 
-Set Wi-Fi RF trigger frame
+Set Wi-Fi RF trigger frame:
 
 ```bash
 uart:~$ nxp_wifi set-rf-trigger-frame-cfg 1 0 1 2 5484 0 256 0 0 0 1 0 0 0 1 60
@@ -1790,7 +1790,7 @@ Pref_AC                     : 0
 
 The following commands are used to transmit 802.11ax OFDMA packets.
 
-Command Usage:
+Command usage:
 
 ```bash
 uart:~$ nxp_wifi set-rf-he-tb-tx
@@ -1803,7 +1803,7 @@ axq_mu_timer     (MU timer for the AXQ on which response is sent)
 tx_power         (TxPwr to be configured for the response)
 ```
 
-Enter trigger frame respond mode
+Enter trigger frame respond mode:
 
 ```bash
 uart:~$ nxp_wifi set-rf-he-tb-tx 1 1 5 400 -7
@@ -1871,28 +1871,28 @@ Hostcmd success, response is
 
 ## Fragment test
 
-This command is used to configure Wi-Fi fragment threshold
+This command is used to configure Wi-Fi fragment threshold.
 
-- Command Usage
+- Command usage:
 
 ```bash
 uart:~$ nxp_wifi frag
 Usage: frag <sta/uap> <fragment threshold>
 ```
 
-- Enable fragment and set fragment threshold.
+- Enable the fragment and set the fragment threshold:
 
 ```bash
 uart:~$ nxp_wifi frag uap 300
 ```
 
-> **Note:** The range should be from 256 to 2346
+> **Note:** The range must be from 256 to 2346.
 
 ## Force RTS
 
-Those command are used to set or get forceRTS.
+This command is used to set or get forceRTS.
 
-- Command usage
+- Command usage:
 
 ```bash
 uart:~$ nxp_wifi set-forceRTS
@@ -1902,7 +1902,7 @@ wlan-set-forceRTS <0/1>
                   0 -- stop forceRTS
 ```
 
-- Get forceRTS state
+- Get forceRTS state:
 
 ```bash
 uart:~$ nxp_wifi set-forceRTS
@@ -1919,7 +1919,7 @@ Hostcmd success, response is
 8b      80      d       0       28      0       0       0       0       0       4       1       0       Command wlan-set-forceRTS
 ```
 
-If command is successful, the console will print “Hostcmd success” and the current forceRTS state is shown in above location.
+If the command is successful, the console prints “Hostcmd success” and the current forceRTS state is shown in the above location.
 
 - Start forceRTS:
 
@@ -1931,16 +1931,16 @@ Hostcmd success, response is
 
 ## Set RSSI low threshold
 
-This command is used to set the RSSI threshold for 11k, 11v, 11r or roaming case, default value is -70 dBm.
+This command is used to set the RSSI threshold for 11k, 11v, 11r, or roaming case, the default value is -70 dBm.
 
-- Command Usage
+- Command usage:
 
 ```bash
 uart:~$ nxp_wifi rssi-low-threshold
 Usage: rssi-low-threshold <rssi threshold value>
 ```
 
-- Set the RSSI threshold as -60 dBm.
+- Set the RSSI threshold as -60 dBm:
 
 ```bash
 uart:~$ nxp_wifi rssi-low-threshold 60
@@ -1949,9 +1949,9 @@ rssi threshold set successfully.
 
 ## Roaming command
 
-The following command is used to enable/disable roaming and configure RSSI threshold
+The following command is used to enable/disable roaming and configure the RSSI threshold.
 
-Command usage
+Command usage:
 
 ```bash
 uart:~$ nxp_wifi roaming
@@ -1965,27 +1965,27 @@ Option: 0 – disable
 
     1 – enable
 
-<rssi_threshold>: RSSI low threshold below which roaming will be triggered and STA will switch to other BSS with better RSSI.
+<rssi_threshold>: RSSI low threshold below which roaming is triggered and STA switches to other BSS with better RSSI.
 
 > **Note:**
 >
-> 1. The priority of those roaming modes is as following: 11r > 11k > 11v > legacy. If more than 1 mode is supported, roaming will happen based on above priority.
-> 2. If 11r roaming is used, net ping after connecting to AP1 is mandatory. This requirement is to setup ARP table on AP side to avoid instant de-auth from AP after ft-roaming is done.
+> 1. The priority of those roaming modes is as following: 11r > 11k > 11v > legacy. If more than 1 mode is supported, roaming happens based on the above priority.
+> 2. If 11r roaming is used, net ping after connecting to AP1 is mandatory. This requirement is to set up ARP table on the AP side to avoid instant de-auth from AP after ft-roaming is done.
 
 ## Send hostcmd
 
-The following command is used to send hostcmd
+The following command is used to send hostcmd:
 
-Command Usage
+Command usage
 
 ```bash
 uart:~$ nxp_wifi send-hostcmd
 Hostcmd success, response ise0  80      12      0       3c      0       0       0       1       0       0       0       38      2       2       0       7       1       Command wlan-send-hostcmd
 ```
 
-## WMM Tx Statics
+## WMM TX Statics
 
-The following command is used to show packets statistics in STA/UAP interface
+The following command is used to show packets statistics in the STA/UAP interface.
 
 - Command usage
 
@@ -1994,13 +1994,13 @@ uart:~$ nxp_wifi wmm-stat <0/1>
 0: STA, 1: UAP
 ```
 
-> Note : Used only in WMM enhanced TX, when CONFIG_WMM_ENH is enable
+> Note : Used only in WMM enhanced TX, when CONFIG_WMM_ENH is enable.
 
 ## Wi-Fi reset
 
-The following command is used to enable/disable/reset Wi-Fi
+The following command is used to enable/disable/reset Wi-Fi.
 
-- Command Usage
+- Command usage
 
 ```bash
 uart:~$ nxp_wifi reset
@@ -2061,7 +2061,7 @@ Command wlan-reset
 
 ## Wi-Fi recovery
 
-This command is used to verify when the device into bad state, the device could auto-recovery. When the device into bad state(example: the command response is timeout), the device will auto-recovery.
+This command is used to verify when the device is in a bad state, the device could auto-recovery. When the device is in a bad state (example: the command response is timeout), the device is in auto-recovery.
 
 ```bash
 uart:~$ nxp_wifi recovery-test
@@ -2085,7 +2085,7 @@ Set CSP tx power table data
 
 ## Set/Get bandcfg
 
-The following command is used to set/get bandcfg
+The following command is used to set/get bandcfg.
 
 - Command usage
 
@@ -2105,7 +2105,7 @@ wlan-set-bandcfg <value>
     bit 9: AX 5G
 ```
 
-- Enable 2.4G 11ax and 5G 11ax
+- Enable the 2.4G 11ax and 5G 11ax
 
 ```bash
 uart:~$ nxp_wifi set-bandcfg 0x300
@@ -2137,7 +2137,7 @@ uart:~$ nxp_wifi get-bandcfg
 
 ## Set Country IE ignore
 
-The following command is used to set country IE ignore setting
+The following command is used to set the country IE ignore setting.
 
 - STA doesn’t follow ext-AP’s country code
 
@@ -2146,7 +2146,7 @@ uart:~$ nxp_wifi set-country-ie-ignore 1
 Country ie "ignore" is set
 ```
 
-- STA follow ext-AP’s country code
+- STA follows ext-AP’s country code
 
 ```bash
 uart:~$ nxp_wifi set-country-ie-ignore 0
@@ -2155,9 +2155,9 @@ Country ie "follow" is set
 
 ## STA inactivity timeout
 
-The following command is used to set inactivity timeout
+The following command is used to set inactivity timeout.
 
-- Command Usage
+- Command usage
 
 ```bash
 uart:~$ nxp_wifi sta-inactivityto <n> <m> <l> [k] [j]
@@ -2188,9 +2188,9 @@ Inactivity timeout for cmd is 20 ms
 
 ## Get the max client count
 
-The following command is used to get maximum number of stations supported by uAP
+The following command is used to get the maximum number of stations supported by uAP.
 
-- Command Usage
+- Command usage
 
 ```bash
 uart:~$ nxp_wifi get-max-clients-count
@@ -2201,7 +2201,7 @@ Maximum number of stations: 16
 
 The following command is used to get the management frame capability.
 
-Command Usage
+Command usage
 
 ```bash
 uart:~$ nxp_wifi get-pmfcfg
@@ -2210,9 +2210,9 @@ Management Frame Protection Capability: No
 
 ## Get uAP management frame protection capability
 
-The following command is used to get the management frame capability. uAP should be enabled before running the command
+The following command is used to get the management frame capability. uAP must be enabled before running the command.
 
-- Command Usage
+- Command usage
 
 ```bash
 uart:~$ nxp_wifi get-pmfcfg
@@ -2221,9 +2221,9 @@ Management Frame Protection Capability: No
 
 ## Enable/disable HTC
 
-The following command is used to enable/disable HTC
+The following command is used to enable/disable HTC.
 
-- Command Usage
+- Command usage
 
 ```bash
 uart:~$ nxp_wifi enable-disable-htc
@@ -2248,9 +2248,9 @@ HTC disabled
 
 ## 11AX configuration
 
-The following command is used to get/set 11AX configuration
+The following command is used to get/set the 11AX configuration.
 
-- Command Usage
+- Command usage
 
 ```bash
 uart:~$ nxp_wifi 11ax-cfg
@@ -2274,9 +2274,9 @@ Command wlan-11ax-cfg
 
 ## Get TSF info
 
-The following command is used to get TSF info
+The following command is used to get TSF info.
 
-- Command Usage
+- Command usage
 
 ```bash
 uart:~$ nxp_wifi get-tsfinfo
@@ -2309,7 +2309,7 @@ tsf offset:              0
 
 ## Set clock sync
 
-The following command is used to set Wi-Fi TSF based clock sync setting
+The following command is used to set Wi-Fi TSF-based clock sync setting.
 
 Command usage
 
@@ -2367,25 +2367,25 @@ wlan-detect-ant 0 3
 wlan-detect-ant 2 3
 ```
 
-- Use normal detect mode and do full channel scan, total 3 antenna ports
+- Use normal detect mode and do a full channel scan; total 3 antenna ports
 
 ```bash
 nxp_wifi  detect-ant 0 3
 ```
 
-- Use normal detect mode and scan on channel 1,2,3,4,5,6,7, total 3 antenna ports
+- Use normal detect mode and scan on channel 1, 2, 3, 4, 5, 6, 7; total 3 antenna ports
 
 ```bash
 nxp_wifi  detect-ant 0 3  channel 1,2,3,4,5,6,7
 ```
 
-- Use quick detect mode and use full channel list, total 3 antenna ports
+- Use quick detect mode and use full channel list; total 3 antenna ports
 
 ```bash
 nxp_wifi  detect-ant 1 3
 ```
 
-- Use quick detect mode and scan on channel 1, total 3 antenna ports
+- Use quick detect mode and scan on channel 1; total 3 antenna ports
 
 ```bash
 nxp_wifi  detect-ant 1 3 channel 1
@@ -2397,7 +2397,7 @@ nxp_wifi  detect-ant 1 3 channel 1
 nxp_wifi  detect-ant 1 3 channel 1,6,11,36,40
 ```
 
-- Use PCB detect mode, total 3 antenna ports
+- Use PCB detect mode; total 3 antenna ports
 
 ```bash
 nxp_wifi  detect-ant 2 3
@@ -2405,7 +2405,7 @@ nxp_wifi  detect-ant 2 3
 
 ## Antenna diversity configuration
 
-The following commands are used to set and get antenna diversity function
+The following commands are used to set and get the antenna diversity function.
 
 Command usage
 
@@ -2430,7 +2430,7 @@ wlan-set-antcfg <ant_mode> <evaluate_time> <evaluate_mode>
 	If not used, just keep this field empty.
 ```
 
-> For different antenna configurations, please define corresponding macro based on the table below
+> For different antenna configurations, define the corresponding macro based on the table below.
 
 |       Ant type       | CONFIG_NXP_WIFI_WLAN_CALDATA_1ANT | CONFIG_NXP_WIFI_WLAN_CALDATA_3ANT_DIVERSITY | CONFIG_NXP_WIFI_WLAN_CALDATA_1ANT_WITH_DIVERSITY |
 | :------------------: | :-------------------------------: | :-----------------------------------------: | :----------------------------------------------: |
@@ -2439,9 +2439,9 @@ wlan-set-antcfg <ant_mode> <evaluate_time> <evaluate_mode>
 | 1 ANT with diversity |                 N                 |                      N                      |                        Y                        |
 |        2 ANT        |                 N                 |                      N                      |                        N                        |
 
-For example: If need 1 ANT configuration, just define CONFIG_WIFI_WLAN_CALDATA_1ANT=y
+For example: If 1 ANT configuration is required, define CONFIG_WIFI_WLAN_CALDATA_1ANT=y
 
-Get antenna config
+Get antenna config:
 
 ```bash
 uart:~$ nxp_wifi get-antcfg
@@ -2451,7 +2451,7 @@ Current antenna is Ant1
 
 Example
 
-Enable antenna diversity without setting evaluate time and evaluate mode
+Enable antenna diversity without setting evaluate time and evaluate mode:
 
 ```bash
 nxp_wifi set-antcfg 0xffff
@@ -2463,7 +2463,7 @@ Default diversity mode.
 Current antenna is Ant1
 ```
 
-Enable antenna diversity with evaluate time 6000ms and evaluate mode 0
+Enable antenna diversity with evaluate time 6000ms and evaluate mode 0:
 
 ```bash
 nxp_wifi set-antcfg 0xffff 6000 0
@@ -2475,13 +2475,13 @@ Evaluate mode : Ant1 + Ant2
 Current antenna is Ant1
 ```
 
-## Set RU Tx power table
+## Set RU TX power table
 
-Tx power of UL OFDMA depends on RU and QAM. The different chipsets may have different values. This command is used to configure the UL OFDMA Tx power.
+TX power of UL OFDMA depends on RU and QAM. The different chipsets can have different values. This command is used to configure the UL OFDMA TX power.
 
-> **Note:** This command needs to be executed before connecting to AP.
+> **Note:** This command must be executed before connecting to AP.
 
-- Command Usage
+- Command usage
 
 ```bash
 nxp_wifi set-rutxpwrlimit
@@ -2489,7 +2489,7 @@ nxp_wifi set-rutxpwrlimit
 
 ## Net monitor commands
 
-The following commands are used to configure net monitor.
+The following commands are used to configure the net monitor.
 
 - Configure net monitor filter
 
@@ -2509,7 +2509,7 @@ wlan-set-monitor-filter dump
 Command wlan-set-monitor-filter
 ```
 
-> **Note:** the maximum number of filters is 3
+> **Note:** The maximum number of filters is 3.
 
 - Configure net monitor parameters
 
@@ -2538,7 +2538,7 @@ chan_number       : channel to monitor
 nxp_wifi net-monitor-cfg
 ```
 
-Net monitor data is not dumped to the console by default. Users must register a callback to receive these data in their application
+Net monitor data is not dumped to the console by default. Users must register a callback to receive these data in their application.
 
 ```c
 int net_monitor_data_recv_test(void *buffer, t_u16 data_len)
@@ -2556,9 +2556,9 @@ int net_monitor_data_recv_test(void *buffer, t_u16 data_len)
 wlan_register_monitor_user_callback (net_monitor_data_recv_test);
 ```
 
-> **Note:** Parameters from command nxp_wifi set-monitor-filter and nxp_wifi set-monitor-param will work after run nxp_wifi net-monitor-cfg
+> **Note:** Parameters from command nxp_wifi set-monitor-filter and nxp_wifi set-monitor-param will work after running nxp_wifi net-monitor-cfg.
 
-* Following commands can be used to send data and management frame
+* The following commands can be used to send data and management frame
 
 1. Set as monitor mode
 2. Set TX rate, refer to [TX rate configuration](# tx-rate-configuration)
@@ -2596,13 +2596,13 @@ wlan_register_monitor_user_callback (net_monitor_data_recv_test);
    Command wlan-set-mgmtframetx-payload
    ```
 
-> **Note:** For mgmt frame, pls keep the data is correct, the tx data get by sniffer is different as what set if the data is malform
+> **Note:** For management frame, ensure that the data is correct. When the data is malformed, the TX data captured by the sniffer differs from the data set for transmission.
 
     c.nxp_wifi set-mgmtframetx-cfg
 
 ## Set 11AX OMI Value
 
-This command is used to set 802.11 AX OMI value.
+This command is used to set the 802.11 AX OMI value.
 
 - Command Usage
 
@@ -2667,7 +2667,7 @@ Density: 0x30
 MMSF: 0x00
 ```
 
-## CSI Commands
+## CSI commands
 
 The following commands are used to configure CSI.
 
