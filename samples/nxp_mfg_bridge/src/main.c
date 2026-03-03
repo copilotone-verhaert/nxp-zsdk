@@ -28,6 +28,11 @@ LOG_MODULE_REGISTER(mfg_bridge, LOG_LEVEL_ERR);
 #include "wifi-internal.h"
 #include "wifi-sdio.h"
 #include "fsl_lpuart.h"
+#if (defined(MIMXRT1062_SERIES) || defined(MIMXRT1061_SERIES))
+#include <zephyr/drivers/i2c.h>
+#include <zephyr/drivers/spi.h>
+#include <zephyr/drivers/gpio.h>
+#endif
 #endif
 #include "uart_rtos.h"
 
@@ -106,6 +111,43 @@ enum {
 	MLAN_STATUS_FW_XZ_FAILED,
 	MLAN_CARD_CMD_TIMEOUT
 };
+
+#if (defined(MIMXRT1062_SERIES) || defined(MIMXRT1061_SERIES))
+/* SPI related */
+#define SPI_NODE         DT_NODELABEL(lpspi4)
+#define ZIGBEE_RCP_NODE  DT_NODELABEL(zigbee_rcp)
+#define I2C_NODE         DT_NODELABEL(lpi2c1)
+#define IO_EXPANDER_NODE DT_NODELABEL(io_expander)
+#define PLATFORM_IOEXP_I2C_ADDR_7BIT            0x20U
+#define PLATFORM_IOEXP_CONFIGURATION_REG        0x03U
+#define PLATFORM_IOEXP_CONFIGURATION_SPI_ENABLE 0xFEU
+#define PLATFORM_CONFIG_DEFAULT_RESET_DELAY_MS  200U
+
+/* IOMUXC GPR register definitions */
+#define IOMUXC_GPR_BASE                          (0x400AC000u)
+
+/* GPR26 - GPIO1 MUX selection */
+#define IOMUXC_GPR26_OFFSET                      (0x68u)  /* GPR26 = GPR0 + 26*4 */
+#define IOMUXC_GPR26_ADDR                        (IOMUXC_GPR_BASE + IOMUXC_GPR26_OFFSET)
+#define GPIO_MUX1_GPIO_SEL_MASK                  (0x01080000U)  /* bits 19,24 */
+#define GPIO_MUX1_GPIO_SEL(x)                    (((uint32_t)(x) << 19U) & GPIO_MUX1_GPIO_SEL_MASK)
+
+/* GPR27 - GPIO2 MUX selection */
+#define IOMUXC_GPR27_OFFSET                      (0x6Cu)  /* GPR27 = GPR0 + 27*4 */
+#define IOMUXC_GPR27_ADDR                        (IOMUXC_GPR_BASE + IOMUXC_GPR27_OFFSET)
+#define GPIO_MUX2_GPIO_SEL_MASK                  (0x10U)  /* bit 4 */
+#define GPIO_MUX2_GPIO_SEL(x)                    (((uint32_t)(x) << 4U) & GPIO_MUX2_GPIO_SEL_MASK)
+
+#define SPI_DEFAULT_SMALL_PACKET_SIZE (48U)
+#define SPI_DEFAULT_RX_DATA_SIZE      (1024U)
+#define SPI_DEFAULT_ALIGN_ALLOWANCE   (16U)
+#define SPI_DEFAULT_RX_BUFF_LENGTH    (1024U)
+#define SPI_DEFAULT_TX_BUFF_LENGTH    (1024U)
+
+#ifndef max
+#define max(a, b) (((a) > (b)) ? (a) : (b))
+#endif
+#endif
 
 /*******************************************************************************
  * Prototypes
@@ -221,10 +263,77 @@ extern const uint32_t fw_cpu2[];
 #define BLE_FW_ADDRESS		0U
 #endif
 
+#if (defined(MIMXRT1062_SERIES) || defined(MIMXRT1061_SERIES))
+/* Spinel SPI frame header */
+typedef struct __attribute__((__packed__)) spi_frame_hdr {
+	unsigned char  bit0 : 1; /* must be 0 */
+	unsigned char  bit1 : 1; /* must be 1 */
+	unsigned char  reserve : 3;
+	unsigned char  ccf : 1;
+	unsigned char  crc : 1;
+	unsigned char  rst : 1;
+	unsigned short recv_len;
+	unsigned short data_len;
+} spi_frame_hdr;
+
+typedef struct __attribute__((__packed__)) zigBee_spinel_cmd_hdr {
+	uint8_t  TID:4;    /* Transaction ID */
+	uint8_t  IID:2;    /* Interface ID */
+	uint8_t  FLG:2;    /* Flags */
+	uint16_t SPINEL_CMD_NUM;
+	uint8_t  MFG_CMD_Payload_Length;
+} zigBee_spinel_cmd_hdr;
+
+/* Get SPI device from device tree */
+#define SPI_NODE DT_NODELABEL(lpspi4)
+#define ZIGBEE_RCP_SPI_FREQUENCY  2000000
+#define ZIGBEE_RCP_SPI_CS_INDEX   0         /* CS0 */
+static const struct device *spi_dev;
+
+/* SPI configuration, static definition, initialize only once */
+static struct spi_config spi_cfg = {
+	.frequency = ZIGBEE_RCP_SPI_FREQUENCY,
+	.operation = SPI_OP_MODE_MASTER |
+				 SPI_TRANSFER_MSB |
+				 SPI_WORD_SET(8) |
+				 SPI_LINES_SINGLE,
+	.slave = ZIGBEE_RCP_SPI_CS_INDEX,
+};
+
+static uint8_t spi_buff_rx[SPI_DEFAULT_RX_BUFF_LENGTH];
+static uint8_t spi_buff_tx[SPI_DEFAULT_TX_BUFF_LENGTH];
+
+static int zigbee_reset_flag = 1;
+#endif
+
 /*******************************************************************************
  * Code
  ******************************************************************************/
 #define SDK_VERSION "NXPSDK_v1.3.r13.p1"
+#if (defined(MIMXRT1062_SERIES) || defined(MIMXRT1061_SERIES))
+int set_spi_frame_hdr(spi_frame_hdr *pspihdr,
+						unsigned char rst_flag,
+						unsigned char crc_flag,
+						unsigned char ccf_flag,
+						unsigned short recv_len,
+						unsigned short data_len)
+{
+	if (!pspihdr) {
+		return -1;
+	}
+	memset(pspihdr, 0, sizeof(spi_frame_hdr));
+	pspihdr->rst = rst_flag | zigbee_reset_flag;
+	pspihdr->crc = crc_flag;
+	pspihdr->ccf = ccf_flag;
+	pspihdr->bit1 = 1;
+	pspihdr->bit0 = 0;
+	pspihdr->recv_len = max(recv_len, SPI_DEFAULT_SMALL_PACKET_SIZE);
+	pspihdr->data_len = data_len;
+
+	zigbee_reset_flag = 0;
+	return 0;
+}
+#endif
 
 static void uart_init_crc32(struct uart_cb *uartcb)
 {
@@ -437,6 +546,60 @@ static int bt_raw_packet_send(uint8_t *buf, int m_len)
 }
 #endif /*CONFIG_SUPPORT_BT_UART*/
 
+#if (defined(MIMXRT1062_SERIES) || defined(MIMXRT1061_SERIES))
+static int zigbee_raw_packet_send(uint8_t *buf, int m_len)
+{
+	uint32_t payloadlen;
+	spi_frame_hdr *pspihdr;
+	zigBee_spinel_cmd_hdr *pspinelhdr;
+	int ret;
+
+	memset(spi_buff_tx, 0, SPI_DEFAULT_TX_BUFF_LENGTH);
+	memset(spi_buff_rx, 0, SPI_DEFAULT_RX_BUFF_LENGTH);
+
+	pspihdr = (spi_frame_hdr *)spi_buff_tx;
+
+	struct cmd_header *cmd_hd = (struct cmd_header *)(buf + sizeof(struct uart_header));
+
+	pspinelhdr = (zigBee_spinel_cmd_hdr *)(buf +
+			sizeof(struct uart_header) + sizeof(struct cmd_header));
+	payloadlen = sizeof(zigBee_spinel_cmd_hdr) + pspinelhdr->MFG_CMD_Payload_Length;
+
+	set_spi_frame_hdr(pspihdr, 0, 0, 0, payloadlen, payloadlen);
+
+	memcpy(spi_buff_tx + sizeof(spi_frame_hdr),
+			buf + sizeof(struct uart_header) + sizeof(struct cmd_header),
+			payloadlen);
+	memcpy(&last_cmd_hdr, cmd_hd, sizeof(struct cmd_header));
+
+	/* Use Zephyr SPI API for transfer */
+	struct spi_buf tx_buf = {
+		.buf = spi_buff_tx,
+		.len = SPI_DEFAULT_SMALL_PACKET_SIZE +
+			sizeof(spi_frame_hdr) + SPI_DEFAULT_ALIGN_ALLOWANCE
+	};
+	struct spi_buf rx_buf = {
+		.buf = spi_buff_rx,
+		.len = SPI_DEFAULT_SMALL_PACKET_SIZE +
+			sizeof(spi_frame_hdr) + SPI_DEFAULT_ALIGN_ALLOWANCE
+	};
+
+	const struct spi_buf_set tx_bufs = { .buffers = &tx_buf, .count = 1 };
+	const struct spi_buf_set rx_bufs = { .buffers = &rx_buf, .count = 1 };
+
+	ret = spi_transceive(spi_dev, &spi_cfg, &tx_bufs, &rx_bufs);
+	if (ret != 0) {
+		LOG_ERR("SPI transfer failed: %d", ret);
+		return -1;
+	}
+
+	memset(spi_buff_tx, 0, SPI_DEFAULT_TX_BUFF_LENGTH);
+	memset(spi_buff_rx, 0, SPI_DEFAULT_RX_BUFF_LENGTH);
+
+	return RET_TYPE_ZIGBEE;
+}
+#endif
+
 /*
  * process_input_cmd() sends command to the wlan
  * card
@@ -487,7 +650,7 @@ int process_input_cmd(uint8_t *buf, int m_len)
 		}
 #if defined(RW610_SERIES) || defined(RW612_SERIES)
 		wifi_send_imu_raw_data(local_outbuf,
-				       (m_len - sizeof(struct cmd_header) + INTF_HEADER_LEN));
+					   (m_len - sizeof(struct cmd_header) + INTF_HEADER_LEN));
 #endif
 		ret = RET_TYPE_WLAN;
 	} else if (cmd_hd->type == TYPE_BT) {
@@ -501,6 +664,8 @@ int process_input_cmd(uint8_t *buf, int m_len)
 	} else if (cmd_hd->type == TYPE_15_4) {
 #if defined(RW610_SERIES) || defined(RW612_SERIES)
 		ret = imumc_raw_packet_send(buf, m_len, RET_TYPE_ZIGBEE);
+#elif defined(MIMXRT1176_cm7_SERIES) || (defined(MIMXRT1062_SERIES) || defined(MIMXRT1061_SERIES))
+		ret = zigbee_raw_packet_send(buf, m_len);
 #endif
 	}
 
@@ -521,7 +686,7 @@ void send_imumc_response_to_uart(uint8_t *resp, int msg_len)
 
 	(void)memset(rx_buf, 0, BUF_LEN);
 	(void)memcpy(rx_buf + sizeof(struct uart_header) + sizeof(struct cmd_header), resp,
-		     payloadlen);
+			payloadlen);
 
 	/* Added to send correct cmd header len */
 	struct cmd_header *cmd_hdr;
@@ -530,7 +695,7 @@ void send_imumc_response_to_uart(uint8_t *resp, int msg_len)
 	cmd_hdr->length = payloadlen + sizeof(struct cmd_header);
 
 	(void)memcpy(rx_buf + sizeof(struct uart_header), (uint8_t *)&last_cmd_hdr,
-		     sizeof(struct cmd_header));
+			 sizeof(struct cmd_header));
 
 	uart_hdr = (struct uart_header *)rx_buf;
 	uart_hdr->length = payloadlen + sizeof(struct cmd_header);
@@ -548,7 +713,7 @@ void send_imumc_response_to_uart(uint8_t *resp, int msg_len)
 
 	/* write response to uart */
 	uart_rtos_send(&uart_handle, rx_buf,
-		       payloadlen + sizeof(struct cmd_header) + sizeof(struct uart_header) + 4);
+			   payloadlen + sizeof(struct cmd_header) + sizeof(struct uart_header) + 4);
 
 	(void)memset(rx_buf, 0, BUF_LEN);
 }
@@ -690,6 +855,47 @@ static void send_bt_response_to_uart(struct uart_cb *uart_bt, int msg_len)
 	memset(rx_buf, 0, BUF_LEN);
 }
 
+#if (defined(MIMXRT1062_SERIES) || defined(MIMXRT1061_SERIES))
+void send_zigbee_response_to_uart(uint8_t *rxData, uint32_t payloadlen)
+{
+	uint32_t bridge_chksum = 0;
+	int index;
+	struct uart_header *uart_hdr;
+	struct uart_cb *uart = &uartcb;
+
+	(void)memset(rx_buf, 0, BUF_LEN);
+	(void)memcpy(rx_buf + sizeof(struct uart_header) + sizeof(struct cmd_header),
+				rxData, payloadlen);
+
+	/* Set correct command header length */
+	struct cmd_header *cmd_hdr = &last_cmd_hdr;
+
+	cmd_hdr->length = payloadlen + sizeof(struct cmd_header);
+	(void)memcpy(rx_buf + sizeof(struct uart_header), (uint8_t *)&last_cmd_hdr,
+				sizeof(struct cmd_header));
+
+	uart_hdr = (struct uart_header *)rx_buf;
+	uart_hdr->length = payloadlen + sizeof(struct cmd_header);
+	uart_hdr->pattern = 0x5555;
+
+	/* Calculate CRC (exclude uart_header) */
+	bridge_chksum = uart_get_crc32(uart, uart_hdr->length,
+			rx_buf + sizeof(struct uart_header));
+	index = sizeof(struct uart_header) + uart_hdr->length;
+
+	rx_buf[index] = bridge_chksum & 0xff;
+	rx_buf[index + 1] = (bridge_chksum & 0xff00) >> 8;
+	rx_buf[index + 2] = (bridge_chksum & 0xff0000) >> 16;
+	rx_buf[index + 3] = (bridge_chksum & 0xff000000) >> 24;
+
+	/* Send response to UART */
+	uart_rtos_send(&uart_handle, rx_buf,
+				payloadlen + sizeof(struct cmd_header) +
+				sizeof(struct uart_header) + CHECKSUM_LEN);
+	(void)memset(rx_buf, 0, BUF_LEN);
+}
+#endif
+
 static void read_bt_resp(void)
 {
 	struct uart_cb *uart_bt = &uartcb_bt;
@@ -732,6 +938,116 @@ static void read_bt_resp(void)
 }
 #endif
 
+#if (defined(MIMXRT1062_SERIES) || defined(MIMXRT1061_SERIES))
+void read_zigbee_resp(void)
+{
+	spi_frame_hdr *pspihdr;
+	int ret;
+
+	memset(spi_buff_rx, 0, SPI_DEFAULT_RX_BUFF_LENGTH);
+	memset(spi_buff_tx, 0, SPI_DEFAULT_TX_BUFF_LENGTH);
+
+	uint8_t *start = spi_buff_rx;
+	const uint8_t *end = spi_buff_rx + SPI_DEFAULT_ALIGN_ALLOWANCE;
+	unsigned short payload_length = 0;
+
+	pspihdr = (spi_frame_hdr *)spi_buff_tx;
+	set_spi_frame_hdr(pspihdr, 0, 0, 0, 0, 0);
+
+	/* Use Zephyr SPI API */
+	struct spi_buf tx_buf = {
+		.buf = spi_buff_tx,
+		.len = SPI_DEFAULT_RX_DATA_SIZE
+	};
+	struct spi_buf rx_buf = {
+		.buf = spi_buff_rx,
+		.len = SPI_DEFAULT_RX_DATA_SIZE
+	};
+
+	const struct spi_buf_set tx_bufs = { .buffers = &tx_buf, .count = 1 };
+	const struct spi_buf_set rx_bufs = { .buffers = &rx_buf, .count = 1 };
+
+	ret = spi_transceive(spi_dev, &spi_cfg, &tx_bufs, &rx_bufs);
+	if (ret != 0) {
+		LOG_ERR("SPI receive failed: %d", ret);
+		return;
+	}
+
+	/* Skip alignment bytes to find valid frame header */
+	while (start != end && (start[0] == 0xFF || start[0] == 0x00)) {
+		start++;
+	}
+
+	payload_length = ((spi_frame_hdr *)start)->data_len;
+	start += sizeof(spi_frame_hdr);
+
+	send_zigbee_response_to_uart(start, payload_length);
+
+	memset(spi_buff_rx, 0, SPI_DEFAULT_RX_BUFF_LENGTH);
+	memset(spi_buff_tx, 0, SPI_DEFAULT_TX_BUFF_LENGTH);
+}
+#endif
+
+#if (defined(MIMXRT1062_SERIES) || defined(MIMXRT1061_SERIES))
+void ot_rcp_gpio_init(void)
+{
+	volatile uint32_t *gpr26_reg = (volatile uint32_t *)IOMUXC_GPR26_ADDR;
+	*gpr26_reg = (*gpr26_reg & ~GPIO_MUX1_GPIO_SEL_MASK) | GPIO_MUX1_GPIO_SEL(0x00U);
+	volatile uint32_t *gpr27_reg = (volatile uint32_t *)IOMUXC_GPR27_ADDR;
+	*gpr27_reg = (*gpr27_reg & ~GPIO_MUX2_GPIO_SEL_MASK) | GPIO_MUX2_GPIO_SEL(0x00U);
+
+	const struct device *gpio1 = DEVICE_DT_GET(DT_NODELABEL(gpio1));
+
+	if (!device_is_ready(gpio1)) {
+		return;
+	}
+	k_sleep(K_MSEC(10));
+	gpio_pin_set(gpio1, 19, 1);
+	gpio_pin_set(gpio1, 24, 1);
+	k_sleep(K_MSEC(200));
+}
+
+static int platform_i2c_send(const struct device *i2c_dev, uint8_t address,
+							uint8_t byte1, uint8_t byte2)
+{
+	uint8_t data[2] = {byte1, byte2};
+	int ret = i2c_write(i2c_dev, data, sizeof(data), address);
+
+	if (ret != 0) {
+		LOG_ERR("I2C write failed: %d", ret);
+		return ret;
+	}
+	return 0;
+}
+
+static int platform_io_expander_init(void)
+{
+	const struct device *i2c_dev;
+	int ret;
+
+	/* Get I2C device from device tree */
+	i2c_dev = DEVICE_DT_GET(I2C_NODE);
+	if (!device_is_ready(i2c_dev)) {
+		LOG_ERR("I2C device not ready");
+		return -ENODEV;
+	}
+
+	/* Wait for RCP chip startup */
+	k_sleep(K_MSEC(PLATFORM_CONFIG_DEFAULT_RESET_DELAY_MS));
+
+	/* Configure PCA9534 Configuration Register */
+	ret = platform_i2c_send(i2c_dev,
+						PLATFORM_IOEXP_I2C_ADDR_7BIT,
+						PLATFORM_IOEXP_CONFIGURATION_REG,
+						PLATFORM_IOEXP_CONFIGURATION_SPI_ENABLE);
+	if (ret != 0) {
+		LOG_ERR("Failed to configure IO Expander: %d", ret);
+		return ret;
+	}
+
+	return 0;
+}
+#endif
 /*
  * task_main() runs in a loop. It polls the uart ring buffer
  * checks it for a complete command and sends the command to the
@@ -765,6 +1081,26 @@ static void task_main(void)
 
 	assert(result == WM_SUCCESS);
 #endif
+
+#if (defined(MIMXRT1062_SERIES) || defined(MIMXRT1061_SERIES))
+	/* Waiting for the RCP chip starts up */
+	k_sleep(K_MSEC(PLATFORM_CONFIG_DEFAULT_RESET_DELAY_MS));
+
+	/* Configure IO Expander to enable SPI pins */
+	result = platform_io_expander_init();
+	if (result != 0) {
+		LOG_ERR("Failed to configure IO Expander: %d", result);
+		return;
+	}
+
+	/* Get SPI device from device tree */
+	spi_dev = DEVICE_DT_GET(SPI_NODE);
+	if (!device_is_ready(spi_dev)) {
+		LOG_ERR("SPI device not ready");
+		return;
+	}
+#endif
+
 #if defined(RW610_SERIES) || defined(RW612_SERIES)
 	/* Enable IMU/RPMSG IRQ */
 	IRQ_CONNECT(72, 1, WL_MCI_WAKEUP0_DriverIRQHandler, 0, 0);
@@ -885,7 +1221,14 @@ static void task_main(void)
 				}
 			} else if (ret == RET_TYPE_BT) {
 				read_bt_resp();
-			} else {
+			}
+#if (defined(MIMXRT1062_SERIES) || defined(MIMXRT1061_SERIES))
+			else if (ret == RET_TYPE_ZIGBEE) {
+				k_sleep(K_MSEC(60));
+				read_zigbee_resp();
+			}
+#endif
+			else {
 				/*unused*/
 			}
 #endif
@@ -902,6 +1245,9 @@ static void task_main(void)
 
 int main(void)
 {
+#if (defined(MIMXRT1062_SERIES) || defined(MIMXRT1061_SERIES))
+	ot_rcp_gpio_init();
+#endif
 	task_main();
 	return 0;
 }
