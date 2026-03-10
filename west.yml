@@ -45,7 +45,7 @@ manifest:
 
     - name: zephyr
       repo-path: nxp-zephyr
-      revision: fc1b77c0b97ed741ffec82e26c404297043bf482
+      revision: 3730bcda930902a04b430f3d38230e6a2c88a25d
       import:
         #
         # ZSDK imports the contents of nxp-zephyr/west.yml at the above
@@ -123,26 +123,26 @@ manifest:
     - name: mbedtls
       remote: nxp
       repo-path: nxp_mbedtls
-      revision: 0acd394228698278d8cff257340c20022d3b0c07
+      revision: b102439a8367685f21b050a2778a0c9b68b6cca5
       path: modules/crypto/mbedtls
       groups:
         - crypto
     - name: trusted-firmware-m
       remote: nxp
       repo-path: nxp_tf-m
-      revision: 3b3595f16523bf8ab1366c2c44f2f548acea61ec
+      revision: e972155e40a78f253c3f00977bb2c561e7ed936d
       path: modules/tee/tf-m/trusted-firmware-m
       groups:
         - tee
     - name: psa-arch-tests
       remote: nxp
       repo-path: nxp_psa_arch_test
-      revision: 227f44226c64471bc61767b9c69de75345c7602a
+      revision: 359b663e8a0196e434b4f67d59a9c99bc17ea895
       path: modules/tee/tf-m/psa-arch-tests
       groups:
         - tee
     - name: tf-m-tests
-      revision: a90702bcb8fadb6f70daf0ffbb13888dfe63fc99
+      revision: cde5b6ed540d3ff5a09564fded6b39b0a70ad3bf
       path: modules/tee/tf-m/tf-m-tests
       remote: zephyrproject
       groups:
@@ -164,7 +164,7 @@ manifest:
     - name: nxp_iot_agent
       remote: nxp
       repo-path: el2go-agent
-      revision: 9c48cee6f5d200b3977028cc79b53995de76fd7a
+      revision: b8a7b748523375b1b15959379ff7b9e9252fa33a
       path: modules/lib/nxp_iot_agent
     - name: freemaster
       remote: nxp-mcuxpresso
