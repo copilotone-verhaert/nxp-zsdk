@@ -149,7 +149,7 @@ manifest:
         - tee
     - name: hostap
       repo-path: hostap
-      revision: b37dc356c07d20e6ea72a42f2b65daa1be99d3c0
+      revision: 2a3553af9595db9612ad1c79d5764d498b2e2d13
       path: modules/lib/hostap
     - name: wifi_nxp
       remote: nxp
