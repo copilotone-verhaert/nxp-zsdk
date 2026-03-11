@@ -154,12 +154,12 @@ manifest:
     - name: wifi_nxp
       remote: nxp
       repo-path: wifi_nxp
-      revision: ee645888fedd365667b82beb63ceb5814351ea41
+      revision: 73398af8874849174d65f301c385a2f14ccdade0
       path: modules/hal/nxp/mcux/middleware/wifi_nxp
     - name: wifi_nb_fw
       remote: nxp
       repo-path: wifi_nb_fw
-      revision: bc92990d2b8cc4dc6ebcf81365a07152fb4bbe4a
+      revision: 6c2965a177c35a702303d2d3865da1c286a6898d
       path: modules/hal/nxp/zephyr/blobs/
     - name: nxp_iot_agent
       remote: nxp
