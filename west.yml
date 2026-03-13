@@ -149,7 +149,7 @@ manifest:
         - tee
     - name: hostap
       repo-path: hostap
-      revision: 2a3553af9595db9612ad1c79d5764d498b2e2d13
+      revision: 9640954210653f912d3eadffbf551d1fb06027ec
       path: modules/lib/hostap
     - name: wifi_nxp
       remote: nxp
@@ -159,7 +159,7 @@ manifest:
     - name: wifi_nb_fw
       remote: nxp
       repo-path: wifi_nb_fw
-      revision: 6c2965a177c35a702303d2d3865da1c286a6898d
+      revision: ac03a27d3ebe4e0e31151c06825b4b436201504c
       path: modules/hal/nxp/zephyr/blobs/
     - name: nxp_iot_agent
       remote: nxp
