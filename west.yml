@@ -88,6 +88,10 @@ manifest:
           - zcbor
           - zscilib
           - openthread
+          - mbedtls
+          - mldsa-native
+          - mbedtls-3.6
+          - tf-psa-crypto
 
     # For internal NXP development support
     - name: bifrost
@@ -113,20 +117,20 @@ manifest:
       path: modules/crypto/els_pkc
       groups:
         - crypto
-    - name: psa_crypto_driver
-      remote: nxp
-      repo-path: psa_crypto_driver
-      revision: b88de1723368db49ac66907347559404c87e1bd3
-      path: modules/crypto/psa_crypto_driver
-      groups:
-        - crypto
-    - name: mbedtls
-      remote: nxp
-      repo-path: nxp_mbedtls
-      revision: b102439a8367685f21b050a2778a0c9b68b6cca5
-      path: modules/crypto/mbedtls
-      groups:
-        - crypto
+    # - name: psa_crypto_driver
+    #   remote: nxp
+    #   repo-path: psa_crypto_driver
+    #   revision: b88de1723368db49ac66907347559404c87e1bd3
+    #   path: modules/crypto/psa_crypto_driver
+    #   groups:
+    #     - crypto
+    # - name: mbedtls
+    #   remote: nxp
+    #   repo-path: nxp_mbedtls
+    #   revision: b102439a8367685f21b050a2778a0c9b68b6cca5
+    #   path: modules/crypto/mbedtls
+    #   groups:
+    #     - crypto
     - name: trusted-firmware-m
       remote: nxp
       repo-path: nxp_tf-m
