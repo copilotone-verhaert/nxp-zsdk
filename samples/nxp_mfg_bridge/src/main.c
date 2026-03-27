@@ -90,17 +90,6 @@ LOG_MODULE_REGISTER(mfg_bridge, LOG_LEVEL_ERR);
 #define WIFI_WRITE_REG16(reg, val) (WIFI_REG16(reg) = (val))
 #define WIFI_WRITE_REG32(reg, val) (WIFI_REG32(reg) = (val))
 
-/* Set default mode of fw download */
-#ifndef CONFIG_SUPPORT_WIFI
-#define CONFIG_SUPPORT_WIFI
-#endif
-#ifndef CONFIG_SUPPORT_BLE
-#define CONFIG_SUPPORT_BLE
-#endif
-#ifndef SUPPORT_IEEE802154
-#define SUPPORT_IEEE802154
-#endif
-
 #define WLAN_FW_WAKE_STATUS_ADDR     (0x40031068U)
 
 enum {
