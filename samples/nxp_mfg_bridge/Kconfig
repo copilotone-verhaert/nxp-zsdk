@@ -1,6 +1,9 @@
 # Copyright 2022-2024 NXP
 # SPDX-License-Identifier: Apache-2.0
 
+config NXP_MONOLITHIC_WIFI
+	bool "Support WIFI monolithic"
+
 config SUPPORT_IEEE802154
 	bool "Support IEEE 802154"
 	imply NXP_MONOLITHIC_NBU
