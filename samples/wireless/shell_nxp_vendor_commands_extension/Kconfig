@@ -1,0 +1,26 @@
+# SPDX-License-Identifier: Apache-2.0
+
+config SHELL_NXP_VENDOR_COMMANDS_EXTENSION
+bool "NXP Vendor Commands for OpenThread Shell (Extension-based)"
+default y
+depends on OPENTHREAD_SHELL
+help
+	Enable NXP vendor-specific commands for OpenThread CLI using
+	the official OpenThread Extension mechanism (no Zephyr patch required).
+
+	Provides commands:
+	- ot radio_nxp <subcommand>
+	- ot seteui64 <eui64>
+	- ot txpwrlimit [<limit> [enableRFCH26Clamp|disableRFCH26Clamp]]
+
+if SHELL_NXP_VENDOR_COMMANDS_EXTENSION
+
+config NXP_VENDOR_COMMANDS_LOG_LEVEL
+int "NXP Vendor Commands Log Level"
+default 3
+range 0 4
+help
+	Set the log level for NXP vendor commands module.
+	0 = OFF, 1 = ERR, 2 = WRN, 3 = INF, 4 = DBG
+
+endif # SHELL_NXP_VENDOR_COMMANDS_EXTENSION
