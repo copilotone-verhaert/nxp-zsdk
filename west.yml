@@ -90,7 +90,6 @@ manifest:
           - openthread
           - mbedtls
           - mldsa-native
-          - mbedtls-3.6
           - tf-psa-crypto
 
     # For internal NXP development support
@@ -117,24 +116,24 @@ manifest:
       path: modules/crypto/els_pkc
       groups:
         - crypto
-    # - name: psa_crypto_driver
-    #   remote: nxp
-    #   repo-path: psa_crypto_driver
-    #   revision: b88de1723368db49ac66907347559404c87e1bd3
-    #   path: modules/crypto/psa_crypto_driver
-    #   groups:
-    #     - crypto
-    # - name: mbedtls
-    #   remote: nxp
-    #   repo-path: nxp_mbedtls
-    #   revision: b102439a8367685f21b050a2778a0c9b68b6cca5
-    #   path: modules/crypto/mbedtls
-    #   groups:
-    #     - crypto
+    - name: psa_crypto_driver
+      remote: nxp
+      repo-path: psa_crypto_driver
+      revision: b88de1723368db49ac66907347559404c87e1bd3
+      path: modules/crypto/psa_crypto_driver
+      groups:
+        - crypto
+    - name: mbedtls-3.6
+      remote: nxp
+      repo-path: nxp_mbedtls
+      revision: 1962f2fb0d9f90d54b5722456bf2c9d1b00fb712
+      path: modules/crypto/mbedtls-3.6
+      groups:
+        - crypto
     - name: trusted-firmware-m
       remote: nxp
       repo-path: nxp_tf-m
-      revision: ede91285c58839945ee02843cddcd2152fc8deda
+      revision: 052570ec1a0fb1cb9f1eecdd5448fd5e68726043
       path: modules/tee/tf-m/trusted-firmware-m
       groups:
         - tee
