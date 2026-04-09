@@ -45,7 +45,7 @@ manifest:
 
     - name: zephyr
       repo-path: nxp-zephyr
-      revision: a62038378a751b006aaac83e6d86524cac764901
+      revision: f6e6e0a5e13c69853ce7db3816f4cf4ff7750343
       import:
         #
         # ZSDK imports the contents of nxp-zephyr/west.yml at the above
@@ -90,13 +90,12 @@ manifest:
           - openthread
           - mbedtls
           - mldsa-native
-          - tf-psa-crypto
 
     # For internal NXP development support
     - name: bifrost
       west-commands: scripts/west_commands.yml
       repo-path: bifrost
-      revision: d50c2636540cae9f933d77095e29d5ff093c61cc
+      revision: 7d8ee3d19939fa295610bc016b4e14835f5cbc7d
       groups:
         - bifrost
 
@@ -105,22 +104,36 @@ manifest:
     # added modules
     #
     - name: hal_nxp
-      revision: 40d874493d2a952d9890e02fb970cb63db021282
+      revision: f5d0e60935cf7c75e31cd995e7de6585f79f4ec5
       path: modules/hal/nxp
       groups:
         - hal
     - name: els_pkc
       remote: nxp
       repo-path: els_pkc
-      revision: 71d4a89c03fb32e618ee02c0cd54b3fc92736c96
+      revision: c37a05831caf542ff240c3cb6a54da469d5e3c57
       path: modules/crypto/els_pkc
+      groups:
+        - crypto
+    - name: sgi_pkc
+      remote: nxp-mcuxpresso
+      repo-path: sgi_pkc
+      revision: 28d6f94ea75f602ed3847ed02e37874c70bcd743
+      path: modules/crypto/sgi_pkc
       groups:
         - crypto
     - name: psa_crypto_driver
       remote: nxp
       repo-path: psa_crypto_driver
-      revision: b88de1723368db49ac66907347559404c87e1bd3
+      revision: 2061a81bd327cfc2087b3f5fac59be002af81cb4
       path: modules/crypto/psa_crypto_driver
+      groups:
+        - crypto
+    - name: tf-psa-crypto
+      remote: nxp-mcuxpresso
+      repo-path: tf-psa-crypto
+      revision: 55b5cb24a82f294c7ec6391976f4e2bc7f1e1558
+      path: modules/crypto/tf-psa-crypto
       groups:
         - crypto
     - name: mbedtls-3.6
@@ -133,7 +146,7 @@ manifest:
     - name: trusted-firmware-m
       remote: nxp
       repo-path: nxp_tf-m
-      revision: 052570ec1a0fb1cb9f1eecdd5448fd5e68726043
+      revision: b519ef2e5b8a4c83c9d822d33c8ca9605e82987f
       path: modules/tee/tf-m/trusted-firmware-m
       groups:
         - tee

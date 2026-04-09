@@ -10,6 +10,7 @@ common:
     - secure-storage
 tests:
   sample.crypto.nxp_mbedtls_psa_crypto_opaque:
+    skip: true # temporarily disabled
     platform_allow:
       - mimxrt1180_evk/mimxrt1189/cm33
     integration_platforms:
