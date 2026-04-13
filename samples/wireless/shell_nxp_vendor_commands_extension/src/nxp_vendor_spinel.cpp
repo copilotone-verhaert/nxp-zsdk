@@ -6,12 +6,19 @@
 #include "nxp_vendor_types.h"
 #include "nxp_vendor_spinel.h"
 
-#include <zephyr/logging/log.h>
+#include <openthread/logging.h>
 #include <lib/spinel/radio_spinel.hpp>
 #include <lib/spinel/spinel_decoder.hpp>
 #include <string.h>
 
-LOG_MODULE_REGISTER(nxp_vendor_spinel, LOG_LEVEL_DBG);
+// Define log macros using OpenThread logging
+#define LOG_MODULE_NAME "nxp_vendor_spinel"
+#define LOG_CRIT(fmt, ...) otLogCritPlat("[" LOG_MODULE_NAME "] " fmt, ##__VA_ARGS__)
+#define LOG_WRN(fmt, ...) otLogWarnPlat("[" LOG_MODULE_NAME "] " fmt, ##__VA_ARGS__)
+#define LOG_INF(fmt, ...) otLogInfoPlat("[" LOG_MODULE_NAME "] " fmt, ##__VA_ARGS__)
+#define LOG_DBG(fmt, ...) otLogDebgPlat("[" LOG_MODULE_NAME "] " fmt, ##__VA_ARGS__)
+#define LOG_HEXDUMP_DBG(data, len, msg) otDumpDebgPlat(msg, data, len)
+#define LOG_HEXDUMP_INF(data, len, msg) otDumpInfoPlat(msg, data, len)
 
 using namespace ot::Spinel;
 
@@ -25,7 +32,7 @@ static RadioSpinel *GetRadioSpinel(void)
     RadioSpinel *radioSpinel = static_cast<RadioSpinel *>(platformGetRadioSpinel());
 
     if (radioSpinel == nullptr) {
-        LOG_ERR("RadioSpinel not available");
+        LOG_CRIT("RadioSpinel not available");
     }
 
     return radioSpinel;
@@ -48,7 +55,7 @@ extern "C" otError nxp_vendor_spinel_get_utf8(spinel_prop_key_t aPropKey, char *
     otError error = radioSpinel->Get(aPropKey, SPINEL_DATATYPE_UTF8_S, aBuffer, aBufferSize);
 
     if (error != OT_ERROR_NONE) {
-        LOG_ERR("GET UTF8 0x%04x failed: %d", aPropKey, error);
+        LOG_CRIT("GET UTF8 0x%04x failed: %d", aPropKey, error);
     }
 
     return error;
@@ -66,7 +73,7 @@ extern "C" otError nxp_vendor_spinel_get_int8(spinel_prop_key_t aPropKey, int8_t
     otError error = radioSpinel->Get(aPropKey, SPINEL_DATATYPE_INT8_S, aValue);
 
     if (error != OT_ERROR_NONE) {
-        LOG_ERR("GET INT8 0x%04x failed: %d", aPropKey, error);
+        LOG_CRIT("GET INT8 0x%04x failed: %d", aPropKey, error);
     }
 
     return error;
@@ -84,7 +91,7 @@ extern "C" otError nxp_vendor_spinel_get_uint8(spinel_prop_key_t aPropKey, uint8
     otError error = radioSpinel->Get(aPropKey, SPINEL_DATATYPE_UINT8_S, aValue);
 
     if (error != OT_ERROR_NONE) {
-        LOG_ERR("GET UINT8 0x%04x failed: %d", aPropKey, error);
+        LOG_CRIT("GET UINT8 0x%04x failed: %d", aPropKey, error);
     }
 
     return error;
@@ -102,7 +109,7 @@ extern "C" otError nxp_vendor_spinel_get_uint16(spinel_prop_key_t aPropKey, uint
     otError error = radioSpinel->Get(aPropKey, SPINEL_DATATYPE_UINT16_S, aValue);
 
     if (error != OT_ERROR_NONE) {
-        LOG_ERR("GET UINT16 0x%04x failed: %d", aPropKey, error);
+        LOG_CRIT("GET UINT16 0x%04x failed: %d", aPropKey, error);
     }
 
     return error;
@@ -147,7 +154,7 @@ extern "C" otError nxp_vendor_spinel_set_int8(spinel_prop_key_t aPropKey, int8_t
     otError error = radioSpinel->Set(aPropKey, SPINEL_DATATYPE_INT8_S, aValue);
 
     if (error != OT_ERROR_NONE) {
-        LOG_ERR("SET INT8 0x%04x failed: %d", aPropKey, error);
+        LOG_CRIT("SET INT8 0x%04x failed: %d", aPropKey, error);
     }
 
     return error;
@@ -165,7 +172,7 @@ extern "C" otError nxp_vendor_spinel_set_uint8(spinel_prop_key_t aPropKey, uint8
     otError error = radioSpinel->Set(aPropKey, SPINEL_DATATYPE_UINT8_S, aValue);
 
     if (error != OT_ERROR_NONE) {
-        LOG_ERR("SET UINT8 0x%04x failed: %d", aPropKey, error);
+        LOG_CRIT("SET UINT8 0x%04x failed: %d", aPropKey, error);
     }
 
     return error;
@@ -183,7 +190,7 @@ extern "C" otError nxp_vendor_spinel_set_data(spinel_prop_key_t aPropKey, const 
     otError error = radioSpinel->Set(aPropKey, SPINEL_DATATYPE_DATA_S, aData, aDataLen);
 
     if (error != OT_ERROR_NONE) {
-        LOG_ERR("SET DATA 0x%04x failed: %d", aPropKey, error);
+        LOG_CRIT("SET DATA 0x%04x failed: %d", aPropKey, error);
     }
 
     return error;
@@ -199,7 +206,7 @@ extern "C" otError otPlatRadioMfgCommand( const uint8_t *aPayload, uint16_t aPay
     RadioSpinel *radioSpinel = GetRadioSpinel();
 
     if (radioSpinel == nullptr || aPayload == nullptr || aResponse == nullptr || aResponseLen == nullptr) {
-        LOG_ERR("Invalid arguments");
+        LOG_CRIT("Invalid arguments");
         return OT_ERROR_INVALID_ARGS;
     }
 
@@ -215,7 +222,7 @@ extern "C" otError otPlatRadioMfgCommand( const uint8_t *aPayload, uint16_t aPay
                                    aPayload, aPayloadLen);
 
     if (packed <= 0) {
-        LOG_ERR("Failed to pack MFG payload");
+        LOG_CRIT("Failed to pack MFG payload");
         return OT_ERROR_FAILED;
     }
 
@@ -236,7 +243,7 @@ extern "C" otError otPlatRadioMfgCommand( const uint8_t *aPayload, uint16_t aPay
         LOG_INF("MFG command response len=%u", responseLen);
         LOG_HEXDUMP_DBG(aResponse, responseLen, "MFG response:");
     } else {
-        LOG_ERR("MFG command failed: %d", error);
+        LOG_CRIT("MFG command failed: %d", error);
     }
 
     return error;
@@ -251,7 +258,7 @@ extern "C" otError otPlatRadioCcaConfigValue(spinel_prop_key_t aPropKey, otCCAMo
     RadioSpinel *radioSpinel = GetRadioSpinel();
 
     if (radioSpinel == nullptr || aCcaCfg == nullptr) {
-        LOG_ERR("Invalid arguments");
+        LOG_CRIT("Invalid arguments");
         return OT_ERROR_INVALID_ARGS;
     }
 
@@ -285,7 +292,7 @@ extern "C" otError otPlatRadioCcaConfigValue(spinel_prop_key_t aPropKey, otCCAMo
             LOG_INF("  cca2corr=%u (0x%02x)", cca2corr, cca2corr);
             LOG_INF("  cca2min=%u (0x%02x)", cca2min, cca2min);
         } else {
-            LOG_ERR("Failed to GET CCA config: %d", error);
+            LOG_CRIT("Failed to GET CCA config: %d", error);
         }
     } else {
         // SET - WITH STRUCT wrapper
@@ -310,7 +317,7 @@ extern "C" otError otPlatRadioCcaConfigValue(spinel_prop_key_t aPropKey, otCCAMo
         if (error == OT_ERROR_NONE) {
             LOG_INF("SET CCA config success");
         } else {
-            LOG_ERR("SET CCA config failed: %d", error);
+            LOG_CRIT("SET CCA config failed: %d", error);
         }
     }
 
@@ -358,7 +365,7 @@ extern "C" otError otPlatRadioSetTxPowerLimit(uint8_t aTxPowerLimit, bool aEnabl
     // Validate range
     uint8_t powerValue = aTxPowerLimit & 0x7F;
     if (powerValue < 1 || powerValue > 20) {
-        LOG_ERR("TX power limit out of range (1-20): %u", powerValue);
+        LOG_CRIT("TX power limit out of range (1-20): %u", powerValue);
         return OT_ERROR_INVALID_ARGS;
     }
 
@@ -379,7 +386,7 @@ extern "C" otError otPlatRadioSetTxPowerLimit(uint8_t aTxPowerLimit, bool aEnabl
     if (error == OT_ERROR_NONE) {
         LOG_INF("TX power limit set successfully");
     } else {
-        LOG_ERR("Failed to set TX power limit: %d", error);
+        LOG_CRIT("Failed to set TX power limit: %d", error);
     }
 
     return error;
@@ -411,7 +418,7 @@ extern "C" otError otPlatRadioGetTxPowerLimit(uint8_t *aTxPowerLimit, bool *aEna
         LOG_INF("  CH26 clamp: %s", *aEnableCh26Clamp ? "enabled" : "disabled");
         LOG_INF("  Raw: 0x%02x", encodedValue);
     } else {
-        LOG_ERR("Failed to get TX power limit: %d", error);
+        LOG_CRIT("Failed to get TX power limit: %d", error);
     }
 
     return error;
@@ -443,7 +450,7 @@ extern "C" otError otPlatRadioSetEui64(const uint8_t *aEui64)
     if (error == OT_ERROR_NONE) {
         LOG_INF("EUI64 set successfully");
     } else {
-        LOG_ERR("Failed to set EUI64: %d", error);
+        LOG_CRIT("Failed to set EUI64: %d", error);
     }
 
     return error;

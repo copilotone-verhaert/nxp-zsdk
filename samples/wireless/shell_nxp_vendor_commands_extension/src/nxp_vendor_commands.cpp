@@ -95,7 +95,8 @@ otError NxpVendorCommands::ParseInteger(const char *aString, uint8_t *aValue)
         }
     }
 
-    if (*endPtr != '\0' || value < 0 || value > 255) {
+    // Accept signed values (-128 to 127)
+    if (*endPtr != '\0' || value < -128 || value > 127) {
         return OT_ERROR_INVALID_ARGS;
     }
 
@@ -695,7 +696,7 @@ otError NxpVendorCommands::ProcessMfgCmd(uint8_t aArgsLength, char *aArgs[])
         error = MfgContinuousCCA(aArgsLength, aArgs);
         break;
 
-    case MFG_CMD_GET_CCA_STATUS+1: // Get CCA status
+    case MFG_CMD_GET_CCA_STATUS: // Get CCA status
         error = MfgGetInt8(MFG_CMD_GET_CCA_STATUS);
         break;
 
@@ -1045,7 +1046,7 @@ otError NxpVendorCommands::MfgGenericCommand(uint8_t aArgsLength, char *aArgs[])
     static uint8_t payload[256];
     static uint8_t response[256];
 
-    uint8_t payloadLen = sizeof(payload);
+    uint8_t payloadLen = sizeof(payload)-1;
     otError error = ParseHexString(aArgs[1], payload, &payloadLen);
 
     if (error != OT_ERROR_NONE) {

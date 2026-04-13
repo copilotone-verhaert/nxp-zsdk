@@ -158,14 +158,33 @@ Commands are automatically registered at boot using Zephyr's `SYS_INIT` mechanis
   # Start unmodulated CW TX
   ot radio_nxp mfgcmd 18 0
 
+  # Set TX Payload size (e.g. 17 to 116)
+  ot radio_nxp mfgcmd 21 116
+  # Get TX power
+  ot radio_nxp mfgcmd 20
+
   # Start continuous RX
-  ot radio_nxp mfgcmd 30 1
+  ot radio_nxp mfgcmd 32 1
 
   # Get RX statistics
   ot radio_nxp mfgcmd 31
 
-  # Continuous wave test
-  ot radio_nxp mfgcmd 40 1
+  # Start Burst TX
+  ot radio_nxp mfgcmd 33 1 10
+
+  # Duty cycle (1:disable 0:enable)
+  ot radio_nxp mfgcmd 35 1
+
+  # Set CCA Threshold (e.g. -110dBm to 0)
+  ot radio_nxp mfgcmd 48 1
+  # Get CCA Threshold
+  ot radio_nxp mfgcmd 47
+
+  # Continuous CCA test
+  # 1:disable 0:enable
+  # CCA Mode: 1:CCA Mode1 2:CCA Mode2 3:CCA Mode3_AND_c 4:CCA Mode3_OR_c
+  ot radio_nxp mfgcmd 49 1 2
+  ot radio_nxp mfgcmd 49 0 2
 
   # Get CCA status
   ot radio_nxp mfgcmd 50
@@ -177,17 +196,24 @@ Commands are automatically registered at boot using Zephyr's `SYS_INIT` mechanis
   ot radio_nxp mfgcmd 56
 
   # PHY TX test PSDU (count, gap, ack)
-  ot radio_nxp mfgcmd 57 100 10 1
+  # (Count Option=0) (Packet Gap=6) (ACK Request Enable=0)
+  # Count Option: 0= 1 packet,    1= 25 Packets,   2= 100 Packets
+  #                   3= 500 packet,  4= 1000 Packets, 5= 2000 Packets
+  #                   6= 5000 packet, 7= 10000 Packets
+  #     Packet Gap: Must be > 5ms
+  #     (AckReq=0) 0: Disable  MAC ACK request, 1: Enable MAC ACK request
+  #             Example: 57 2 10 0
+  ot radio_nxp mfgcmd 57 2 10 0
 
-  # PHY RX/TX ACK test
+  # PHY RX/TX ACK test (1:disable 0:enable)
   ot radio_nxp mfgcmd 58 1
 
   # Set generic parameters (seq, pan, dst, src)
   ot radio_nxp mfgcmd 59 0x01 0x1234 0xFFFF 0x0001
 
-  # Get/Set latency
+  # Get/Set latency <get|set> [state] [tx_rx_toggle] [gpio] [panid_msb] [panid_lsb]
   ot radio_nxp mfgcmd 60 0
-  ot radio_nxp mfgcmd 60 1 <latency_us>
+  ot radio_nxp mfgcmd 60 1 1 3 0x1234 0xFFFF
 
   # Crash simulation (for testing)
   ot radio_nxp mfgcmd 72
