@@ -195,7 +195,7 @@ Commands are automatically registered at boot using Zephyr's `SYS_INIT` mechanis
   # Get ED value
   ot radio_nxp mfgcmd 56
 
-  # PHY TX test PSDU (count, gap, ack)
+  # PHY TX test PSDU
   # (Count Option=0) (Packet Gap=6) (ACK Request Enable=0)
   # Count Option: 0= 1 packet,    1= 25 Packets,   2= 100 Packets
   #                   3= 500 packet,  4= 1000 Packets, 5= 2000 Packets
