@@ -125,7 +125,7 @@ manifest:
     - name: psa_crypto_driver
       remote: nxp
       repo-path: psa_crypto_driver
-      revision: 2061a81bd327cfc2087b3f5fac59be002af81cb4
+      revision: 9b3503b394652eeac35379e5ccc9c879ed7929ab
       path: modules/crypto/psa_crypto_driver
       groups:
         - crypto
@@ -139,14 +139,14 @@ manifest:
     - name: mbedtls-3.6
       remote: nxp
       repo-path: nxp_mbedtls
-      revision: 1962f2fb0d9f90d54b5722456bf2c9d1b00fb712
+      revision: eeb4a0cae0e2d8157a6018f5a0170e2bdce49c88
       path: modules/crypto/mbedtls-3.6
       groups:
         - crypto
     - name: trusted-firmware-m
       remote: nxp
       repo-path: nxp_tf-m
-      revision: 12b25beb8b6dac97b1414c17b6b97478ce166722
+      revision: 90f58fea5460ee48b15f228fada3dccf867a60ab
       path: modules/tee/tf-m/trusted-firmware-m
       groups:
         - tee
