@@ -1,8 +1,8 @@
 [Index page](../getting-started-iw610-imxrt1060.md)
 
-# Run Bluetooth shell example
+# Run a Bluetooth shell example
 
-Ensure the Bluetooth shell example is flashed onto the IW610 module and i.MX RT1060 EVKC board. Refer to [Build and flash examples](build_and_flash_examples.md).
+Ensure that the Bluetooth shell example is flashed onto the IW610 module and i.MX RT1060 EVKC board. Refer to [Build and flash examples](build_and_flash_examples.md).
 
 This section describes how to initialize Bluetooth and scan to list the nearby devices.
 
@@ -36,7 +36,7 @@ Sample output:
 
 ![](../images/sample-output-bt-scan-on.png)
 
-Command to connect
+Command to connect:
 
 ```
 bt connect <address> <type>
@@ -45,7 +45,7 @@ bt connect <address> <type>
 |Parameter|Description|
 |---------|-----------|
 |`address`|The MAC address of the remote device|
-|`type`|Address type of the remote device<br> public = public device address<br> random = random device address|
+|`type`|Address the type of the remote device<br> public = public device address<br> random = random device address|
 
 Sample output:
 

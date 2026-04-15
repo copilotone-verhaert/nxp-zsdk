@@ -2,17 +2,17 @@
 
 # Hardware setup
 
-This section details the hardware setup required to bring up Murata 2EL M.2 \(IW612\) and i.MX RT1060 EVKC running Zephyr OS. This includes the required rework and connections.
+This section details the hardware setup required to bring up Murata 2EL M.2 \(IW612\) and i.MX RT1060 EVKC running Zephyr OS. It includes the required rework and connections.
 
 ## Hardware requirements
 
 - MIMXRT1060-EVKC board
 - Murata 2EL M.2 Adapter Module \(NXP IW612-based solution\)
-- Micro-USB to USB-A cable
-- External 5V power supply with power jack male connector
+- micro-USB to USB-A cable
+- External 5 V power supply with power jack male connector
 - Laptop/PC \(check the software setup for OS detail\)
 
-**Note:** Murata 2EK M.2. requires an external power supply as USB power supply of i.MX RT1060 EVKC is not sufficient.
+**Note:** Murata 2EK M.2 requires an external power supply as the USB power supply of i.MX RT1060 EVKC is not sufficient.
 ![](../images/hardware-setup.jpg)
 ## Hardware rework
 
@@ -26,7 +26,7 @@ To enable UART and PCM interface over M.2 on i.MX RT1060 EVKC, some hardware rew
 
 **PCM interface rework**
 
-1.Remove J54 and J55, connect J56 and J57
+1.Remove J54 and J55, connect J56, and J57
 2.Remove R220
 3.Connect J103
 

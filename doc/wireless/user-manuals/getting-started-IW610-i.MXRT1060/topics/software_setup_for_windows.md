@@ -1,12 +1,12 @@
 [Index page](../getting-started-iw610-imxrt1060.md) \| [Software setup](../topics/software_setup.md)
 
-# Software setup for Windows
+# Software setup for Windows (CLI)
 
 ## Install dependencies for Windows
 
-The following commands must be executed in command prompt (cmd.exe) as Administrator. For Windows 10 and later, it is recommended to install the Windows Terminal application from the Microsoft Store.
+The following commands must be executed in the command prompt (cmd.exe) as administrator. For Windows 10 and later, it is recommended to install the Windows Terminal application from the Microsoft Store.
 
-**Note:** The commands differ on PowerShell than cmd.exe.
+**Note:** The commands differ in PowerShell from cmd.exe.
 
 Step 1 - Install Chocolatey package manager.
 
@@ -28,7 +28,7 @@ choco install ninja gperf python311 git dtc-msys2 wget 7zip strawberryperl
 
 LinkServer utility provides firmware updates to devices with MCU-Link architecture \(i.MX RT1060 EVKC\). The utility is also used to debug.
 
-Step 1 - Download the LinkServer utility for Windows
+Step 1 - Download the LinkServer utility for Windows.
 
 Link: [LinkServer for Microcontrollers \| NXP Semiconductors](https://www.nxp.com/design/design-center/software/development-software/mcuxpresso-software-and-tools-/linkserver-for-microcontrollers:LINKERSERVER)
 
@@ -40,9 +40,9 @@ Linkserver is installed at *C:\\NXP\\LinkServer\_&lt;version number&gt;*. The pa
 
 The serial console tool is used to read out the demo application logs or to access the command prompt of the application on the computer connected to i.MX RT EVK board.
 
-Download and install the terminal emulator software such as [Tera Term](https://teratermproject.github.io/index-en.html) or [Putty](https://www.putty.org/).
+Download and install the terminal emulator software, such as [Tera Term](https://teratermproject.github.io/index-en.html) or [Putty](https://www.putty.org/).
 
-TeraTerm and Putty application in Windows use following setting for serial console access.
+TeraTerm and Putty application in Windows use the following setting for serial console access.
 
 ![](../images/serial-port-setup.png)
 
@@ -50,9 +50,9 @@ TeraTerm and Putty application in Windows use following setting for serial conso
 
 ## Get Zephyr and install Python dependencies for Windows
 
-This section includes the commands to clone Zephyr downstream and its [modules](https://docs.zephyrproject.org/latest/develop/modules.html) into a new [west](https://docs.zephyrproject.org/latest/develop/west/index.html) workspace. In this section, *zephyrproject* is the name of the workspace. Any name and location can be used.
+This section includes the commands to clone Zephyr downstream and its [modules](https://docs.zephyrproject.org/latest/develop/modules.html) into a new [West](https://docs.zephyrproject.org/latest/develop/west/index.html) workspace. In this section, *zephyrproject* is the name of the workspace. Any name and location can be used.
 
-Step 1 - Open a `cmd.exe` terminal window as regular user
+Step 1 - Open a `cmd.exe` terminal window as regular user.
 
 Step 2 - Create a new virtual environment.
 
@@ -94,7 +94,7 @@ pip install -r zephyr\scripts\requirements.txt
 ```
 ## Install the Zephyr SDK
 
-The Zephyr software development kit \(SDK\) contains toolchains for each Zephyr supported architecture, including a compiler, assembler, linker and other programs required to build Zephyr applications.
+The Zephyr software development kit \(SDK\) contains toolchains for each Zephyr-supported architecture, including a compiler, assembler, linker, and other programs required to build Zephyr applications.
 
 Step 1 - Install the Zephyr SDK.
 

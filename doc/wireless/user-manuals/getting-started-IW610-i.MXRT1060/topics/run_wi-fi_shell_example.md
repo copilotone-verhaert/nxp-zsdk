@@ -2,7 +2,7 @@
 
 # Run Wi-Fi shell example
 
-Ensure the Wi-Fi shell example is flashed onto the IW610 module and i.MX RT1060 EVKC board. Refer to [Build and flash examples](build_and_flash_examples.md).
+Ensure that the Wi-Fi shell example is flashed onto the IW610 module and i.MX RT1060 EVKC board. Refer to [Build and flash examples](build_and_flash_examples.md).
 
 This section describes how to configure the access point \(AP mode\) and the connection with the access point \(STA mode\).
 
@@ -72,7 +72,7 @@ Sample output:
 
 ## AP configuration in open mode
 
-Command to bring up the access point in open security mode:
+Command to bring up the access point in Open security mode:
 
 ```
 wifi ap enable -s <ssid> -c <channel number>

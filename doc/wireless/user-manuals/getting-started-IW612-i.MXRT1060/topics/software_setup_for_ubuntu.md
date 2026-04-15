@@ -2,7 +2,7 @@
 
 # Software setup for Ubuntu
 
-**Note:** It is recommended to use Ubuntu version 22.04 LTS or later.
+**Note:** Use Ubuntu version 22.04 LTS or later.
 
 ## Install the dependencies for Ubuntu
 

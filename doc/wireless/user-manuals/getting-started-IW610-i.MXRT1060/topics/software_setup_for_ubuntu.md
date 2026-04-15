@@ -2,7 +2,7 @@
 
 # Software setup for Ubuntu
 
-**Note:** It is recommended to use Ubuntu version 22.04 LTS or later.
+**Note:** Use Ubuntu version 22.04 LTS or later.
 
 ## Install the dependencies for Ubuntu
 
@@ -39,9 +39,9 @@ cmake --version
 python3 --version
 dtc –version
 ```
-## Install Linkserver utility
+## Install LinkServer utility
 
-LinkServer utility provides firmware updates to devices with MCU-Link architecture \(i.MX RT1060 EVKC\). The utility is used also to debug.
+LinkServer utility provides firmware updates to devices with MCU-Link architecture \(i.MX RT1060 EVKC\). The utility is also used to debug.
 
 Step 1 - Download the LinkServer utility for Ubuntu.
 
@@ -77,9 +77,9 @@ Serial Port Setup:
 ```
 ## Get Zephyr and install Python dependencies for Ubuntu
 
-This section includes the commands to clone Zephyr downstream and its [modules](https://docs.zephyrproject.org/latest/develop/modules.html) into a new [west](https://docs.zephyrproject.org/latest/develop/west/index.html) workspace. In this section, *zephyrproject* is the name of the workspace. Any name and location can be used.
+This section includes the commands to clone Zephyr downstream and its [modules](https://docs.zephyrproject.org/latest/develop/modules.html) into a new [West](https://docs.zephyrproject.org/latest/develop/west/index.html) workspace. In this section, *zephyrproject* is the name of the workspace. Any name and location can be used.
 
-Step 1 - Install Python venv package.
+Step 1 - Install the Python venv package.
 
 ```
 sudo apt install python3-venv
@@ -111,20 +111,20 @@ cd ~/zephyrproject
 west update
 ```
 
-Step 6 - Export a Zephyr CMake package. This allows CMake to automatically load the boilerplate code required to build Zephyr applications.
+Step 6 - Export a Zephyr CMake package. It allows CMake to load automatically the boilerplate code required to build Zephyr applications.
 
 ```
 west zephyr-export’
 ```
 
-Step 7 – Install Python dependencies
+Step 7 – Install Python dependencies.
 
 ```
 pip install -r zephyr/scripts/requirements.txt
 ```
 ## Install the Zephyr SDK
 
-The Zephyr software development kit \(SDK\) contains toolchains for each of Zephyr supported architecture, including a compiler, assembler, linker and other programs required to build Zephyr applications.
+The Zephyr software development kit \(SDK\) contains toolchains for each of Zephyr-supported architecture, including a compiler, assembler, linker, and other programs required to build Zephyr applications.
 
 Step 1 - Install the Zephyr SDK.
 
@@ -133,5 +133,5 @@ cd ~/zephyrproject/zephyr
 west sdk install
 ```
 
-**Parent topic:**[Software setup](../topics/software_setup.md)
+**Parent topic: **[Software setup](../topics/software_setup.md)
 

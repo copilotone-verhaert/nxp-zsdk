@@ -21,7 +21,7 @@ export PATH=$PATH:/usr/local/LinkServer_24.12.21 #Change the Linkserver path
 west flash --runner linkserver -d iw610_wifi
 ```
 
-**Note:** To run the Wi-Fi Shell application, refer to [Wi-Fi shell example](run_wi-fi_shell_example.md).
+**Note:** To run the Wi-Fi shell application, refer to [Wi-Fi shell example](run_wi-fi_shell_example.md).
 
 ## Bluetooth shell example
 
@@ -41,7 +41,7 @@ export PATH=$PATH:/usr/local/LinkServer_24.12.21 //Change the Linkserver path
 west flash --runner linkserver -d iw610_bt_shell
 ```
 
-**Note:** To run the Bluetooth Shell application, refer to [Bluetooth shell example](run_bluetooth_shell_example.md).
+**Note:** To run the Bluetooth shell application, refer to [Bluetooth shell example](run_bluetooth_shell_example.md).
 
 ## Coexistence shell example
 
@@ -65,5 +65,5 @@ west flash --runner linkserver -d coex_wifi_shell
 **Note:** To run the Coexistence shell application, refer to [Coexistence shell example](run_coexistence_shell_example.md).
 
 
-**Parent topic:**[Build and flash examples](../topics/build_and_flash_examples.md)
+**Parent topic:** [Build and flash examples](../topics/build_and_flash_examples.md)
 

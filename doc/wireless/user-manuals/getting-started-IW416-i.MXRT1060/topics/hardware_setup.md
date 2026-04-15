@@ -2,7 +2,7 @@
 
 # Hardware setup
 
-This section details the hardware setup required to bring up Murata 1XK M.2 \(IW416\) and i.MX RT1060 EVKC running Zephyr OS. This includes the required rework and connections.
+This section details the hardware setup required to bring up Murata 1XK M.2 \(IW416\) and i.MX RT1060 EVKC running Zephyr OS. It includes the required rework and connections.
 
 ![](../images/hardware-setup.jpg)
 
@@ -10,11 +10,11 @@ This section details the hardware setup required to bring up Murata 1XK M.2 \(IW
 
 - MIMXRT1060-EVKC board
 - Murata 1XK M.2 Adapter Module \(NXP IW416-based solution\)
-- Micro-USB to USB-A cable
-- External 5V power supply with power jack male connector
+- micro-USB to USB-A cable
+- External 5 V power supply with power jack male connector
 - Laptop/PC \(check the software setup for OS detail\)
 
-**Note:** Murata 1XK M.2. requires an external power supply as USB power supply of i.MX RT1060 EVKC is not sufficient.
+**Note:** Murata 1XK M.2 requires an external power supply as the USB power supply of i.MX RT1060 EVKC is not sufficient.
 ![](../images/hardware-setup.jpg)
 ## Hardware rework
 
@@ -24,15 +24,15 @@ To enable UART and PCM interface over M.2 on i.MX RT1060 EVKC, some hardware rew
 
 1.Mount R93, R96
 2.Remove R193
-3.Connect J109, connect J76 2-3
+3.Connect J109 and also, J76 2-3
 
 **PCM interface rework**
 
-1.Remove J54 and J55, connect J56 and J57
+1.Remove J54 and J55, connect J56, and J57
 2.Remove R220
 3.Connect J103
 
-**Note:** When J103 is connected, flashing cannot be completed. Remove the J103 during flashing and reconnect the jumper when the flashing is completed.
+**Note:** When J103 is connected, flashing cannot be completed. Remove J103 during flashing and reconnect the jumper when the flashing is completed.
 
 ![](../images/imxrt1060-evkc-board.png)
 

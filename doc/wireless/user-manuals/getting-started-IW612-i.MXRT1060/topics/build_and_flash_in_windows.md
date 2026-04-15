@@ -1,6 +1,6 @@
 [Index page](../getting-started-iw612-imxrt1060.md) \| [Build and flash examples](build_and_flash_examples.md)
 
-# Build and flash in Windows
+# Build and flash in Windows (CLI)
 ## Wi-Fi shell example
 
 This section shows how to compile the Wi-Fi shell example.
@@ -25,7 +25,7 @@ set PATH=%PATH%;C:\nxp\LinkServer_1.5.30 # Change the Linkserver path
 west flash --runner linkserver -d wifi_shell
 ```
 
-**Note:** To run the Wi-Fi Shell application, refer to [Wi-Fi shell example](run_wi-fi_shell_example.md).
+**Note:** To run the Wi-Fi shell application, refer to [Wi-Fi shell example](run_wi-fi_shell_example.md).
 
 ## Bluetooth shell example
 
@@ -45,7 +45,7 @@ set PATH=%PATH%;C:\nxp\LinkServer_1.5.30 (Change the Linkserver path)
 west flash --runner linkserver -d IW612_bt_shell
 ```
 
-**Note:** To run the Bluetooth Shell application, refer to [Bluetooth shell example](run_bluetooth_shell_example.md).
+**Note:** To run the Bluetooth shell application, refer to [Bluetooth shell example](run_bluetooth_shell_example.md).
 
 ## Coexistence shell example
 
@@ -53,7 +53,7 @@ This section shows how to compile the Coexistence shell example.
 
 Step 1 - Modify firmware configuration.
 
-Replace sduart\_nw61x.bin.se to sd\_nw61x.bin.se in %HOMEPATH%/zephyrproject/modules/hal/nxp/zephyr/src/wireless/CMakeLists.txt file
+Replace sduart\_nw61x.bin.se to sd\_nw61x.bin.se in %HOMEPATH%/zephyrproject/modules/hal/nxp/zephyr/src/wireless/CMakeLists.txt file.
 
 Step 2 - Build the application.
 

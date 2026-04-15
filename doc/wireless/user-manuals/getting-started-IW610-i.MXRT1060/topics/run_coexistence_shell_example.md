@@ -2,7 +2,7 @@
 
 # Run coexistence shell example
 
-Ensure the Coexistence shell example is flashed onto the IW610 module and i.MX RT1060 EVKC board. Refer to [Build and flash examples](build_and_flash_examples.md).
+Ensure that the Coexistence shell example is flashed onto the IW610 module and i.MX RT1060 EVKC board. Refer to [Build and flash examples](build_and_flash_examples.md).
 
 This section demonstrates the coexistence feature by simultaneously connecting Wi-Fi on 2.4 GHz and establishing the Bluetooth LE connection.
 
@@ -27,7 +27,7 @@ Step 3 - Connect with Bluetooth LE device. Refer to [Bluetooth LE scan and conne
 bt connect <address> <type>
 ```
 
-Step 4 – Connect the Wi-Fi radio \(configure the channel in 2.4 GHz\) with an external access point in WPA2 personal mode. Refer to [STA configuration in WPA2 personal mode](run_wi-fi_shell_example.md) for more command information.
+Step 4 - Connect the Wi-Fi radio \(configure the channel in 2.4 GHz\) with an external access point in WPA2 personal mode. Refer to [STA configuration in WPA2 personal mode](run_wi-fi_shell_example.md) for more command information.
 
 ```
 wifi connect -s <ssid> -p <password> -k 1

@@ -53,7 +53,7 @@ This section shows how to compile the Coexistence shell example.
 
 Step 1 - Modify firmware configuration.
 
-Replace sduartIW416\_wlan\_bt.bin to sdIW416\_wlan.bin in ~/zephyrproject/modules/hal/nxp/zephyr/src/wireless/CMakeLists.txt file
+Replace sduartIW416\_wlan\_bt.bin to sdIW416\_wlan.bin in ~/zephyrproject/modules/hal/nxp/zephyr/src/wireless/CMakeLists.txt file.
 
 Step 2 - Build the application.
 
@@ -72,5 +72,5 @@ west flash --runner linkserver -d coex
 **Note:** To run the Coexistence shell application, refer to [Coexistence shell example](run_coexistence_shell_example.md).
 
 
-**Parent topic:**[Build and flash examples](../topics/build_and_flash_examples.md)
+**Parent topic: **[Build and flash examples](../topics/build_and_flash_examples.md)
 
