@@ -125,14 +125,14 @@ manifest:
     - name: psa_crypto_driver
       remote: nxp
       repo-path: psa_crypto_driver
-      revision: fc420fa722ffb2bffb2712f2ebe06390aa8153fb
+      revision: 54518163c46c5a63b00ea416f2660139e91d9841
       path: modules/crypto/psa_crypto_driver
       groups:
         - crypto
     - name: tf-psa-crypto
       remote: nxp-mcuxpresso
       repo-path: tf-psa-crypto
-      revision: 55b5cb24a82f294c7ec6391976f4e2bc7f1e1558
+      revision: 71d47f726586413c2a7f7b6365e7883b8ec63429
       path: modules/crypto/tf-psa-crypto
       groups:
         - crypto
