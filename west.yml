@@ -125,7 +125,7 @@ manifest:
     - name: psa_crypto_driver
       remote: nxp
       repo-path: psa_crypto_driver
-      revision: 9b3503b394652eeac35379e5ccc9c879ed7929ab
+      revision: fc420fa722ffb2bffb2712f2ebe06390aa8153fb
       path: modules/crypto/psa_crypto_driver
       groups:
         - crypto
