@@ -146,7 +146,7 @@ manifest:
     - name: trusted-firmware-m
       remote: nxp
       repo-path: nxp_tf-m
-      revision: 90f58fea5460ee48b15f228fada3dccf867a60ab
+      revision: 357d3b50a36db2e4bc8dffdabf00d43eb62a02a3
       path: modules/tee/tf-m/trusted-firmware-m
       groups:
         - tee
@@ -180,7 +180,7 @@ manifest:
     - name: nxp_iot_agent
       remote: nxp
       repo-path: el2go-agent
-      revision: 802c539282f98188accdc66f23b570bfc93f50d1
+      revision: 63d73cb591fd725ec408365cf0536dd978d5a6bf
       path: modules/lib/nxp_iot_agent
     - name: freemaster
       remote: nxp-mcuxpresso
