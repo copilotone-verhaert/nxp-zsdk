@@ -132,7 +132,7 @@ manifest:
     - name: tf-psa-crypto
       remote: nxp-mcuxpresso
       repo-path: tf-psa-crypto
-      revision: 71d47f726586413c2a7f7b6365e7883b8ec63429
+      revision: 57f30a31b01d2d4094b1509156b9ad910ec999ec
       path: modules/crypto/tf-psa-crypto
       groups:
         - crypto
