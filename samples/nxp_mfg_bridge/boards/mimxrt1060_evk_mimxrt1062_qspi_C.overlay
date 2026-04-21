@@ -198,15 +198,3 @@
 	};
 };
 
-&usdhc1 {
-	status = "okay";
-	detect-dat3;
-	pinctrl-0 = <&pinmux_usdhc1>;
-	pinctrl-1 = <&pinmux_usdhc1_slow>;
-	pinctrl-2 = <&pinmux_usdhc1_med>;
-	pinctrl-3 = <&pinmux_usdhc1_fast>;
-	pinctrl-4 = <&pinmux_usdhc1_dat3_nopull>;
-	pinctrl-names = "default", "slow", "med", "fast", "nopull";
-	no-1-8-v;
-	max-bus-freq = <50000000>;
-};
