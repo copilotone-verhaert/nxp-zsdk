@@ -180,7 +180,7 @@ manifest:
     - name: nxp_iot_agent
       remote: nxp
       repo-path: el2go-agent
-      revision: 63d73cb591fd725ec408365cf0536dd978d5a6bf
+      revision: 9f5005207126e84757831f7d86ef7f11da2a8b1f
       path: modules/lib/nxp_iot_agent
     - name: freemaster
       remote: nxp-mcuxpresso
