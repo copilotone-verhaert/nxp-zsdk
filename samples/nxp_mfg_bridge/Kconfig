@@ -1,6 +1,10 @@
 # Copyright 2022-2024 NXP
 # SPDX-License-Identifier: Apache-2.0
 
+config NXP_UART_WIFI_BRIDGE
+	bool "Support UART_WIFI_BRIDGE"
+	default y
+
 config NXP_MONOLITHIC_WIFI
 	bool "Support WIFI monolithic"
 
