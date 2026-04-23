@@ -42,10 +42,9 @@ manifest:
   # "projects" is a list of git repositories to populate NXP Zephyr downstream
   # workspace.
   projects:
-
     - name: zephyr
       repo-path: nxp-zephyr
-      revision: 627e10b55e94d6715ca768229bfdf96c160372e2
+      revision: 8557b5995e65c0800b727feddf6273e92e71c22f
       import:
         #
         # ZSDK imports the contents of nxp-zephyr/west.yml at the above
