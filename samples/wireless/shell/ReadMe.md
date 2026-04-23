@@ -18,21 +18,21 @@ The extension provides direct access to:
 ### Component Structure
 
 ```
-shell_nxp_vendor_commands_extension/
-├── CMakeLists.txt
-├── Kconfig
-├── overlay_nxp_vendor.conf
-├── radio_spinel.patch
-├── ReadMe.md
-├── src
-│   ├── nxp_vendor_cli.cpp
-│   ├── nxp_vendor_commands.cpp
-│   ├── nxp_vendor_commands.hpp
-│   ├── nxp_vendor_spinel.cpp
-│   ├── nxp_vendor_spinel.h
-│   └── nxp_vendor_types.h
-└── zephyr
-    └── module.yml
+zsdk/
+├── modules/
+│   └── nxp-openthread-vendor/
+│       ├── src/
+│       ├── zephyr/
+│       │   └── module.yml
+│       ├── CMakeLists.txt
+│       └── Kconfig
+│
+└── samples/
+    └── wireless/
+        └── shell/
+            ├── overlay_nxp_vendor.conf
+            ├── overlay-mcxw7x.conf
+            └── ReadMe.md
 ```
 
 ### Key Components
@@ -97,20 +97,20 @@ west packages pip --install
 ```bash
 cd ${ZEPHYR_DOWNSTREAM}
 # clean build
-west build -d build_${BOARD_NAME}_${APP_NAME}_nxp_extension -p -b ${BOARD_NAME} \
+west build -d build_${BOARD_NAME}_${APP_NAME} -p -b ${BOARD_NAME} \
   zephyr/samples/net/openthread/${APP_NAME} \
   -- -DEXTRA_CONF_FILE="prj-ot-host.conf" \
-     -DOVERLAY_CONFIG="${ZEPHYR_ZSDK}/samples/wireless/shell_nxp_vendor_commands_extension/overlay_nxp_vendor.conf" \
-     -DEXTRA_ZEPHYR_MODULES="${ZEPHYR_ZSDK}/samples/wireless/shell_nxp_vendor_commands_extension"
+     -DOVERLAY_CONFIG="${ZEPHYR_ZSDK}/samples/wireless/shell/overlay_nxp_vendor.conf" \
+     -DEXTRA_ZEPHYR_MODULES="${ZEPHYR_ZSDK}/modules/nxp-openthread-vendor"
 
 # incremental build (e.g. after source code modification)
-west build -d build_${BOARD_NAME}_${APP_NAME}_nxp_extension
+west build -d build_${BOARD_NAME}_${APP_NAME}
 
 # run menuconfig
-west build -d build_${BOARD_NAME}_${APP_NAME}_nxp_extension -t menuconfig
+west build -d build_${BOARD_NAME}_${APP_NAME} -t menuconfig
 
 # flash
-west flash -d build_${BOARD_NAME}_${APP_NAME}_nxp_extension
+west flash -d build_${BOARD_NAME}_${APP_NAME}
 ```
 ## Features
 
