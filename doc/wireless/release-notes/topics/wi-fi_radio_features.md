@@ -39,7 +39,8 @@
 |5 GHz band supported channel bandwidths: 80 MHz|N|Y|N|N|
 |OFDMA \(UL/DL, 106 RU\)|N|N|Y|Y|
 |OFDMA \(UL/DL, 484 RU\)|N|Y|N|N|
-|Target wake time \(TWT\)|N|Y|Y|Y|
+|Target wake time \(iTWT\)|N|Y|Y|Y|
+|Target wake time \(BTWT\)|N|Y|Y|Y|
 |1024 QAM|N|Y|N|N|
 |802.11ax data rate – Up to 114.7 Mbps \(MCS0 to MCS9\)|N|Y|Y|Y|
 |802.11ax data rate – Up to 600 Mbps \(MCS0 to MCS11\)|N|Y|N|Y|
@@ -110,14 +111,15 @@
 |ClockSync using TSF|N|N|N|N|
 |Auto reconnect|N|N|N|N|
 |CSI \(channel state information\)|N|Y|Y|Y|
-|Independent reset \(in-band\)[<sup>[3]</sup>](#refer-client-3)Y|Y|Y|Y|
+|Independent reset \(in-band\)[<sup>[3]</sup>](#refer-client-3)|Y|Y|Y|Y|
 |Independent reset \(out-band\)[<sup>[3]</sup>](#refer-client-3)|N|N|N|N|
 |Wi-Fi agile multi band|N|N|Y|Y|
 |802.11mc – WLS \(Wi-Fi Location Service\)|N|N|N|N|
 |802.11az|N|N|N|N|
 |WPS/WSC2.0 Functionality[<sup>[3]</sup>](#refer-client-3)|Y|N|Y|Y|
 |Memory Efficient Filtering \(MEF\)|Y|Y|Y|Y|
-|Ambient Motion Index \(AMI\)|N|N|Y|Y[<sup>[4]</sup>](#refer-client-4)|
+|Ambient Motion Index \(AMI\)|N|Y|Y|Y|
+|U-APSD|Y|Y|Y|Y|
 
 <div id="refer-client-1"></div>
 [1] Supported enterprise security options: TLS, TTLS, PEAP v0, PEAP v1
@@ -221,6 +223,7 @@
 [1] Supported enterprise security options: TLS, TTLS, PEAP v0, and PEAP v1
 <div id="refer-ap-2"></div>
 [2] support available in host-base supplicant
+
 ## AP-STA mode
 
 
@@ -232,6 +235,7 @@
 |Software antenna diversity|Y|N|Y|Y|
 |**Generic**||||
 |Firmware download \(parallel\)|N|N|N|N|
+|CSI Monitor Mode|N|N|Y|Y|
 |Net Monitor Mode |N|N|N|N|
 |Net Monitor Mode with packet transmission |N|N|N|N|
 |In-Channel Net Monitor mode |N|N|N|N|

@@ -24,6 +24,7 @@
 |STA + Bluetooth + Bluetooth LE coexistence|N|N|N|N|
 |AP + Bluetooth coexistence|N|N|N|N|
 |AP + Bluetooth LE coexistence|Y|N|Y|Y|
+|AP + Bluetooth LE Audio coexistence|N|Y|N|N|
 |AP + Bluetooth + Bluetooth LE coexistence|N|N|N|N|
 
 <div id="refer-coex-1"></div>

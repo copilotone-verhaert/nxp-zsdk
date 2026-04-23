@@ -3,17 +3,17 @@
 # IW416 release notes
 ## Package information
 
-SDK version: v4.3.0
+SDK version: v4.4.0
 ## Version information
 
 Wireless SoC: IW416
 
-Wi-Fi and Bluetooth/Bluetooth LE firmware version: 16.92.21.p153.4
+Wi-Fi and Bluetooth/Bluetooth LE firmware version: 16.92.21.p159
 
 -   16 - Major revision
 -   92 - Feature pack
 -   21 - Release version
--   p153.4- Patch number
+-   p159- Patch number
 
 ## Host platform
 
@@ -93,18 +93,17 @@ External AP: Asus AX88u
 
 STA mode throughput - BGN Mode - 2.4 GHz Band - 20 MHz
 
-|Protocol|TCP \(Mbit/s\)|  | UDP \(Mbit/s\)|  |
-|---------|-------------|--|---------------|--|
+| Protocol      | TCP (Mbit/s) | TCP (Mbit/s) | UDP (Mbit/s) | UDP (Mbit/s) |
+|:--------------|:-------------:|:-------------:|:-------------:|:-------------:|
 |Direction|TX|RX|TX|RX|
 |Open Security|38|42|61|56|
 |WPA2-AES|36|42|61|56|
 |WPA3-SAE|36|43|61|61|
 
-
 STA mode throughput - BGN Mode - 2.4 GHz Band - 40 MHz
 
-|Protocol|TCP \(Mbit/s\)|  | UDP \(Mbit/s\)|  |
-|---------|-------------|--|---------------|--|
+| Protocol      | TCP (Mbit/s) | TCP (Mbit/s) | UDP (Mbit/s) | UDP (Mbit/s) |
+|:--------------|:-------------:|:-------------:|:-------------:|:-------------:|
 |Direction|TX|RX|TX|RX|
 |Open Security|42|60|75|89|
 |WPA2-AES|39|58|75|88|
@@ -112,8 +111,8 @@ STA mode throughput - BGN Mode - 2.4 GHz Band - 40 MHz
 
 STA mode throughput - AN Mode - 5 GHz Band - 20 MHz
 
-|Protocol|TCP \(Mbit/s\)|  | UDP \(Mbit/s\)|  |
-|---------|-------------|--|---------------|--|
+| Protocol      | TCP (Mbit/s) | TCP (Mbit/s) | UDP (Mbit/s) | UDP (Mbit/s) |
+|:--------------|:-------------:|:-------------:|:-------------:|:-------------:|
 |Direction|TX|RX|TX|RX|
 |Open Security|40|46|61|65|
 |WPA2-AES|41|46|61|64|
@@ -121,8 +120,8 @@ STA mode throughput - AN Mode - 5 GHz Band - 20 MHz
 
 STA mode throughput - AN Mode - 5 GHz Band - 40 MHz
 
-|Protocol|TCP \(Mbit/s\)|  | UDP \(Mbit/s\)|  |
-|---------|-------------|--|---------------|--|
+| Protocol      | TCP (Mbit/s) | TCP (Mbit/s) | UDP (Mbit/s) | UDP (Mbit/s) |
+|:--------------|:-------------:|:-------------:|:-------------:|:-------------:|
 |Direction|TX|RX|TX|RX|
 |Open Security|42|60|74|90|
 |WPA2-AES|44|59|75|90|
@@ -134,8 +133,8 @@ External client: PCIE 88W9098
 
 Mobile AP Mode Throughput - BGN Mode - 2.4 GHz Band - 20 MHz
 
-|Protocol|TCP \(Mbit/s\)|  | UDP \(Mbit/s\)|  |
-|---------|-------------|--|---------------|--|
+| Protocol      | TCP (Mbit/s) | TCP (Mbit/s) | UDP (Mbit/s) | UDP (Mbit/s) |
+|:--------------|:-------------:|:-------------:|:-------------:|:-------------:|
 |Direction|TX|RX|TX|RX|
 |Open Security|44|43|58|56|
 |WPA2-AES|44|44|58|56|
@@ -143,8 +142,8 @@ Mobile AP Mode Throughput - BGN Mode - 2.4 GHz Band - 20 MHz
 
 Mobile AP Mode Throughput - BGN Mode - 2.4 GHz Band - 40 MHz
 
-|Protocol|TCP \(Mbit/s\)|  | UDP \(Mbit/s\)|  |
-|---------|-------------|--|---------------|--|
+| Protocol      | TCP (Mbit/s) | TCP (Mbit/s) | UDP (Mbit/s) | UDP (Mbit/s) |
+|:--------------|:-------------:|:-------------:|:-------------:|:-------------:|
 |Direction|TX|RX|TX|RX|
 |Open Security|44|56|58|89|
 |WPA2-AES|43|53|58|88|
@@ -152,8 +151,8 @@ Mobile AP Mode Throughput - BGN Mode - 2.4 GHz Band - 40 MHz
 
 Mobile AP Mode Throughput - AN Mode - 5 GHz Band - 20 MHz
 
-|Protocol|TCP \(Mbit/s\)|  | UDP \(Mbit/s\)|  |
-|---------|-------------|--|---------------|--|
+| Protocol      | TCP (Mbit/s) | TCP (Mbit/s) | UDP (Mbit/s) | UDP (Mbit/s) |
+|:--------------|:-------------:|:-------------:|:-------------:|:-------------:|
 |Direction|TX|RX|TX|RX|
 |Open Security|47|48|61|64|
 |WPA2-AES|46|47|61|62|
@@ -161,8 +160,8 @@ Mobile AP Mode Throughput - AN Mode - 5 GHz Band - 20 MHz
 
 Mobile AP Mode Throughput - AN Mode - 5 GHz Band - 40 MHz
 
-|Protocol|TCP \(Mbit/s\)|  | UDP \(Mbit/s\)|  |
-|---------|-------------|--|---------------|--|
+| Protocol      | TCP (Mbit/s) | TCP (Mbit/s) | UDP (Mbit/s) | UDP (Mbit/s) |
+|:--------------|:-------------:|:-------------:|:-------------:|:-------------:|
 |Direction|TX|RX|TX|RX|
 |Open Security|52|55|75|91|
 |WPA2-AES|52|55|74|84|
@@ -186,6 +185,12 @@ EU Adaptivity test - EN 301 893 v2.1.1 \(for 5 GHz\)
 |Component|Description|
 |---------|-----------|
 |Wi-Fi|-A significant number of link-layer packets are being dropped during data transmission   |
+
+### Firmware version: From 16.91.21.p153.4 to 16.92.21.p159
+
+|Component|Description|
+|---------|-----------|
+|Wi-Fi|Enabled MbedTLS 4.x|
 
 ## Known issues
 

@@ -4,18 +4,18 @@
 
 ## Package information
 
-SDK version: v4.3.0
+SDK version: v4.4.0
 
 ## Version information
 
 Wireless SoC: IW611/IW612
 
-Wi-Fi and Bluetooth/Bluetooth LE firmware version: 18.99.3.p26.7
+Wi-Fi and Bluetooth/Bluetooth LE firmware version: 18.99.8.p25
 
 -   18 - Major revision
 -   99 - Feature pack
--   3 - Release version
--   p26.7 - Patch number
+-   8 - Release version
+-   p25 - Patch number
 
 ## Host platform
 
@@ -81,8 +81,8 @@ External AP: Asus AX88u
 
 STA mode throughput - BGN Mode - 2.4 GHz Band - 20 MHz
 
-|Protocol|TCP \(Mbit/s\)|  | UDP \(Mbit/s\)|  |
-|--------|--------------|--|---------------|--|
+| Protocol      | TCP (Mbit/s) | TCP (Mbit/s) | UDP (Mbit/s) | UDP (Mbit/s) |
+|:--------------|:-------------:|:-------------:|:-------------:|:-------------:|
 |Direction|TX|RX|TX|RX|
 |Open Security|35|45|61|63|
 |WPA2-AES|35|44|61|61|
@@ -90,8 +90,8 @@ STA mode throughput - BGN Mode - 2.4 GHz Band - 20 MHz
 
 STA mode throughput - BGN Mode - 2.4 GHz Band - 40 MHz
 
-|Protocol|TCP \(Mbit/s\)|  | UDP \(Mbit/s\)|  |
-|--------|--------------|--|---------------|--|
+| Protocol      | TCP (Mbit/s) | TCP (Mbit/s) | UDP (Mbit/s) | UDP (Mbit/s) |
+|:--------------|:-------------:|:-------------:|:-------------:|:-------------:|
 |Direction|TX|RX|TX|RX|
 |Open Security|38|56|79|102|
 |WPA2-AES|37|55|80|102|
@@ -99,8 +99,8 @@ STA mode throughput - BGN Mode - 2.4 GHz Band - 40 MHz
 
 STA mode throughput - AN Mode - 5 GHz Band - 20 MHz
 
-|Protocol|TCP \(Mbit/s\)|  | UDP \(Mbit/s\)|  |
-|--------|--------------|--|---------------|--|
+| Protocol      | TCP (Mbit/s) | TCP (Mbit/s) | UDP (Mbit/s) | UDP (Mbit/s) |
+|:--------------|:-------------:|:-------------:|:-------------:|:-------------:|
 |Direction|TX|RX|TX|RX|
 |Open Security|37|47|63|65|
 |WPA2-AES|37|46|63|64|
@@ -108,8 +108,8 @@ STA mode throughput - AN Mode - 5 GHz Band - 20 MHz
 
 STA mode throughput - AN Mode - 5 GHz Band - 40 MHz
 
-|Protocol|TCP \(Mbit/s\)|  | UDP \(Mbit/s\)|  |
-|--------|--------------|--|---------------|--|
+| Protocol      | TCP (Mbit/s) | TCP (Mbit/s) | UDP (Mbit/s) | UDP (Mbit/s) |
+|:--------------|:-------------:|:-------------:|:-------------:|:-------------:|
 |Direction|TX|RX|TX|RX|
 |Open Security|36|58|78|105|
 |WPA2-AES|36|57|79|99|
@@ -117,8 +117,8 @@ STA mode throughput - AN Mode - 5 GHz Band - 40 MHz
 
 STA mode throughput - VHT Mode - 2.4 GHz Band - 20 MHz
 
-|Protocol|TCP \(Mbit/s\)|  | UDP \(Mbit/s\)|  |
-|--------|--------------|--|---------------|--|
+| Protocol      | TCP (Mbit/s) | TCP (Mbit/s) | UDP (Mbit/s) | UDP (Mbit/s) |
+|:--------------|:-------------:|:-------------:|:-------------:|:-------------:|
 |Direction|TX|RX|TX|RX|
 |Open Security|37|41|76|77|
 |WPA2-AES|37|40|76|76|
@@ -126,8 +126,8 @@ STA mode throughput - VHT Mode - 2.4 GHz Band - 20 MHz
 
 STA mode throughput - VHT Mode - 2.4 GHz Band - 40 MHz
 
-|Protocol|TCP \(Mbit/s\)|  | UDP \(Mbit/s\)|  |
-|---------|-------------|--|---------------|--|
+| Protocol      | TCP (Mbit/s) | TCP (Mbit/s) | UDP (Mbit/s) | UDP (Mbit/s) |
+|:--------------|:-------------:|:-------------:|:-------------:|:-------------:|
 |Direction|TX|RX|TX|RX|
 |Open Security|49|47|89|105|
 |WPA2-AES|49|47|89|104|
@@ -135,8 +135,8 @@ STA mode throughput - VHT Mode - 2.4 GHz Band - 40 MHz
 
 STA mode throughput - VHT Mode - 5 GHz Band - 20 MHz
 
-|Protocol|TCP \(Mbit/s\)|  | UDP \(Mbit/s\)|  |
-|--------|--------------|--|---------------|--|
+| Protocol      | TCP (Mbit/s) | TCP (Mbit/s) | UDP (Mbit/s) | UDP (Mbit/s) |
+|:--------------|:-------------:|:-------------:|:-------------:|:-------------:|
 |Direction|TX|RX|TX|RX|
 |Open Security|38|51|76|77|
 |WPA2-AES|37|50|76|76|
@@ -144,8 +144,8 @@ STA mode throughput - VHT Mode - 5 GHz Band - 20 MHz
 
 STA mode throughput - VHT Mode - 5 GHz Band - 40 MHz
 
-|Protocol|TCP \(Mbit/s\)|  | UDP \(Mbit/s\)|  |
-|--------|--------------|--|---------------|--|
+| Protocol      | TCP (Mbit/s) | TCP (Mbit/s) | UDP (Mbit/s) | UDP (Mbit/s) |
+|:--------------|:-------------:|:-------------:|:-------------:|:-------------:|
 |Direction|TX|RX|TX|RX|
 |Open Security|36|58|78|98|
 |WPA2-AES|36|56|78|103|
@@ -153,8 +153,8 @@ STA mode throughput - VHT Mode - 5 GHz Band - 40 MHz
 
 STA mode throughput - VHT Mode - 5 GHz Band - 80 MHz
 
-|Protocol|TCP \(Mbit/s\)|  | UDP \(Mbit/s\)|  |
-|--------|--------------|--|---------------|--|
+| Protocol      | TCP (Mbit/s) | TCP (Mbit/s) | UDP (Mbit/s) | UDP (Mbit/s) |
+|:--------------|:-------------:|:-------------:|:-------------:|:-------------:|
 |Direction|TX|RX|TX|RX|
 |Open Security|35|58|79|103|
 |WPA2-AES|35|60|81|103|
@@ -162,8 +162,8 @@ STA mode throughput - VHT Mode - 5 GHz Band - 80 MHz
 
 STA mode throughput - HE Mode - 2.4 GHz Band - 20 MHz
 
-|Protocol|TCP \(Mbit/s\)|  | UDP \(Mbit/s\)|  |
-|--------|--------------|--|---------------|--|
+| Protocol      | TCP (Mbit/s) | TCP (Mbit/s) | UDP (Mbit/s) | UDP (Mbit/s) |
+|:--------------|:-------------:|:-------------:|:-------------:|:-------------:|
 |Direction|TX|RX|TX|RX|
 |Open Security|36|51|79|88|
 |WPA2-AES|36|51|79|94|
@@ -171,8 +171,8 @@ STA mode throughput - HE Mode - 2.4 GHz Band - 20 MHz
 
 STA mode throughput - HE Mode - 2.4 GHz Band - 40 MHz
 
-|Protocol|TCP \(Mbit/s\)|  | UDP \(Mbit/s\)|  |
-|--------|--------------|--|---------------|--|
+| Protocol      | TCP (Mbit/s) | TCP (Mbit/s) | UDP (Mbit/s) | UDP (Mbit/s) |
+|:--------------|:-------------:|:-------------:|:-------------:|:-------------:|
 |Direction|TX|RX|TX|RX|
 |Open Security|37|54|79|103|
 |WPA2-AES|36|54|79|100|
@@ -180,8 +180,8 @@ STA mode throughput - HE Mode - 2.4 GHz Band - 40 MHz
 
 STA mode throughput - HE Mode - 5 GHz Band - 20 MHz
 
-|Protocol|TCP \(Mbit/s\)|  | UDP \(Mbit/s\)|  |
-|--------|--------------|--|---------------|--|
+| Protocol      | TCP (Mbit/s) | TCP (Mbit/s) | UDP (Mbit/s) | UDP (Mbit/s) |
+|:--------------|:-------------:|:-------------:|:-------------:|:-------------:|
 |Direction|TX|RX|TX|RX|
 |Open Security|37|56|80|98|
 |WPA2-AES|37|57|80|103|
@@ -189,8 +189,8 @@ STA mode throughput - HE Mode - 5 GHz Band - 20 MHz
 
 STA mode throughput - HE Mode - 5 GHz Band - 40 MHz
 
-|Protocol|TCP \(Mbit/s\)|  | UDP \(Mbit/s\)|  |
-|--------|--------------|--|---------------|--|
+| Protocol      | TCP (Mbit/s) | TCP (Mbit/s) | UDP (Mbit/s) | UDP (Mbit/s) |
+|:--------------|:-------------:|:-------------:|:-------------:|:-------------:|
 |Direction|TX|RX|TX|RX|
 |Open Security|36|57|79|101|
 |WPA2-AES|36|55|79|102|
@@ -198,8 +198,8 @@ STA mode throughput - HE Mode - 5 GHz Band - 40 MHz
 
 STA mode throughput - HE Mode - 5 GHz Band - 80 MHz
 
-|Protocol|TCP \(Mbit/s\)|  | UDP \(Mbit/s\)|  |
-|---------|-------------|--|---------------|--|
+| Protocol      | TCP (Mbit/s) | TCP (Mbit/s) | UDP (Mbit/s) | UDP (Mbit/s) |
+|:--------------|:-------------:|:-------------:|:-------------:|:-------------:|
 |Direction|TX|RX|TX|RX|
 |Open Security|36|59|79|95|
 |WPA2-AES|36|59|80|101|
@@ -220,8 +220,8 @@ Mobile AP Mode Throughput - BGN Mode - 2.4 GHz Band - 20 MHz
 
 Mobile AP Mode Throughput - BGN Mode - 2.4 GHz Band - 40 MHz
 
-|Protocol|TCP \(Mbit/s\)|  | UDP \(Mbit/s\)|  |
-|--------|--------------|--|---------------|--|
+| Protocol      | TCP (Mbit/s) | TCP (Mbit/s) | UDP (Mbit/s) | UDP (Mbit/s) |
+|:--------------|:-------------:|:-------------:|:-------------:|:-------------:|
 |Direction|TX|RX|TX|RX|
 |Open Security|38|47|72|68|
 |WPA2-AES|38|43|71|67|
@@ -229,8 +229,8 @@ Mobile AP Mode Throughput - BGN Mode - 2.4 GHz Band - 40 MHz
 
 Mobile AP Mode Throughput - AN Mode - 5 GHz Band - 20 MHz
 
-|Protocol|TCP \(Mbit/s\)|  | UDP \(Mbit/s\)|  |
-|--------|--------------|--|---------------|--|
+| Protocol      | TCP (Mbit/s) | TCP (Mbit/s) | UDP (Mbit/s) | UDP (Mbit/s) |
+|:--------------|:-------------:|:-------------:|:-------------:|:-------------:|
 |Direction|TX|RX|TX|RX|
 |Open Security|33|39|59|63|
 |WPA2-AES|33|38|58|63|
@@ -238,8 +238,8 @@ Mobile AP Mode Throughput - AN Mode - 5 GHz Band - 20 MHz
 
 Mobile AP Mode Throughput - AN Mode - 5 GHz Band - 40 MHz
 
-|Protocol|TCP \(Mbit/s\)|  | UDP \(Mbit/s\)|  |
-|---------|-------------|--|---------------|--|
+| Protocol      | TCP (Mbit/s) | TCP (Mbit/s) | UDP (Mbit/s) | UDP (Mbit/s) |
+|:--------------|:-------------:|:-------------:|:-------------:|:-------------:|
 |Direction|TX|RX|TX|RX|
 |Open Security|38|48|78|72|
 |WPA2-AES|38|46|77|73|
@@ -247,8 +247,8 @@ Mobile AP Mode Throughput - AN Mode - 5 GHz Band - 40 MHz
 
 Mobile AP Mode Throughput - VHT Mode - 2.4 GHz Band - 20 MHz
 
-|Protocol|TCP \(Mbit/s\)|  | UDP \(Mbit/s\)|  |
-|--------|--------------|--|---------------|--|
+| Protocol      | TCP (Mbit/s) | TCP (Mbit/s) | UDP (Mbit/s) | UDP (Mbit/s) |
+|:--------------|:-------------:|:-------------:|:-------------:|:-------------:|
 |Direction|TX|RX|TX|RX|
 |Open Security|40|45|62|59|
 |WPA2-AES|39|40|60|54|
@@ -256,8 +256,8 @@ Mobile AP Mode Throughput - VHT Mode - 2.4 GHz Band - 20 MHz
 
 Mobile AP Mode Throughput - VHT Mode - 2.4 GHz Band - 40 MHz
 
-|Protocol|TCP \(Mbit/s\)|  | UDP \(Mbit/s\)|  |
-|--------|--------------|--|---------------|--|
+| Protocol      | TCP (Mbit/s) | TCP (Mbit/s) | UDP (Mbit/s) | UDP (Mbit/s) |
+|:--------------|:-------------:|:-------------:|:-------------:|:-------------:|
 |Direction|TX|RX|TX|RX|
 |Open Security|43|46|91|91|
 |WPA2-AES|42|44|92|92|
@@ -265,8 +265,8 @@ Mobile AP Mode Throughput - VHT Mode - 2.4 GHz Band - 40 MHz
 
 Mobile AP Mode Throughput - VHT Mode - 5 GHz Band - 20 MHz
 
-|Protocol|TCP \(Mbit/s\)|  | UDP \(Mbit/s\)|  |
-|--------|--------------|--|---------------|--|
+| Protocol      | TCP (Mbit/s) | TCP (Mbit/s) | UDP (Mbit/s) | UDP (Mbit/s) |
+|:--------------|:-------------:|:-------------:|:-------------:|:-------------:|
 |Direction|TX|RX|TX|RX|
 |Open Security|36|42|76|77|
 |WPA2-AES|36|42|76|77|
@@ -274,8 +274,8 @@ Mobile AP Mode Throughput - VHT Mode - 5 GHz Band - 20 MHz
 
 Mobile AP Mode Throughput - VHT Mode - 5 GHz Band - 40 MHz
 
-|Protocol|TCP \(Mbit/s\)|  | UDP \(Mbit/s\)|  |
-|--------|--------------|--|---------------|--|
+| Protocol      | TCP (Mbit/s) | TCP (Mbit/s) | UDP (Mbit/s) | UDP (Mbit/s) |
+|:--------------|:-------------:|:-------------:|:-------------:|:-------------:|
 |Direction|TX|RX|TX|RX|
 |Open Security|42|50|75|74|
 |WPA2-AES|43|48|72|73|
@@ -283,8 +283,8 @@ Mobile AP Mode Throughput - VHT Mode - 5 GHz Band - 40 MHz
 
 Mobile AP Mode Throughput - VHT Mode - 5 GHz Band - 80 MHz
 
-|Protocol|TCP \(Mbit/s\)|  | UDP \(Mbit/s\)|  |
-|--------|--------------|--|---------------|--|
+| Protocol      | TCP (Mbit/s) | TCP (Mbit/s) | UDP (Mbit/s) | UDP (Mbit/s) |
+|:--------------|:-------------:|:-------------:|:-------------:|:-------------:|
 |Direction|TX|RX|TX|RX|
 |Open Security|43|51|72|74|
 |WPA2-AES|41|52|71|75|
@@ -292,8 +292,8 @@ Mobile AP Mode Throughput - VHT Mode - 5 GHz Band - 80 MHz
 
 Mobile AP Mode Throughput - HE Mode - 2.4 GHz Band - 20 MHz
 
-|Protocol|TCP \(Mbit/s\)|  | UDP \(Mbit/s\)|  |
-|--------|--------------|--|---------------|--|
+| Protocol      | TCP (Mbit/s) | TCP (Mbit/s) | UDP (Mbit/s) | UDP (Mbit/s) |
+|:--------------|:-------------:|:-------------:|:-------------:|:-------------:|
 |Direction|TX|RX|TX|RX|
 |Open Security|45|42|79|80|
 |WPA2-AES|44|38|79|79|
@@ -301,8 +301,8 @@ Mobile AP Mode Throughput - HE Mode - 2.4 GHz Band - 20 MHz
 
 Mobile AP Mode Throughput - HE Mode - 2.4 GHz Band - 40 MHz
 
-|Protocol|TCP \(Mbit/s\)|  | UDP \(Mbit/s\)|  |
-|--------|--------------|--|---------------|--|
+| Protocol      | TCP (Mbit/s) | TCP (Mbit/s) | UDP (Mbit/s) | UDP (Mbit/s) |
+|:--------------|:-------------:|:-------------:|:-------------:|:-------------:|
 |Direction|TX|RX|TX|RX|
 |Open Security|45|49|79|79|
 |WPA2-AES|45|45|79|82|
@@ -310,8 +310,8 @@ Mobile AP Mode Throughput - HE Mode - 2.4 GHz Band - 40 MHz
 
 Mobile AP Mode Throughput - HE Mode - 5 GHz Band - 20 MHz
 
-|Protocol|TCP \(Mbit/s\)|  | UDP \(Mbit/s\)|  |
-|--------|--------------|--|---------------|--|
+| Protocol      | TCP (Mbit/s) | TCP (Mbit/s) | UDP (Mbit/s) | UDP (Mbit/s) |
+|:--------------|:-------------:|:-------------:|:-------------:|:-------------:|
 |Direction|TX|RX|TX|RX|
 |Open Security|46|53|79|72|
 |WPA2-AES|45|52|79|71|
@@ -319,8 +319,8 @@ Mobile AP Mode Throughput - HE Mode - 5 GHz Band - 20 MHz
 
 Mobile AP Mode Throughput - HE Mode - 5 GHz Band - 40 MHz
 
-|Protocol|TCP \(Mbit/s\)|  | UDP \(Mbit/s\)|  |
-|---------|-------------|--|---------------|--|
+| Protocol      | TCP (Mbit/s) | TCP (Mbit/s) | UDP (Mbit/s) | UDP (Mbit/s) |
+|:--------------|:-------------:|:-------------:|:-------------:|:-------------:|
 |Direction|TX|RX|TX|RX|
 |Open Security|47|45|81|78|
 |WPA2-AES|46|47|79|83|
@@ -328,8 +328,8 @@ Mobile AP Mode Throughput - HE Mode - 5 GHz Band - 40 MHz
 
 Mobile AP Mode Throughput - HE Mode - 5 GHz Band - 80 MHz
 
-|Protocol|TCP \(Mbit/s\)|  | UDP \(Mbit/s\)|  |
-|--------|--------------|--|---------------|--|
+| Protocol      | TCP (Mbit/s) | TCP (Mbit/s) | UDP (Mbit/s) | UDP (Mbit/s) |
+|:--------------|:-------------:|:-------------:|:-------------:|:-------------:|
 |Direction|TX|RX|TX|RX|
 |Open Security|46|51|79|82|
 |WPA2-AES|46|51|79|78|
@@ -355,10 +355,20 @@ EU Adaptivity test - EN 301 893 v2.1.1 \(for 5 GHz\)
 |---------|-----------|
 |-|-|
 
+### Firmware version: From 18.99.3.p26.7 to 18.99.8.p7
+|Component|Description|
+|---------|-----------|
+|Wi-Fi|Invoking csi-param-header sta 2 results in an RX ring buffer overflow, preventing termination of the CSI dump|
+
+### Firmware version: From 18.99.8.p7 to 18.99.8.p25
+|Component|Description|
+|---------|-----------|
+|Wi-Fi|<ul><li>The device under test (DUT), when enrolled as a STA, could enter a hang state during DPP initiator authentication with the AP due to a command response timeout (command 0x00, length 70, sequence number 0x16</ul></li><ul><li>The DUT could enter a hang state during STA connection when configured with Suite‑B EC / WPA3‑Enterprise (ECC, EAP‑TLS) security, due to a command response timeout (0x240)</ul></li><ul><li>The DUT could encounter an assertion failure leading to a kernel panic intermittently during long‑duration performance testing in uAP mode.</ul></li><ul><li>Enabled MbedTLS 4.x</ul></li>|
+
 ## Known issues
 
 |Component|Description|
 |---------|-----------|
-|Wi-Fi|Invoking csi-param-header sta 2 results in an RX ring buffer overflow, preventing termination of the CSI dump|
+|-|-|
 
 

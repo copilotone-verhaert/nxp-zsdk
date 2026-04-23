@@ -3,16 +3,16 @@
 # IW610 release notes
 
 ## Package information
-SDK version: v4.3.0
+SDK version: v4.4.0
 
 ## Version information
 
-Wi-Fi and Bluetooth/Bluetooth LE firmware version firmware version: 18.99.5.p85
+Wi-Fi and Bluetooth/Bluetooth LE firmware version firmware version: 18.99.8.p27
 
 -   18 - Major revision
 -   99 - Feature pack
--   5 - Release version
--   p85 - Patch number
+-   8 - Release version
+-   p27 - Patch number
 
 ## Host platform
 
@@ -65,8 +65,8 @@ External AP: Asus AX88u
 
 STA mode throughput - BGN Mode - 2.4 GHz Band - 20 MHz
 
-|Protocol|TCP \(Mbit/s\)|  | UDP \(Mbit/s\)|  |
-|--------|--------------|--|---------------|--|
+| Protocol      | TCP (Mbit/s) | TCP (Mbit/s) | UDP (Mbit/s) | UDP (Mbit/s) |
+|:--------------|:-------------:|:-------------:|:-------------:|:-------------:|
 |Direction|TX|RX|TX|RX|
 |Open Security|40|45|62|59|
 |WPA2-AES|39|40|60|54|
@@ -74,8 +74,8 @@ STA mode throughput - BGN Mode - 2.4 GHz Band - 20 MHz
 
 STA mode throughput - AN Mode - 5 GHz Band - 20 MHz
 
-|Protocol|TCP \(Mbit/s\)|  | UDP \(Mbit/s\)|  |
-|--------|--------------|--|---------------|--|
+| Protocol      | TCP (Mbit/s) | TCP (Mbit/s) | UDP (Mbit/s) | UDP (Mbit/s) |
+|:--------------|:-------------:|:-------------:|:-------------:|:-------------:|
 |Direction|TX|RX|TX|RX|
 |Open Security|41|45|64|63|
 |WPA2-AES|40|42|62|58|
@@ -83,8 +83,8 @@ STA mode throughput - AN Mode - 5 GHz Band - 20 MHz
 
 STA mode throughput - VHT Mode - 2.4 GHz Band - 20 MHz
 
-|Protocol|TCP \(Mbit/s\)|  | UDP \(Mbit/s\)|  |
-|--------|--------------|--|---------------|--|
+| Protocol      | TCP (Mbit/s) | TCP (Mbit/s) | UDP (Mbit/s) | UDP (Mbit/s) |
+|:--------------|:-------------:|:-------------:|:-------------:|:-------------:|
 |Direction|TX|RX|TX|RX|
 |Open Security|43|48|73|73|
 |WPA2-AES|42|47|73|73|
@@ -92,8 +92,8 @@ STA mode throughput - VHT Mode - 2.4 GHz Band - 20 MHz
 
 STA mode throughput - VHT Mode - 5 GHz Band - 20 MHz
 
-|Protocol|TCP \(Mbit/s\)|  | UDP \(Mbit/s\)|  |
-|--------|--------------|--|---------------|--|
+| Protocol      | TCP (Mbit/s) | TCP (Mbit/s) | UDP (Mbit/s) | UDP (Mbit/s) |
+|:--------------|:-------------:|:-------------:|:-------------:|:-------------:|
 |Direction|TX|RX|TX|RX|
 |Open Security|43|51|74|74|
 |WPA2-AES|44|51|75|74|
@@ -101,8 +101,8 @@ STA mode throughput - VHT Mode - 5 GHz Band - 20 MHz
 
 STA mode throughput - HE Mode - 2.4 GHz Band - 20 MHz
 
-|Protocol|TCP \(Mbit/s\)|  | UDP \(Mbit/s\)|  |
-|--------|--------------|--|---------------|--|
+| Protocol      | TCP (Mbit/s) | TCP (Mbit/s) | UDP (Mbit/s) | UDP (Mbit/s) |
+|:--------------|:-------------:|:-------------:|:-------------:|:-------------:|
 |Direction|TX|RX|TX|RX|
 |Open Security|46|56|94|97|
 |WPA2-AES|46|55|94|97|
@@ -110,8 +110,8 @@ STA mode throughput - HE Mode - 2.4 GHz Band - 20 MHz
 
 STA mode throughput - HE Mode - 5 GHz Band - 20 MHz
 
-|Protocol|TCP \(Mbit/s\)|  | UDP \(Mbit/s\)|  |
-|--------|--------------|--|---------------|--|
+| Protocol      | TCP (Mbit/s) | TCP (Mbit/s) | UDP (Mbit/s) | UDP (Mbit/s) |
+|:--------------|:-------------:|:-------------:|:-------------:|:-------------:|
 |Direction|TX|RX|TX|RX|
 |Open Security|48|58|97|100|
 |WPA2-AES|46|52|97|94|
@@ -123,8 +123,8 @@ External client: PCIE 9098
 
 Mobile AP Mode Throughput - BGN Mode - 2.4 GHz Band - 20 MHz
 
-|Protocol|TCP \(Mbit/s\)|  | UDP \(Mbit/s\)|  |
-|--------|--------------|--|---------------|--|
+| Protocol      | TCP (Mbit/s) | TCP (Mbit/s) | UDP (Mbit/s) | UDP (Mbit/s) |
+|:--------------|:-------------:|:-------------:|:-------------:|:-------------:|
 |Direction|TX|RX|TX|RX|
 |Open Security|40|43|57|58|
 |WPA2-AES|39|42|58|58|
@@ -132,8 +132,8 @@ Mobile AP Mode Throughput - BGN Mode - 2.4 GHz Band - 20 MHz
 
 Mobile AP Mode Throughput - AN Mode - 5 GHz Band - 20 MHz
 
-|Protocol|TCP \(Mbit/s\)|  | UDP \(Mbit/s\)|  |
-|--------|--------------|--|---------------|--|
+| Protocol      | TCP (Mbit/s) | TCP (Mbit/s) | UDP (Mbit/s) | UDP (Mbit/s) |
+|:--------------|:-------------:|:-------------:|:-------------:|:-------------:|
 |Direction|TX|RX|TX|RX|
 |Open Security|40|43|60|60|
 |WPA2-AES|40|42|61|60|
@@ -141,8 +141,8 @@ Mobile AP Mode Throughput - AN Mode - 5 GHz Band - 20 MHz
 
 Mobile AP Mode Throughput - VHT Mode - 2.4 GHz Band - 20 MHz
 
-|Protocol|TCP \(Mbit/s\)|  | UDP \(Mbit/s\)|  |
-|--------|--------------|--|---------------|--|
+| Protocol      | TCP (Mbit/s) | TCP (Mbit/s) | UDP (Mbit/s) | UDP (Mbit/s) |
+|:--------------|:-------------:|:-------------:|:-------------:|:-------------:|
 |Direction|TX|RX|TX|RX|
 |Open Security|44|48|75|71|
 |WPA2-AES|42|48|68|70|
@@ -150,8 +150,8 @@ Mobile AP Mode Throughput - VHT Mode - 2.4 GHz Band - 20 MHz
 
 Mobile AP Mode Throughput - VHT Mode - 5 GHz Band - 20 MHz
 
-|Protocol|TCP \(Mbit/s\)|  | UDP \(Mbit/s\)|  |
-|--------|--------------|--|---------------|--|
+| Protocol      | TCP (Mbit/s) | TCP (Mbit/s) | UDP (Mbit/s) | UDP (Mbit/s) |
+|:--------------|:-------------:|:-------------:|:-------------:|:-------------:|
 |Direction|TX|RX|TX|RX|
 |Open Security|46|48|70|71|
 |WPA2-AES|46|48|70|71|
@@ -159,8 +159,8 @@ Mobile AP Mode Throughput - VHT Mode - 5 GHz Band - 20 MHz
 
 Mobile AP Mode Throughput - HE Mode - 2.4 GHz Band - 20 MHz
 
-|Protocol|TCP \(Mbit/s\)|  | UDP \(Mbit/s\)|  |
-|--------|--------------|--|---------------|--|
+| Protocol      | TCP (Mbit/s) | TCP (Mbit/s) | UDP (Mbit/s) | UDP (Mbit/s) |
+|:--------------|:-------------:|:-------------:|:-------------:|:-------------:|
 |Direction|TX|RX|TX|RX|
 |Open Security|44|42|90|90|
 |WPA2-AES|44|41|92|90|
@@ -168,8 +168,8 @@ Mobile AP Mode Throughput - HE Mode - 2.4 GHz Band - 20 MHz
 
 Mobile AP Mode Throughput - HE Mode - 5 GHz Band - 20 MHz
 
-|Protocol|TCP \(Mbit/s\)|  | UDP \(Mbit/s\)|  |
-|--------|--------------|--|---------------|--|
+| Protocol      | TCP (Mbit/s) | TCP (Mbit/s) | UDP (Mbit/s) | UDP (Mbit/s) |
+|:--------------|:-------------:|:-------------:|:-------------:|:-------------:|
 |Direction|TX|RX|TX|RX|
 |Open Security|47|45|97|97|
 |WPA2-AES|46|44|98|97|
@@ -183,6 +183,11 @@ Mobile AP Mode Throughput - HE Mode - 5 GHz Band - 20 MHz
 |---------|-----------|
 |Coex|<ul><li>In the coex_Central_HT sample application, the system intermittently halts at various threads during execution</ul></li> <ul><li> Resolved an issue where the system could randomly halt in different threads during "coex_central_ht" default SDK example execution.</ul></li> <ul><li>Resolved an issue related to the system halt occurring during BLE bonding in "coex_bt_shell" SDK example. </ul></li> <ul><li>Fixed command response timeout for CMD 0x107</ul></li>|
 
+### Firmware version: From 18.99.5.p85 to 18.99.8.p27
+
+|Component|Description|
+|---------|-----------|
+|Wi-Fi|Enabled MbedTLS 4.x|
 ## Known issues
 
 |Component|Description|

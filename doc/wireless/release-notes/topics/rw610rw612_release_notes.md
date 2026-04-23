@@ -3,16 +3,16 @@
 # RW610/RW612 release notes
 
 ## Package information
-SDK version: v4.3.0
+SDK version: v4.4.0
 
 ## Version information
 
-Wi-Fi and Bluetooth/Bluetooth LE firmware version firmware version: 18.99.6.p49
+Wi-Fi and Bluetooth/Bluetooth LE firmware version firmware version: 18.99.8.p27
 
 -   18 - Major revision
 -   99 - Feature pack
--   6 - Release version
--   p49 - Patch number
+-   8 - Release version
+-   p27 - Patch number
 
 ## Host platform
 
@@ -42,25 +42,23 @@ The Wi-Fi and Bluetooth certification is obtained with the following combination
 **Note:** This release supports STAUT only certifications.
 ### Bluetooth LE controller certification
 
-DN\#: Q365944
+DN\#: Q380314
 
-Link: [https://qualification.bluetooth.com/ListingDetails/265687](https://qualification.bluetooth.com/ListingDetails/265687)
+Link: [https://qualification.bluetooth.com/ListingDetails/323344](https://qualification.bluetooth.com/ListingDetails/323344)
 
 ![](../images/zephyr-bluetooth-qualification.png)
 
-### OpenThread
-
-Bluetooth LE Host Zephyr Certification
+### Bluetooth LE Host Zephyr Certification
 
 DN\#: Q305748
 
 Link: [https://qualification.bluetooth.com/ListingDetails/227830](https://qualification.bluetooth.com/ListingDetails/227830)
 
-![](../images/zephyr-openthread-qualification.png)
+![](../images/zephyr-bluetooth-host-qualification.png)
 
 ### Matter
 
-Certificate: IDCSA24599MAT44108-50
+Certificate: CSA25AD6MAT47656-24
 
 Link to connectivity standard alliance \(CSA\): [9](references.md)
 
@@ -107,8 +105,8 @@ External AP: Asus AX88u
 
 STA mode throughput - BGN Mode - 2.4 GHz Band - 20 MHz
 
-|Protocol|TCP \(Mbit/s\)|  | UDP \(Mbit/s\)|  |
-|--------|--------------|--|---------------|--|
+| Protocol      | TCP (Mbit/s) | TCP (Mbit/s) | UDP (Mbit/s) | UDP (Mbit/s) |
+|:--------------|:-------------:|:-------------:|:-------------:|:-------------:|
 |Direction|TX|RX|TX|RX|
 |Open Security|33|42|68|66|
 |WPA2-AES|33|42|64|65|
@@ -116,8 +114,8 @@ STA mode throughput - BGN Mode - 2.4 GHz Band - 20 MHz
 
 STA mode throughput - AN Mode - 5 GHz Band - 20 MHz
 
-|Protocol|TCP \(Mbit/s\)|  | UDP \(Mbit/s\)|  |
-|--------|--------------|--|---------------|--|
+| Protocol      | TCP (Mbit/s) | TCP (Mbit/s) | UDP (Mbit/s) | UDP (Mbit/s) |
+|:--------------|:-------------:|:-------------:|:-------------:|:-------------:|
 |Direction|TX|RX|TX|RX|
 |Open Security|34|48|76|76|
 |WPA2-AES|35|48|74|75|
@@ -125,8 +123,8 @@ STA mode throughput - AN Mode - 5 GHz Band - 20 MHz
 
 STA mode throughput - VHT Mode - 2.4 GHz Band - 20 MHz
 
-|Protocol|TCP \(Mbit/s\)|  | UDP \(Mbit/s\)|  |
-|--------|--------------|--|---------------|--|
+| Protocol      | TCP (Mbit/s) | TCP (Mbit/s) | UDP (Mbit/s) | UDP (Mbit/s) |
+|:--------------|:-------------:|:-------------:|:-------------:|:-------------:|
 |Direction|TX|RX|TX|RX|
 |Open Security|32|43|71|70|
 |WPA2-AES|35|41|64|69|
@@ -134,8 +132,8 @@ STA mode throughput - VHT Mode - 2.4 GHz Band - 20 MHz
 
 STA mode throughput - VHT Mode - 5 GHz Band - 20 MHz
 
-|Protocol|TCP \(Mbit/s\)|  | UDP \(Mbit/s\)|  |
-|--------|--------------|--|---------------|--|
+| Protocol      | TCP (Mbit/s) | TCP (Mbit/s) | UDP (Mbit/s) | UDP (Mbit/s) |
+|:--------------|:-------------:|:-------------:|:-------------:|:-------------:|
 |Direction|TX|RX|TX|RX|
 |Open Security|36|48|76|76|
 |WPA2-AES|34|48|74|75|
@@ -143,8 +141,8 @@ STA mode throughput - VHT Mode - 5 GHz Band - 20 MHz
 
 STA mode throughput - HE Mode - 2.4 GHz Band - 20 MHz
 
-|Protocol|TCP \(Mbit/s\)|  | UDP \(Mbit/s\)|  |
-|--------|--------------|--|---------------|--|
+| Protocol      | TCP (Mbit/s) | TCP (Mbit/s) | UDP (Mbit/s) | UDP (Mbit/s) |
+|:--------------|:-------------:|:-------------:|:-------------:|:-------------:|
 |Direction|TX|RX|TX|RX|
 |Open Security|36|46|90|92|
 |WPA2-AES|34|44|89|85|
@@ -152,8 +150,8 @@ STA mode throughput - HE Mode - 2.4 GHz Band - 20 MHz
 
 STA mode throughput - HE Mode - 5 GHz Band - 20 MHz
 
-|Protocol|TCP \(Mbit/s\)|  | UDP \(Mbit/s\)|  |
-|--------|--------------|--|---------------|--|
+| Protocol      | TCP (Mbit/s) | TCP (Mbit/s) | UDP (Mbit/s) | UDP (Mbit/s) |
+|:--------------|:-------------:|:-------------:|:-------------:|:-------------:|
 |Direction|TX|RX|TX|RX|
 |Open Security|38|51|98|102|
 |WPA2-AES|39|50|97|100|
@@ -165,8 +163,8 @@ External client: PCIE 9098
 
 Mobile AP Mode Throughput - BGN Mode - 2.4 GHz Band - 20 MHz
 
-|Protocol|TCP \(Mbit/s\)|  | UDP \(Mbit/s\)|  |
-|--------|--------------|--|---------------|--|
+| Protocol      | TCP (Mbit/s) | TCP (Mbit/s) | UDP (Mbit/s) | UDP (Mbit/s) |
+|:--------------|:-------------:|:-------------:|:-------------:|:-------------:|
 |Direction|TX|RX|TX|RX|
 |Open Security|35|40|59|60|
 |WPA2-AES|35|40|59|60|
@@ -174,8 +172,8 @@ Mobile AP Mode Throughput - BGN Mode - 2.4 GHz Band - 20 MHz
 
 Mobile AP Mode Throughput - AN Mode - 5 GHz Band - 20 MHz
 
-|Protocol|TCP \(Mbit/s\)|  | UDP \(Mbit/s\)|  |
-|--------|--------------|--|---------------|--|
+| Protocol      | TCP (Mbit/s) | TCP (Mbit/s) | UDP (Mbit/s) | UDP (Mbit/s) |
+|:--------------|:-------------:|:-------------:|:-------------:|:-------------:|
 |Direction|TX|RX|TX|RX|
 |Open Security|37|44|63|64|
 |WPA2-AES|37|43|61|64|
@@ -183,8 +181,8 @@ Mobile AP Mode Throughput - AN Mode - 5 GHz Band - 20 MHz
 
 Mobile AP Mode Throughput - VHT Mode - 2.4 GHz Band - 20 MHz
 
-|Protocol|TCP \(Mbit/s\)|  | UDP \(Mbit/s\)|  |
-|--------|--------------|--|---------------|--|
+| Protocol      | TCP (Mbit/s) | TCP (Mbit/s) | UDP (Mbit/s) | UDP (Mbit/s) |
+|:--------------|:-------------:|:-------------:|:-------------:|:-------------:|
 |Direction|TX|RX|TX|RX|
 |Open Security|32|43|55|70|
 |WPA2-AES|36|42|63|69|
@@ -192,8 +190,8 @@ Mobile AP Mode Throughput - VHT Mode - 2.4 GHz Band - 20 MHz
 
 Mobile AP Mode Throughput - VHT Mode - 5 GHz Band - 20 MHz
 
-|Protocol|TCP \(Mbit/s\)|  | UDP \(Mbit/s\)|  |
-|--------|--------------|--|---------------|--|
+| Protocol      | TCP (Mbit/s) | TCP (Mbit/s) | UDP (Mbit/s) | UDP (Mbit/s) |
+|:--------------|:-------------:|:-------------:|:-------------:|:-------------:|
 |Direction|TX|RX|TX|RX|
 |Open Security|42|46|76|76|
 |WPA2-AES|42|46|74|75|
@@ -201,8 +199,8 @@ Mobile AP Mode Throughput - VHT Mode - 5 GHz Band - 20 MHz
 
 Mobile AP Mode Throughput - HE Mode - 2.4 GHz Band - 20 MHz
 
-|Protocol|TCP \(Mbit/s\)|  | UDP \(Mbit/s\)|  |
-|--------|--------------|--|---------------|--|
+| Protocol      | TCP (Mbit/s) | TCP (Mbit/s) | UDP (Mbit/s) | UDP (Mbit/s) |
+|:--------------|:-------------:|:-------------:|:-------------:|:-------------:|
 |Direction|TX|RX|TX|RX|
 |Open Security|40|44|91|91|
 |WPA2-AES|40|44|90|80|
@@ -210,8 +208,8 @@ Mobile AP Mode Throughput - HE Mode - 2.4 GHz Band - 20 MHz
 
 Mobile AP Mode Throughput - HE Mode - 5 GHz Band - 20 MHz
 
-|Protocol|TCP \(Mbit/s\)|  | UDP \(Mbit/s\)|  |
-|--------|--------------|--|---------------|--|
+| Protocol      | TCP (Mbit/s) | TCP (Mbit/s) | UDP (Mbit/s) | UDP (Mbit/s) |
+|:--------------|:-------------:|:-------------:|:-------------:|:-------------:|
 |Direction|TX|RX|TX|RX|
 |Open Security|47|52|91|90|
 |WPA2-AES|46|52|91|90|
@@ -231,10 +229,17 @@ Mobile AP Mode Throughput - HE Mode - 5 GHz Band - 20 MHz
 |---------|-----------|
 |-|-|
 
+### Firmware version: From 18.99.6.p49 to 18.99.8.p27
+
+|Component|Description|
+|---------|-----------|
+|Wi-Fi|<ul><li>System assert while trying to reboot RW612</ul></li><ul><li>The DUT failed to authenticate with the AP in STA/AP mode during DPP responder authentication, resulting in a DPP Configuration Failed error.</ul></li>|
+|Coexistance|<ul><li>Resolved a random assertion failure issue where the DUT entered an unstable state, with "ASSERTION FAIL" messages printed on the console during operation.</ul></li><ul><li>Fixed a compilation failure observed while building the Tri‑Radio application.</ul></li><ul><li>Enabled MbedTLS 4.x</ul></li>|
+
 ## Known issues
 
 |Component|Description|
 |---------|-----------|
-|Coex|System assert while trying to reboot RW612|
+|-|-|
 
 

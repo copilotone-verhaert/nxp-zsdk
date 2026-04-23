@@ -17,3 +17,4 @@
 |Router Eligible End Device \(REED\)|N|Y|N|
 |End Device \(FED, MED\)|N|Y|N|
 
+

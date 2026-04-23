@@ -14,8 +14,8 @@
 |Bluetooth - 2.1 to 5.0 specification support|N|N|N|
 |Low power sniff|N|N|N|
 |Deep sleep using out-of-band|N|N|N|
-|Wake on Bluetooth \(SoC to host\)|N|N|N|
-|Independent reset \(in-band\)[<sup>[1]</sup>](#refer-bt-1)|N|N|N|
+|Wake on Bluetooth \(SoC to host\)|Y|Y|N|
+|Independent reset \(in-band\)[<sup>[1]</sup>](#refer-bt-1)|Y|Y|N|
 |Independent reset \(out-band\)[<sup>[1]</sup>](#refer-bt-1)|N|N|N|
 |Firmware download \(parallel\)[<sup>[1]</sup>](#refer-bt-1)|N|N|N|
 |AutoPTS framework support|Y|Y|N|
@@ -31,7 +31,7 @@
 |SCO \(HV1, HV3\)|Y|Y|N|
 |eSCO \(EV3, EV4, EV5, 2EV3, 3EV3, 2EV5, 3EV5\)|Y|Y|N|
 |**Bluetooth profiles supported**||||
-|A2DP sink|N|N|N|
+|A2DP sink|Y|Y|N|
 |A2DP source|Y|Y|N|
 |AVRCP target/controller|N|N|N|
 |HFP Dev/AG|N|N|N|
@@ -53,10 +53,11 @@
 |1Mbps Support|Y|Y|Y|Y|
 |Scatternet support|Y|Y|Y|Y|
 |Deep sleep using out-of-band|N|N|N|N|
-|Wake on Bluetooth LE \(SoC to Host\)|N|N|N|N|
+|Wake on Bluetooth LE \(SoC to Host\)|Y|Y|N|Y|
 |Filter Accept List|N|N|Y|Y|
 |Bluetooth LE AES encryption|N|Y|N|Y|
 |RF Test mode|Y|Y|Y|Y|
+|Independent reset \(in-band\)|N|N|N|Y|
 |**Bluetooth profile support**||||
 |Bluetooth LE Broadcaster|Y|Y|Y|Y|
 |Bluetooth LE Observer|Y|Y|Y|Y|
