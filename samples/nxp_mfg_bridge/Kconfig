@@ -35,4 +35,7 @@ config SUPPORT_BT_UART
 	default n
 	select NXP_COMBO_FW_LOAD
 
+config IMX_USDHC_DAT3_DETECT_RETRY
+	default 10
+
 source "Kconfig.zephyr"
