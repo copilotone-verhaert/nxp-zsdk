@@ -1,0 +1,73 @@
+NXP Zephyr project v4.4.0.0 Release Notes
+=============================
+
+The nxp-zsdk provides a NXP Zephyr Downstream for NXP SOCs.
+
+How to get the code
+===================
+
+The git tag for this release is "nxp-v4.4.0".  See the ZSDK Getting Started at
+https://github.com/nxp-zephyr/nxp-zsdk/tree/main/doc/Getting-Started.md.  The
+West init command is as follows:
+
+ $ west init -m https://github.com/nxp-zephyr/nxp-zsdk.git --mr nxp-v4.4.0
+
+Then, run:
+ $ west update
+ $ west zephyr-export
+
+Release Highlights
+==================
+
+Aligned with Zephyr Project v4.4-branch
+
+Zephyr Project sync to upstream tag: v4.4.0
+
+nxp-zephyr Change Log
+=====================
+Following Changes have been applied on top of the Zephyr v4.4.0 release branch:
+
+Base Enablement
+===============
+
+- New DFU boot API on the boot ROM interface to manage firmware upgrade.
+  It is enabled for the frdm_mcxw71 board.
+
+
+BLE support
+============
+
+Wi-Fi support
+=============
+
+- Static IPv4 address is supported for STA mode
+- Reconnect scan times is supported for embedded supplicant case
+- Code improvement for bandcfg to support uAP and STA
+- New band selection command for Wi-Fi connection
+- Enable FW dump for Wi-Fi NB Coex APP
+- Enabled mbedtls 4.x HW accelerators
+For RW612:
+- RF test mode to disable 11ax in OTP is supported
+- RF test mode new command to set CAU crystal offset
+- Enable Wi-Fi packet based Tx with single packet
+For RW612/IW610:
+- Support compressed and uncompressed Wi-Fi NB FW
+For IW416/IW61X:
+- Added UAPSD support
+
+OpenThread Support
+==================
+
+TF-M / mbedTLS / Crypto
+=======================
+
+- Updated mbed TLS to v3.6.5 and enabled HW via PSA Crypto APIs on RW612.
+- Enabled Trusted Firmware‑M (TF‑M) v2.2.2 support for RW612.
+- Added power management (PM) mode support for RW612 with TF‑M.
+
+EdgeLock 2GO support
+====================
+
+- Updated nxp_iot_agent module to v6.5.0.
+- Migrated nxp_iot_agent to Mbed TLS 4.x.
+- Enabled BL2 by default for nxp_iot_agent examples.
