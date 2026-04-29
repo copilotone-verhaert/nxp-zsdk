@@ -80,7 +80,7 @@ external_content_contents = [
 toc_builder_docsets = [
     {
         "docset": "zsdk",
-        "title": "NXP Zephyr SDK",
+        "title": "NXP Zephyr Project",
         "doc_root": str(ZSDK_BASE / "doc"),
         "index_file": str(ZSDK_BASE / "doc" / "index.rst"),
     },

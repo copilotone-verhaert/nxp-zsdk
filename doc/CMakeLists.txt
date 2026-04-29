@@ -2,7 +2,7 @@
 # Copyright 2025-2026 NXP
 # SPDX-License-Identifier: BSD-3-Clause
 #
-# NXP Zephyr SDK documentation build system.
+# NXP Zephyr project documentation build system.
 #
 # Builds combined documentation for all documentation sets (ZSDK, Zephyr).
 # Each docset uses its own Sphinx configuration (see doc/zsdk/conf.py and

@@ -1,4 +1,4 @@
-Welcome to ZSDK Documentation
+Welcome to NXP Zephyr Project (ZSDK) Documentation
 =======================================
 
 This documentation provides comprehensive guides and references for developing with **ZSDK**,

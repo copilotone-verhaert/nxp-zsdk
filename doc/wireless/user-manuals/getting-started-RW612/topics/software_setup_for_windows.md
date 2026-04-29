@@ -82,11 +82,11 @@ Step 7 - Install Python dependencies.
 ``` {#codeblock_pnb_24k_cfc}
 pip install -r zephyr\scripts\requirements.txt
 ```
-## Install the Zephyr SDK
+## Install the NXP Zephyr project
 
 The Zephyr software development kit \(SDK\) contains toolchains for each Zephyr-supported architecture, including a compiler, assembler, linker, and other programs required to build Zephyr applications.
 
-Step 1 - Install the Zephyr SDK.
+Step 1 - Install the NXP Zephyr project.
 
 ``` {#codeblock_c1h_q4k_cfc}
 cd %HOMEPATH%\zephyrproject\zephyr

@@ -1,4 +1,4 @@
-NXP Zephyr SDK v4.1.0.0 Release Notes
+NXP Zephyr Project v4.1.0.0 Release Notes
 =============================
 
 The nxp-zsdk provides a NXP Zephyr Downstream for NXP SOCs.

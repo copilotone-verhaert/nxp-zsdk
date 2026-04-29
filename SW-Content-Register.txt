@@ -5,7 +5,7 @@ Version:          4.3.0
 Outgoing License: Apache-2.0
 License File:     LICENSE
 Format:           source code
-Description:      NXP Zephyr SDK downstream
+Description:      NXP Zephyr project downstream
 Location:         https://github.com/nxp-zephyr/nxp-zsdk
 Origin:           NXP (BSD-3-Clause)
                   NXP (Apache-2.0)

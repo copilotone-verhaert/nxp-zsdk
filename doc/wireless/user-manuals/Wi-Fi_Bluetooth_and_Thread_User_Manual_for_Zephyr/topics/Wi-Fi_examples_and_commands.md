@@ -2,7 +2,7 @@
 
 # Wi-Fi examples and commands
 
-This chapter describes the Wi-Fi shell example and its commands usage in separate sections. The Wi-Fi shell is a default example included in the Zephyr SDK regular release. It integrates Zephyr common Wi-Fi commands and NXP proprietary command, which starts with the prefix **nxp_wifi**.
+This chapter describes the Wi-Fi shell example and its commands usage in separate sections. The Wi-Fi shell is a default example included in the NXP Zephyr project regular release. It integrates Zephyr common Wi-Fi commands and NXP proprietary command, which starts with the prefix **nxp_wifi**.
 
 ## Build Wi-Fi shell example
 

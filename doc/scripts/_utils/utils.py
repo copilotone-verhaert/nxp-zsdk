@@ -20,7 +20,7 @@ _MANIFEST = Manifest.from_file(_ZSDK_BASE / "west.yml")
 """Manifest instance"""
 
 ALL_DOCSETS = {
-    "zsdk": ("NXP Zephyr SDK", "index", "zsdk"),
+    "zsdk": ("NXP Zephyr Project", "index", "zsdk"),
     "zephyr": ("Zephyr Project", "index", "zephyr"),
     # "tfm": ("Trusted Firmware-M", "wrapper", "trusted-firmware-m"),
     # "kconfig": ("Kconfig Reference", "index", None),

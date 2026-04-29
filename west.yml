@@ -1,4 +1,4 @@
-# The west manifest file (west.yml) for the NXP ZSDK
+# The west manifest file (west.yml) for the NXP Zephyr project (ZSDK).
 #
 # The per-installation west configuration file, .west/config, sets the
 # path to the project containing this file in the [manifest] section's
